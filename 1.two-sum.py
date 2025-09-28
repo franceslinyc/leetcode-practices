@@ -3,7 +3,7 @@
 #
 # [1] Two Sum
 #
-
+from typing import List
 # @lc code=start
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
@@ -11,8 +11,8 @@ class Solution:
         for i, n in enumerate(nums):
             diff = target - n
             if diff in this_map: 
-                return [this_map[diff], i]
+                return [i, this_map[diff]]
             this_map[n] = i
-        
+
 # @lc code=end
 
