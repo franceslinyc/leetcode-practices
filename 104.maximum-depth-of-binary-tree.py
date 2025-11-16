@@ -72,11 +72,11 @@ class Solution:
 
         # return res 
 
-# 3  1
-# 9  2
-# 20 2
-# 15 3
 # 7  3
+# 15 3
+# 20 2
+# 9  2
+# 3  1
 
         # Preorder (node first) vs Inorder (node middle) vs Postorder (node last)
         # https://www.geeksforgeeks.org/dsa/preorder-vs-inorder-vs-postorder/
