@@ -14,25 +14,25 @@
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
         
-        # # method 1
+        # method 1 recursive DFS
+
+        if not root: 
+            return 0 
+        
+        return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right)) 
+
+        # # method 2 BFS via queue
 
         # if not root: 
         #     return 0 
         
-        # return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right)) 
+        # q = deque([root])
 
-        # # method 2 BFS
-
-        # q = deque() 
-
-        # if root: 
-        #     q.append(root)
-
-        # level = 0
+        # level = 0 
 
         # while q: 
                 
-        #     for i in range(len(q)):     
+        #     for i in range(len(q)): # Process current node    
 
         #         node = q.popleft()
 
@@ -48,7 +48,29 @@ class Solution:
 
         # return level
 
-        # method 3 DFS
+        # # method 3 DFS via stack
+
+        # if not root: 
+        #     return 0 
+        
+        # s = [[root, 1]] 
+
+        # res = 0 
+
+        # while s: 
+
+        #     node, depth = s.pop()
+
+        #     if node: 
+
+        #         res = max(res, depth)
+        #         s.append([node.left, depth + 1])
+        #         s.append([node.right, depth + 1])
+
+        # return res 
+
+        # Preorder (node first) vs Inorder (node middle) vs Postorder (node last)
+        # https://www.geeksforgeeks.org/dsa/preorder-vs-inorder-vs-postorder/
     
 # @lc code=end
 
