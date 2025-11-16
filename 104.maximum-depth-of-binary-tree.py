@@ -48,6 +48,9 @@ class Solution:
 
         # return level
 
+# 3 9 20 15 7
+# 1 2 2  3  3
+
         # # method 3 DFS via stack
 
         # if not root: 
@@ -68,6 +71,12 @@ class Solution:
         #         s.append([node.right, depth + 1])
 
         # return res 
+
+# 3  1
+# 9  2
+# 20 2
+# 15 3
+# 7  3
 
         # Preorder (node first) vs Inorder (node middle) vs Postorder (node last)
         # https://www.geeksforgeeks.org/dsa/preorder-vs-inorder-vs-postorder/
