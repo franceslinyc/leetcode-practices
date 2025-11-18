@@ -20,15 +20,13 @@ class Solution:
 
             else: 
 
-                if not this_stack or this_map[s[i]] != this_stack[-1]:
+                if not this_stack or this_stack[-1] != this_map[s[i]]:
 
                     return False
 
-                else: 
+                this_stack.pop()                    
 
-                    this_stack.pop()                    
-
-        return not this_stack 
+        return not this_stack  # return True if empty 
 
 # @lc code=end
 
