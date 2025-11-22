@@ -26,7 +26,7 @@ class Solution:
 
             self.res = max(self.res, left + right) # Update res
 
-            return max(left, right) + 1  # Return height; +1 for current node
+            return max(left, right) + 1  # Return height to parent (current) node; +1 for parent (current) node
         
         height(root)
 

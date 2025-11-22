@@ -14,9 +14,7 @@
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
 
-        # method 1 dfs
-
-        # method 2 bfs
+        # method 1 bfs
 
         if not root: 
 
@@ -47,6 +45,25 @@ class Solution:
             res.append(rightside)
             
         return res
+    
+        # # method 2 dfs
+
+        # res = []
+
+        # def dfs(node, depth): 
+
+        #     if not node: 
+        #         return None
+            
+        #     if depth == len(res):      # If this is the first time reaching this depth, store it
+        #         res.append(node.val)
+            
+        #     dfs(node.right, depth + 1) # Go right first
+        #     dfs(node.left, depth + 1)
+        
+        # dfs(root, 0)
+
+        # return res 
 
 
 # @lc code=end
