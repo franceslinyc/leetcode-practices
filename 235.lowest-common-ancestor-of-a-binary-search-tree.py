@@ -15,22 +15,41 @@
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         
-        current = root
+        # # method 1 recrusive
+        # if not root or not p or not q: # if not root: 
 
-        while current: 
+        #     return None
+        
+        # if p.val < root.val and q.val < root.val: 
 
-            if p.val < current.val and q.val < current.val: 
+        #     return self.lowestCommonAncestor(root.left, p, q)
+        
+        # elif p.val > root.val and q.val > root.val: 
 
-                current = current.left
+        #     return self.lowestCommonAncestor(root.right, p, q)
 
-            elif p.val > current.val and q.val > current.val: 
+        # else: 
 
-                current = current.right
+        #     return root
+        
+    
+        # method 2 iterative
+        curr = root
+
+        while curr: 
+
+            if p.val < curr.val and q.val < curr.val: 
+
+                curr = curr.left
+
+            elif p.val > curr.val and q.val > curr.val: 
+
+                curr = curr.right
 
             else: # cover all cases when 
                   # p & q split across left & right 
                   # p or q equal to current 
-                return current 
+                return curr
 
 
 # @lc code=end
