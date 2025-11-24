@@ -29,7 +29,7 @@ class Solution:
 
                 res.append(num) 
 
-                if len(res) == k: # Stop immediately when k nums are collected
+                if len(res) == k: # Stop immediately when k num are collected
 
                     return res
 

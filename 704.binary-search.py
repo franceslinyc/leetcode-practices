@@ -28,5 +28,8 @@ class Solution:
         
         return -1
     
+        # method 3 upper bound 
+        # method 4 lower bound
+    
 # @lc code=end
 
