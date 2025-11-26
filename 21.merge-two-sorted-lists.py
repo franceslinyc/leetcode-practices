@@ -13,9 +13,9 @@
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
         
-        node = ListNode()
+        dummy = ListNode()  # [0] -> None
 
-        dummy = node 
+        node = dummy        # node (or curr)
 
         while list1 and list2: 
 
