@@ -37,6 +37,9 @@ class Solution:
         # method 2 dfs
 
 
+# left must be < node.val --> update right boundary 
+# right must be > node.val --> update left boundary 
+# 
 #                    5        -Inf < 5 < Inf
 #                   / \
 # -Inf < 3 < 5     3   7      5 < 7 < Inf
