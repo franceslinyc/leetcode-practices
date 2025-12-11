@@ -24,13 +24,13 @@ class Solution:
 
                     count += 1
             
-                while (r - l + 1) - count > k:  # Shrink window from left if too many replacements needed
+                while (r - l + 1) - count > k:  # Keep shrinking window from left if too many replacements needed
 
                     if s[l] == c: 
 
                         count -= 1
 
-                    l += 1
+                    l += 1           # Always move the left pointer 
 
                 res = max(res, r - l + 1)       # Otherwise the window is valid, i.e., (r - l + 1) - count <= k
 
@@ -39,9 +39,9 @@ class Solution:
 
 # AABABBA
 
-# this_set = {'A', 'B'}
-# outer loop loop through each character in this_set
-# inner loop expands the window one character at a time, from left to right
+# Initialize the set, i.e., this_set = {'A', 'B'}
+# Outer loop loops through each character in the set 
+# Inner loop expands the window one character at a time, from left to right
 
 
 # @lc code=end
