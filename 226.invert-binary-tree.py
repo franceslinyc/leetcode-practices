@@ -23,8 +23,8 @@ class Solution:
         root.left = root.right
         root.right = tmp
 
-        self.invertTree(root.left)
-        self.invertTree(root.right)
+        self.invertTree(root.left)     # Recursively invert the left subtree
+        self.invertTree(root.right)    # Right
         
         return root
 
