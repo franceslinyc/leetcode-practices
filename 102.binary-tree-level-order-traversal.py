@@ -22,18 +22,29 @@ class Solution:
             return []
         
         q = deque([root])
+
         res = []
 
         while q: 
+
             level = []
+
             for i in range(len(q)): 
-                node = q.popleft()
-                level.append(node.val)
+
+                node = q.popleft() 
+
+                level.append(node.val) 
+
                 if node.left: 
-                    q.append(node.left)
+
+                    q.append(node.left) 
+
                 if node.right: 
-                    q.append(node.right)
-            res.append(level)
+
+                    q.append(node.right) 
+
+            res.append(level) 
+            
         return res
 
         # method 3 BFS
