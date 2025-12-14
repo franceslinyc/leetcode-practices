@@ -16,19 +16,19 @@ class Solution:
 
         self.res = 0 
 
-        def height(curr): 
+        def dfs(curr): 
 
             if not curr: 
                 return 0 
 
-            left = height(curr.left)     # Recursively find height
-            right = height(curr.right)
+            left = dfs(curr.left)     # Recursively find height of left and right subtrees
+            right = dfs(curr.right)
 
             self.res = max(self.res, left + right) # Update res
 
             return max(left, right) + 1  # Return height to parent (current) node; + 1 for parent (current) node
         
-        height(root)
+        dfs(root)
 
         return self.res
         
