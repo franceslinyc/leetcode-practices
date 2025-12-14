@@ -26,13 +26,13 @@ class Solution:
 
         while q: 
 
-            rightside = None #level = []
+            rightside = None         #level = [] vs LC 102
 
             for i in range(len(q)): 
 
                 node = q.popleft()
 
-                rightside = node.val #level.append(node.val)
+                rightside = node.val #level.append(node.val) vs LC 102
 
                 if node.left: 
 
@@ -42,7 +42,7 @@ class Solution:
 
                     q.append(node.right)
 
-            res.append(rightside)
+            res.append(rightside)    # Safer to add instead of adding node.val directly 
             
         return res
     
