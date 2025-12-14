@@ -10,5 +10,7 @@ Currently doing
 
 Commit messages is in the form of
 
-- LC # Day #
+- LC # Day# either <blank> or Revist
+
+- LC >#Month either Attempt or Solve
 
