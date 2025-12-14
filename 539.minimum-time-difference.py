@@ -22,15 +22,15 @@ class Solution:
         # Handle adjacent pairs
         for i in range(len(timePoints) - 1): 
 
-            current = time_to_min(timePoints[i + 1])
+            current = time_to_min(timePoints[i + 1]) 
 
-            prev = time_to_min(timePoints[i])
+            prev = time_to_min(timePoints[i]) 
 
-            diff = current - prev
+            diff = current - prev 
 
-            res = min(diff, res)
+            res = min(diff, res) 
         
-        return res
+        return res 
 
 
 # Handle wrap-around pair across midnight:
