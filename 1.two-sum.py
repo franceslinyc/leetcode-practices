@@ -7,12 +7,19 @@ from typing import List
 # @lc code=start
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
+        
         this_map = {}
-        for i, num in enumerate(nums):
-            diff = target - num
+
+        for i, n in enumerate(nums): 
+            
+            diff = target - n 
+
             if diff in this_map: 
+
                 return [i, this_map[diff]]
-            this_map[num] = i
+            
+            this_map[n] = i
+
 
 # @lc code=end
 
