@@ -19,13 +19,13 @@ class Solution:
 
         while current: 
 
-            tmp = current.next
+            tmp = current.next     # Save current.next to tmp 
 
             current.next = prev
 
             prev = current 
 
-            current = tmp 
+            current = tmp          # Update current with tmp 
 
         return prev
 
