@@ -28,7 +28,7 @@ class Solution:
 
                 return False
             
-            x = (x % div) // 10  
+            x = (x % div) // 10 
 
             div = div // 100 # Remove 2 digits (1 for left; 1 for right)
             
