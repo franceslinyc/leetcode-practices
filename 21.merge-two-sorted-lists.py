@@ -15,7 +15,7 @@ class Solution:
         
         dummy = ListNode()  # [0] -> None
 
-        node = dummy        # node (or curr)
+        node = dummy        # node (or current)
 
         while list1 and list2: 
 
@@ -42,8 +42,19 @@ class Solution:
             node.next = list2
 
         return dummy.next
-        # return [1,1,2,3,4,4]
-        # otherwise return [0,1,1,2,3,4,4]
+        # dummy.next return [1,1,2,3,4,4]
+        #  otherwise return [0,1,1,2,3,4,4]
+
+
+# dummy
+#  |
+#  v
+# [0] -> None
+# 
+# dummy
+#  |
+#  v
+# [0] -> [1] -> [1] -> [2] -> [3] -> [4] -> [4] -> None
 
 
 # @lc code=end
