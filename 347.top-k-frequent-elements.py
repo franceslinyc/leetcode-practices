@@ -20,7 +20,6 @@ class Solution:
 
             freq[cnt].append(num)
 
-
         res = []
 
         for i in range(len(freq) - 1, 0, -1): 
