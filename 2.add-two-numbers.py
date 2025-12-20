@@ -19,7 +19,7 @@ class Solution:
 
         carry = 0
 
-        while l1 or l2 or carry: # Add or carry handle edge case
+        while l1 or l2 or carry: # Add or carry handle edge case when final carry creates a new node
 
             v1 = l1.val if l1 else 0
 
