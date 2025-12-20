@@ -29,6 +29,7 @@ class Solution:
 
 # Outer loop controls the character position
 # Inner loop checks for all strings at the same position 
+# Not exactly but close: 
 # i = 0
 # Check "f" = "f" = "f"
 # Add to res
