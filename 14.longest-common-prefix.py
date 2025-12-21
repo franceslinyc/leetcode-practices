@@ -16,7 +16,7 @@ class Solution:
 
             #     if i == len(strs[j]) or strs[0][i] != strs[j][i]: 
        
-            for s in strs:                    # "flower","flow","flight"
+            for s in strs:                    # "flower", "flow", "flight"
 
                 if i == len(s) or strs[0][i] != s[i]: 
 
