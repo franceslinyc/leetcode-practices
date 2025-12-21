@@ -16,13 +16,15 @@ class Solution:
 
         while r < len(prices): 
 
-            if prices[r] < prices[l]: 
+            if prices[l] < prices[r]: # This version ensures no negative profit is calculated 
+
+                profit = prices[r] - prices[l]
+
+                max_profit = max(max_profit, profit)
+
+            else: 
 
                 l = r
-            
-            profit = prices[r] - prices[l]
-
-            max_profit = max(max_profit, profit)
 
             r += 1
 
