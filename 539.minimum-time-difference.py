@@ -16,10 +16,10 @@ class Solution:
 
             return 60 * hour + min
         
-        # Take care of wrap-around (last-first) pair  
+        # Take care of wrap-around / last-first pair  
         res = 24 * 60 - time_to_min(timePoints[-1]) + time_to_min(timePoints[0])
 
-        # Handle adjacent pairs
+        # Handle adjacent pairs excluding wrap-around pair
         for i in range(len(timePoints) - 1): 
 
             current = time_to_min(timePoints[i + 1]) 
