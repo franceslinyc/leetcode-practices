@@ -43,11 +43,9 @@ class Solution:
         # method 2 two pointers
 
 
-# height = [0,1,0,2,1,0,1,3,2,1,2,1]
-# left_max[0] = 0
-# left_max[1] = max(0, 1) = 1
-# left_max[2] = max(1, 0) = 1
-# left_max[3] = max(1, 2) = 2
+# height =   [0,1,0,2,1,0,1,3,2,1,2,1]
+# left_max = [0,1,1,2,2,2,2,3,3,3,3,3]
+
 
 # @lc code=end
 
