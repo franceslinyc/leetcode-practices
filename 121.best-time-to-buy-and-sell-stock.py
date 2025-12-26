@@ -8,7 +8,7 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
 
-        # method 1 two pointers
+        # method 1 two pointers 
         
         max_profit = 0
 
