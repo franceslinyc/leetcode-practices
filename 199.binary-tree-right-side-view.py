@@ -45,6 +45,7 @@ class Solution:
             res.append(rightside)    # Safer to add instead of adding node.val directly 
             
         return res
+
     
         # # method 2 dfs
 
