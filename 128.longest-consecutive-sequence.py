@@ -14,11 +14,11 @@ class Solution:
 
         for num in this_set: # for num in nums: Loop through unique values only; Otherwise time limit exceed O(n^2) 
 
-            if (num - 1) not in this_set: # Check if it is the starting number
+            if (num - 1) not in this_set:         # Check if it is the starting number
 
                 length = 1
 
-                while (num + length) in this_set: 
+                while (num + length) in this_set: # Careful not num + 1
 
                     length += 1
 
