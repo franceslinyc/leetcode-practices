@@ -18,6 +18,8 @@ class Solution:
        
             for s in strs:                    # "flower", "flow", "flight"
 
+                # Return res if any string is too short or has a different character at index i
+                
                 if i == len(s) or strs[0][i] != s[i]: 
 
                     return res
@@ -27,7 +29,7 @@ class Solution:
         return res
 
 
-# Outer loop controls the character position
+# Outer loop loops through each character index 
 # Inner loop checks for all strings at the same position 
 # Not exactly but close: 
 # i = 0
