@@ -12,13 +12,15 @@ class Solution:
 
         res = 0
 
+        # Similar to LC 76
+
         l = 0
         
         for r in range(len(s)): 
 
             while s[r] in this_set:    # Keep shrinking window until all duplicates are removed
 
-                this_set.remove(s[l])
+                this_set.remove(s[l])  # Remove lefmost character
 
                 l += 1
             
