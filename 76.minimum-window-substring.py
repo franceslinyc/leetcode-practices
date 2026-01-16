@@ -26,6 +26,8 @@ class Solution:
 
         need = len(this_count) # Careful not len(t)!
 
+        # Similar to LC 3
+
         l = 0 
 
         # Expand the window via r
@@ -50,7 +52,7 @@ class Solution:
 
             #     have += 1
 
-            while have == need:  # Update and shrink when the window is valid
+            while have == need:  # Keep updating and shrinking when the window is valid
 
                 # Update
 
