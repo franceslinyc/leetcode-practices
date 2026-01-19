@@ -21,8 +21,10 @@ class Solution:
 
             tmp = current.next     # Save current.next to tmp 
 
-            current.next = prev
+            current.next = prev    # Reverse the link 
 
+            # Update pointers
+            
             prev = current 
 
             current = tmp          # Update current with tmp 
