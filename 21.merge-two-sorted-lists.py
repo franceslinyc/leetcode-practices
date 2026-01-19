@@ -13,9 +13,9 @@
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
         
-        dummy = ListNode()  # [0] -> None
+        dummy = ListNode()  # [0] -> None; Does not move, i.e., stay at the head
 
-        node = dummy        # node (or current)
+        node = dummy        # node (or current); Does move 
 
         while list1 and list2: 
 
@@ -25,7 +25,7 @@ class Solution:
 
                 list1 = list1.next
 
-            else: 
+            else:           # Include list1.val >= list2.val
 
                 node.next = list2
 
