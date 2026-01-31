@@ -41,7 +41,7 @@ class Solution:
 
             node.next = list2
 
-        return dummy.next
+        return dummy.next 
         # dummy.next return [1,1,2,3,4,4]
         #  otherwise return [0,1,1,2,3,4,4]
 
