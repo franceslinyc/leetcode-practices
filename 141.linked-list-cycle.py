@@ -26,7 +26,7 @@ class Solution:
 
                 return True
             
-        return False
+        return False # Loop finished but no cycle
         
 # @lc code=end
 
