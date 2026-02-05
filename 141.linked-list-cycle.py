@@ -18,6 +18,8 @@ class Solution:
 
         while fast and fast.next: # Take care of edge case and ensure that fast.next.next can be accessed, None or not
 
+            # Update before checking if slow == fast. Otherwise, both start at the same ndoe.
+            
             slow = slow.next
 
             fast = fast.next.next
@@ -26,7 +28,7 @@ class Solution:
 
                 return True
             
-        return False # Loop finished but no cycle
+        return False # Loop finished but no cycle.        
         
 # @lc code=end
 
