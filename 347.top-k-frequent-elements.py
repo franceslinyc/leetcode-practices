@@ -12,21 +12,19 @@ class Solution:
 
         for num in nums: 
 
-            count[num] = count.get(num, 0) + 1  # .get retrun value
+            count[num] = count.get(num, 0) + 1    # .get retrun value
 
-        freq = [[] for i in range(len(nums) + 1)] 
+        freq = [[] for i in range(len(nums) + 1)] # i.e., [[],[],[], ...]
 
-        # i.e., [[],[],[], ...]
-
-        for num, cnt in count.items():          # .items return key:value pair
+        for num, cnt in count.items():            # .items return key:value pair
 
             freq[cnt].append(num)
 
         res = []
 
-        for i in range(len(freq) - 1, 0, -1): 
+        for i in range(len(freq) - 1, 0, -1):     # Careful that start is inclusive; stop is not 
 
-            for num in freq[i]:  # Loop through each c in freq[i]
+            for num in freq[i]:   # Loop through each num in freq[i]
 
                 res.append(num) 
 
@@ -50,7 +48,7 @@ class Solution:
 # num      [3]   [1,2]
 # i.e.,  
 #   [[],[],[3],[],[1, 2],[],[],[],[], ...]
-   
-        
+
+
 # @lc code=end
 
