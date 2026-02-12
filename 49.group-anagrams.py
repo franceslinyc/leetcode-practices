@@ -9,8 +9,7 @@ class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
 
         res = defaultdict(list) # Instead of {}, handle edge case where a dictionary key is accessed before it exists. 
-                                # Initialize res[tuple(count)] = [] automatically
-
+                                # Default dict with a list; Initialize res[tuple(count)] = [] automatically
         for s in strs: 
 
             count = [0] * 26
