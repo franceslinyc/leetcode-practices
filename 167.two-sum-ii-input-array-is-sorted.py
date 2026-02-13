@@ -28,8 +28,12 @@ class Solution:
 
                 l += 1
 
+        return [-1, -1]
 
-        # method 2: binary search; time O(nlogn) space O(1)
+
+        # method 2: hash map
+
+        # method 3: binary search; time O(nlogn) space O(1)
 
 
 # @lc code=end
