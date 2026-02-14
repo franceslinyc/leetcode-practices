@@ -36,7 +36,10 @@ class Solution:
 
                     res.append([num, nums[l], nums[r]])
                  
-                    l += 1
+                    # Remember to increment! Also, becasue we already move it forward, 
+                    # want to compare nums[l] to nums[l - 1] next. 
+
+                    l += 1 
 
                     r -= 1
 
