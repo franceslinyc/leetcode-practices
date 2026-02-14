@@ -28,10 +28,10 @@ class Solution:
 
                 l += 1
 
-        return [-1, -1]
+        return [-1, -1] # Okay to not include this
 
 
-        # method 2: hash map
+        # method 2: hash map; time O(n) space O(n); Not recommended since the arrary is sorted.
 
         # method 3: binary search; time O(nlogn) space O(1)
 
