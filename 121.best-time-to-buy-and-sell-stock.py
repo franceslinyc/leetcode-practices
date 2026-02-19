@@ -10,13 +10,15 @@ class Solution:
 
         # method 1 two pointers 
         
+        # Look for single largest upward move
+
         max_profit = 0
 
         l, r = 0, 1
 
         while r < len(prices): 
 
-            if prices[l] < prices[r]: # This version ensures no negative profit is calculated 
+            if prices[r] > prices[l]: # This version ensures no negative profit is calculated 
 
                 profit = prices[r] - prices[l]
 
@@ -30,7 +32,7 @@ class Solution:
 
         return max_profit
 
-    
+
         # method 2 DP
 
 
