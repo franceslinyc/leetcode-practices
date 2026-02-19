@@ -26,9 +26,10 @@ class Solution:
 
                 l = r
 
-            r += 1
+            r += 1 # Always move r 
 
         return max_profit
+
     
         # method 2 DP
 
