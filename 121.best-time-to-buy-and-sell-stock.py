@@ -8,9 +8,9 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
 
-        # method 1 two pointers 
+        # method 1: two pointers 
         
-        # Look for single largest upward move
+        # Similar to LC 122; Look for single largest upward move
 
         max_profit = 0
 
@@ -33,7 +33,7 @@ class Solution:
         return max_profit
 
 
-        # method 2 DP
+        # method 2: DP
 
 
 # @lc code=end
