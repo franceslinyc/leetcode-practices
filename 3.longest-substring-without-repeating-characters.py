@@ -12,7 +12,7 @@ class Solution:
 
         res = 0
 
-        # Similar to LC 76
+        # Similar to LC 76; l to shrink, r to expand
 
         l = 0
         
