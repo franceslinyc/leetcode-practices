@@ -8,9 +8,9 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
 
-        # Greedy 
+        # method 1: greedy 
 
-        # Look for all upward moves; Similar to LC 121 but key is any big upward move can be broken into consecutive smaller upward moves
+        # Similar to LC 121; Look for all upward moves; The key is any big upward move can be broken into consecutive smaller upward moves
 
         profit = 0
 
@@ -22,9 +22,9 @@ class Solution:
 
         return profit 
     
-        # DP, Top-Down
+        # method 2: DP, Top-Down
 
-        # DP, Bottom-Up
+        # method 3: DP, Bottom-Up
 
 
 # @lc code=end
