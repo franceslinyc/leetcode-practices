@@ -24,8 +24,10 @@ class Solution:
 
                 l += 1
             
+            # Add
             this_set.add(s[r])
 
+            # Update result 
             res = max(res, r - l + 1)
 
         return res 
