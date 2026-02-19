@@ -36,5 +36,13 @@ class Solution:
         # method 2: DP
 
 
+# [7, 1, 5, 3, 6, 4]
+#  l  r
+#     l  r 
+#     l     r
+#     l        r        <- max profit
+#     l           r
+
+
 # @lc code=end
 
