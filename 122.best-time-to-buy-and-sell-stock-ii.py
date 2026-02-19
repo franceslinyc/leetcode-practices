@@ -10,6 +10,8 @@ class Solution:
 
         # Greedy 
 
+        # Look for all upward moves; Similar to LC 121 but key is any big upward move can be broken into consecutive smaller upward moves
+
         profit = 0
 
         for i in range(1, len(prices)):
