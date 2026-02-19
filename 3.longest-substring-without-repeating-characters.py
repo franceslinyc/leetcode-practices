@@ -18,7 +18,7 @@ class Solution:
         
         for r in range(len(s)): 
 
-            while s[r] in this_set:    # Keep shrinking window until all duplicates are removed
+            while s[r] in this_set:    # Careful! Keep shrinking window until all duplicates are removed
 
                 this_set.remove(s[l])  # Remove lefmost character
 
