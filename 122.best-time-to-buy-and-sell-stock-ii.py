@@ -27,5 +27,14 @@ class Solution:
         # method 3: DP, Bottom-Up
 
 
+# [7, 1, 5, 3, 6, 4]
+#     b
+#        s          -> profit = 4
+#           b 
+#              s    -> profit = 3
+# -----------------------------------
+#                   -> profit = 4 + 3 
+
+
 # @lc code=end
 
