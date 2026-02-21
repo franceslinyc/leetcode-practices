@@ -28,12 +28,13 @@ class Solution:
 
 
 # nums = [100,4,200,1,3,2]
+# nums = {100,4,200,1,3,2}
 # output = 4
 # Idea: 
-# 100 is a start   -> 101 not there -> length = 1
+# 99 not there  -> 100 is a start -> but 101 is not -> Calculate max length
 # 4 is not a start
-# 200 is a start   -> 201 not there -> length = 1 
-# 1 is a start     -> 2 is there -> length += 1  -> -> ->
+# 199 not there -> 200 is a start -> but 201 is not -> Calculate max length
+# 0 not there   -> 1 is a start   -> 2 is -> Increment length -> 3 is -> 4 is -> but 5 is not -> Calculate max length
 # 3 is not a start
 # 2 is not a start 
 
