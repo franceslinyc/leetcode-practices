@@ -12,25 +12,25 @@ class Solution:
 
         for i in range(len(strs[0])):         # i = 0, ..., 5 for "flower"
 
-            # for j in range(len(strs)):      # Just for understanding purpose
+            for j in range(len(strs)):    
 
-            #     if i == len(strs[j]) or strs[0][i] != strs[j][i]: 
-       
-            for s in strs:                    # "flower", "flow", "flight"
-
-                # Return res if any string is too short or has a different character at index i
-                
-                if i == len(s) or strs[0][i] != s[i]: 
+                if i == len(strs[j]) or strs[0][i] != strs[j][i]: # Return res if any string is too short or has a different character at index i
 
                     return res
+       
+            # for s in strs:                  # "flower", "flow", "flight"       
+                
+            #     if i == len(s) or strs[0][i] != s[i]: 
+
+            #         return res
             
             res += strs[0][i]
 
         return res
 
 
-# Outer loop loops through each character index 
-# Inner loop checks for all strings at the same position 
+# Outer loop loops through each character index for the first string
+# Inner loop checks for all strings at the same character index 
 # Not exactly but close: 
 # i = 0
 # Check "f" = "f" = "f"
