@@ -12,8 +12,8 @@ class Solution:
 
             return False
         
-        s_dict = {}
-        t_dict = {}
+        s_dict = {} # Or defaultdict(int)
+        t_dict = {} # Or defaultdict(int)
         
         for i in range(len(s)): 
             
