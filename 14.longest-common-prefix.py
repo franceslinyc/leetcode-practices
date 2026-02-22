@@ -8,11 +8,13 @@
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
 
+        # method 1: horizontal scanning; time O(n * m), n: length of shortest string, m: # of string, space O(1)
+        
         res = ""
 
-        for i in range(len(strs[0])):         # i = 0, ..., 5 for "flower"
+        for i in range(len(strs[0])):         # Check character index, i.e., i = 0, ..., 5 for "flower"
 
-            for j in range(len(strs)):    
+            for j in range(len(strs)):        # Check every string
 
                 if i == len(strs[j]) or strs[0][i] != strs[j][i]: # Return res if any string is too short or has a different character at index i
 
@@ -24,7 +26,7 @@ class Solution:
 
             #         return res
             
-            res += strs[0][i]
+            res += strs[0][i]     # Verify that all strings at that character index first (i.e., outside j loop), then add. 
 
         return res
 
