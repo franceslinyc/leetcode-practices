@@ -8,11 +8,14 @@
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
 
-        this_set = set(nums)
+        # method 1: hash set: time O(n), space O(n)
+        
+        this_set = set(nums) 
 
         max_length = 0
 
-        for num in this_set: # for num in nums: Loop through unique values only; Otherwise time limit exceed O(n^2) 
+        for num in this_set: # Loop through unique values only to prevent O(n^2) 
+                             # Set is iterable, but it is NOT indexable 
 
             if (num - 1) not in this_set:         # Check if it is the starting number
 
@@ -25,6 +28,9 @@ class Solution:
                 max_length = max(length, max_length)
             
         return max_length
+
+
+        # method 2: hash map 
 
 
 # nums = [100,4,200,1,3,2]
