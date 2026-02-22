@@ -31,6 +31,9 @@ class Solution:
         return res
 
 
+        # method 2: vertical scanning 
+
+
 # Outer loop loops through each character index for the first string
 # Inner loop checks for all strings at the same character index 
 # Not exactly but close: 
