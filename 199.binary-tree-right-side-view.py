@@ -26,13 +26,13 @@ class Solution:
 
         while q: 
 
-            rightside = None         #level = [] vs LC 102
+            rightside = None         # vs LC 102 level = [] 
 
             for i in range(len(q)): 
 
                 node = q.popleft()
 
-                rightside = node.val #level.append(node.val) vs LC 102
+                rightside = node.val # Keep overwriting; vs LC 102 level.append(node.val) store the entire level
 
                 if node.left: 
 
