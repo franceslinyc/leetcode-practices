@@ -15,7 +15,8 @@
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         
-        # # method 1 recrusive
+        # # method 1 recrusivetime O(h), space O(h), where h: height of tree
+
         # if not root or not p or not q: # if not root: 
 
         #     return None
@@ -33,23 +34,24 @@ class Solution:
         #     return root
         
     
-        # method 2 iterative
-        curr = root
+        # method 2 iterative: time O(h), space O(1), where h: height of tree; space O(1) because no need of backtrack
 
-        while curr: 
+        current = root
 
-            if p.val < curr.val and q.val < curr.val: 
+        while current: 
 
-                curr = curr.left
+            if p.val < current.val and q.val < current.val:   # Search the left subtree
 
-            elif p.val > curr.val and q.val > curr.val: 
+                current = current.left
 
-                curr = curr.right
+            elif p.val > current.val and q.val > current.val: # Search the right subtree
+
+                current = current.right
 
             else: # cover all cases when 
                   # p & q split across left & right 
                   # p or q equal to current 
-                return curr
+                return current
 
 
 # @lc code=end
