@@ -16,25 +16,30 @@ class Solution:
 
         # method 1 DFS
 
-        # method 2 BFS 
+        # method 2 BFS: time O(n), space O(n), where n: # of nodes; balanced BFS -> time O(log n)
 
         if not root: 
+
             return []
         
         q = deque([root])
 
         res = []
 
-        while q: 
+        while q: # Continue if there are still nodes to process
 
             level = []
 
             for i in range(len(q)): # Process each node in the current level
 
+                # Process each node
+                
                 node = q.popleft()  # Pops exactly that many nodes
 
                 level.append(node.val) 
 
+                # Add children to queue
+                
                 if node.left: 
 
                     q.append(node.left) 
@@ -46,8 +51,6 @@ class Solution:
             res.append(level) 
             
         return res
-
-        # method 3 BFS
 
 
 #     3
