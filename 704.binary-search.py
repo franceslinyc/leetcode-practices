@@ -22,13 +22,13 @@ class Solution:
 
                 return m
             
-            elif nums[m] < target: # Narrow search to [m + 1, r]
-
-                l = m + 1
-            
-            else:                  # Narrow search to [l, m - 1]
+            elif nums[m] > target: # Narrow search to [l, m - 1]
 
                 r = m - 1
+            
+            else:                  # Narrow search to [m + 1, r]
+
+                l = m + 1
         
         return -1
     
