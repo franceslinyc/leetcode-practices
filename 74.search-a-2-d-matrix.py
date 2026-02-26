@@ -10,10 +10,10 @@ class Solution:
 
         # method 1 binary search
 
-        rows = len(matrix)
-        cols = len(matrix[0])
+        ROWS = len(matrix)
+        COLS = len(matrix[0])
         top = 0 
-        bottom = rows - 1 
+        bottom = ROWS - 1 
 
         while top <= bottom: 
 
@@ -21,11 +21,9 @@ class Solution:
 
             if matrix[row][0] <= target <= matrix[row][-1]: 
 
-                l = 0 
-
-                r = cols -1 
-
-                while l <= r: 
+                l, r = 0, COLS -1 
+       
+                while l <= r:             # LC 704 
 
                     m = (l + r) // 2
 
@@ -33,25 +31,25 @@ class Solution:
 
                         return True
                     
-                    elif matrix[row][m] > target: 
+                    elif matrix[row][m] > target: # Narrow search to [l, m - 1]
 
                         r = m - 1
                     
-                    else: 
+                    else:                         # Narrow search to [m + 1, r]
 
                         l = m + 1
                 
-                return False # Not found in this row
+                return False              # Not found in this row; Return -1 for LC 704 
 
-            elif matrix[row][0] > target: 
+            elif matrix[row][0] > target:         # Narrow search to [top, row - 1]
 
                 bottom = row - 1
 
-            elif matrix[row][-1] < target:
+            elif matrix[row][-1] < target:        # Narrow search to [row + 1, bottom]
 
                 top = row + 1
 
-        return False       # Not found in any row
+        return False                     # Not found in any row
 
         # method 2 binary search (one pastt)
 
