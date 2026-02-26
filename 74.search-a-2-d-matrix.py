@@ -10,10 +10,9 @@ class Solution:
 
         # method 1 binary search
 
-        ROWS = len(matrix)
-        COLS = len(matrix[0])
-        top = 0 
-        bottom = ROWS - 1 
+        ROWS, COLS = len(matrix), len(matrix[0])
+        
+        top, bottom = 0, ROWS - 1 
 
         while top <= bottom: 
 
