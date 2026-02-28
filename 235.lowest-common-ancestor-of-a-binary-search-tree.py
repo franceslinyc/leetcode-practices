@@ -61,8 +61,9 @@ class Solution:
 # 2. Can a node be an ancestor of itself?
 # 
 # BST: 
-# 1. Left subtree -> Value < current's 
-# 2. Right subtree -> Value > current's
+# 1. Left subtree's value < current's 
+# 2. Right subtree's value > current's
+# 3. Both left and right substree are also BSTs.
 #
 # Idea:
 # Since it’s a BST, we can use ordering to decide direction.
