@@ -14,7 +14,7 @@
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
 
-        # method 1 DFS
+        # method 1 DFS: time O(n), space O(n), where n: # of nodes 
 
         # method 2 BFS: time O(n), space O(n), where n: # of nodes; balanced BFS -> time O(log n)
 
@@ -53,6 +53,20 @@ class Solution:
         return res
 
 
+# BFS: 
+# 1. Build tree level by level
+# 2. Use queue to find the path
+# 2. Work on the concept of FIFO
+#
+# Idea: 
+# This problem is best solved using Breadth-First Search with a queue.
+# We process nodes level by level.
+# At each iteration, we use the queue size to determine how many nodes belong to the current level.
+# We collect their values, add their children, and repeat until the queue is empty.
+# Time complexity is O(n), and space complexity is O(n).
+#
+#
+# Details: 
 #     3
 #    / \ 
 #   9  20
