@@ -56,10 +56,10 @@ class Solution:
 # BFS: 
 # 1. Build tree level by level
 # 2. Use queue to find the path
-# 2. Work on the concept of FIFO
+# 3. Work on the concept of FIFO
 #
 # Idea: 
-# This problem is best solved using Breadth-First Search with a queue.
+# This problem can be solved using Breadth-First Search with a queue.
 # We process nodes level by level.
 # At each iteration, we use the queue size to determine how many nodes belong to the current level.
 # We collect their values, add their children, and repeat until the queue is empty.
