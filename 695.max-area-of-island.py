@@ -35,39 +35,62 @@ class Solution:
         #             area = max(area, dfs(r, c))
         # return area
 
+
         # method 2 bfs
 
-        direction = [[1,0], [-1,0], [0,1], [0,-1]]
         rows, cols = len(grid), len(grid[0])
+
+        direction = [[1,0], [-1,0], [0,1], [0,-1]]
+
         area = 0
 
         def bfs(r, c): 
+
             q = deque()
+
             q.append((r, c))
+
             grid[r][c] = 0                  # int, not str, so not "0"
+
             res = 1
             
             while q: 
+
                 row, col = q.popleft()
+
                 for dr, dc in direction: 
+
                     nr = row + dr
+
                     nc = col + dc
+
                     if (
                         0 <= nr < rows and
+
                         0 <= nc < cols and
+
                         grid[nr][nc] == 1   # int, not str, so not "0"
                         ):
+
                         q.append((nr, nc))
+
                         grid[nr][nc] = 0
+
                         res += 1
             return res 
 
         for r in range(rows): 
+
             for c in range(cols): 
+
                 if grid[r][c] == 1:         # int, not str, so not "0"
+                    
                     area = max(area, bfs(r, c))
         return area
 
-        
+
+# Refer to notes for LC 200
+
+
 # @lc code=end
 
