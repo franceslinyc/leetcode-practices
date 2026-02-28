@@ -66,6 +66,21 @@ class Solution:
 
         # return res 
 
+# BFS: 
+# 1. Build tree level by level
+# 2. Use queue to find the path
+# 3. Work on the concept of FIFO
+#
+# Idea: 
+# This problem can be solved using Breadth-First Search with a queue.
+# We process nodes level by level.
+# At each iteration, we use the queue size to determine how many nodes belong to the current level.
+# We process all nodes in that level and add their children. 
+# The last node processed in that level is the rightmost node,
+# so we add its value to the result list.
+# Then we repeat until the queue is empty.
+# Time complexity is O(n), and space complexity is O(n).
+
 
 # @lc code=end
 
