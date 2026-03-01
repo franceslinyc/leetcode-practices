@@ -10,13 +10,14 @@ class Solution:
 
         res = 1
 
-        for i in range(len(points)):
+        for i in range(len(points)):            
 
             count = defaultdict(int)
 
             p1 = points[i]
             
-            for j in range(i + 1, len(points)):
+            for j in range(i + 1, len(points)):   # i = 1, j = 2, 3, 4, 5
+                                                  # i = 2, j = 3, 4, 5 
 
                 p2 = points[j]
 
@@ -30,8 +31,8 @@ class Solution:
 
                 count[slope] += 1
 
-                res = max(res, count[slope] + 1)
-                
+                res = max(res, count[slope] + 1) # + 1 to include point i
+
         return res
 
 
