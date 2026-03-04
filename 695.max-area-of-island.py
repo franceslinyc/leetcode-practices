@@ -52,7 +52,7 @@ class Solution:
 
             grid[r][c] = 0                  # int, not str, so not "0"
 
-            res = 1
+            res = 1   
             
             while q: 
 
@@ -77,6 +77,7 @@ class Solution:
                         grid[nr][nc] = 0
 
                         res += 1
+
             return res 
 
         for r in range(rows): 
@@ -86,6 +87,7 @@ class Solution:
                 if grid[r][c] == 1:         # int, not str, so not "0"
                     
                     area = max(area, bfs(r, c))
+                    
         return area
 
 
