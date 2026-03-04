@@ -99,7 +99,7 @@ class Solution:
 # Ques: 
 # 1. Grid is non-empty?
 # 2. Cells are only "0" or "1"? 
-# 3. We only connect up/down/left/right?
+# 3. We only search/connect left/right/up/down?
 # 
 # BFS: 
 # 
