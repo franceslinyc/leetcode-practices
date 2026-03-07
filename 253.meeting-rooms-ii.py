@@ -20,7 +20,7 @@ class Solution:
 
         s, e = 0, 0 # s: start pointer; e: end pointer 
 
-        while s < len(intervals): 
+        while s < len(start_time):    # Should be len(start_time), not len(intervals)
 
             if start_time[s] < end_time[e]: 
 
@@ -40,6 +40,11 @@ class Solution:
 
 
 # Details: 
+#
+# e.g., intervals = [[0,30],[5,10],[15,20]]
+# start time = [0, 5, 15]
+# end time = [10, 20, 30]
+#
 #
 # s=0 e=0
 # 0 < 10 -> start meeting (increment count)
