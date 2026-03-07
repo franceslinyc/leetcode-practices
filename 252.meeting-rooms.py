@@ -12,7 +12,7 @@ class Solution:
 
         # method 2: sorting; O(nlogn) time; O(n) or O(1) space
         
-        intervals.sort() # intervals.sort(key=lambda i: i[0]) works too!
+        intervals.sort() # intervals.sort(key=lambda i: i[0]) works too
 
         for i in range(1, len(intervals)): 
 
