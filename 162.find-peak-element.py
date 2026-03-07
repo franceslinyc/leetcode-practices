@@ -12,19 +12,29 @@ class Solution:
 
         while l <= r: 
 
-            m = l + ((r - l) // 2) # m = (l + r) // 2
+            m = (l + r) // 2 # Better use m = l + ((r - l) // 2) to prevent overflow
 
-            if m > 0 and nums[m] < nums[m - 1]: 
+            if m < len(nums) - 1 and nums[m] < nums[m + 1]: 
 
-                r = m - 1
+                l = m + 1    # Search right
 
-            elif m < len(nums) - 1 and nums[m] < nums[m + 1]: 
+            elif m > 0 and nums[m] < nums[m - 1]: 
 
-                l = m + 1
+                r = m - 1    # Search left
 
             else: 
 
                 return m
+
+
+# e.g., 
+# [1, 2, 3, 4]    -> Just need to make sure not going out of boundary
+# [4, 3, 2, 1]    -> Same with this one
+# [1, 2, 3, 4, 1]
+#        m  m+1   -> Search right
+# [1, 4, 3, 2, 1]
+#     m-1m        -> Search left
+
         
 # @lc code=end
 
