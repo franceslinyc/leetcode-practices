@@ -8,11 +8,13 @@
 class Solution:
     def shortestDistance(self, grid: List[List[int]]) -> int:
 
+        # method 1: time O(M^2 * N^2); space O(M * N)
+        
         ROWS, COLS = len(grid), len(grid[0])
 
         directions = [(-1,0),(1,0),(0,1),(0,-1)]
 
-        dist_matrix = [[0] * COLS for _ in range(ROWS)]
+        dist_matrix = [[0] * COLS for _ in range(ROWS)]  # Store total distance from this empty land to all buildings 
 
         empty_land = 0
 
@@ -20,13 +22,13 @@ class Solution:
 
         def bfs(r, c): 
 
-            local_dist = float('inf')  
+            local_dist = float('inf')  # Store distance from current building 
 
             q = deque()
 
             q.append((r, c, 0))
 
-            while q:
+            while q:  # Go through every reachable cell (empty land) from this building 
 
                 row, col, dist = q.popleft()
 
@@ -40,9 +42,9 @@ class Solution:
 
                         grid[nr][nc] == empty_land):
 
-                        grid[nr][nc] -= 1
+                        grid[nr][nc] -= 1               # Mark visited for this building; Differ from LC 200 & 695; Control repeated visit by different building
 
-                        dist_matrix[nr][nc] += dist + 1
+                        dist_matrix[nr][nc] += dist + 1 # Increment distance for this building 
 
                         q.append((nr, nc, dist + 1))
 
@@ -58,10 +60,10 @@ class Solution:
 
                 if grid[r][c] == building:
 
-                    local_dist = bfs(r, c) 
+                    local_dist = bfs(r, c)  # Run bfs for all buildings
 
-                    empty_land -= 1 
-                    
+                    empty_land -= 1         # Control repeated visit by different building
+
                     min_dist = local_dist
 
         return min_dist if min_dist != float('inf') else -1
@@ -118,7 +120,10 @@ class Solution:
         #             min_dist = local_dist
 
         # return min_dist if min_dist != float('inf') else -1
-     
-           
+
+
+# Related to LC 200 and 695
+
+
 # @lc code=end
 
