@@ -8,13 +8,15 @@
 class Solution:
     def shortestDistance(self, grid: List[List[int]]) -> int:
 
-        # method 1: time O(M^2 * N^2); space O(M * N)
+        # method 1 bfs: time O(M^2 * N^2); space O(M * N)
         
         ROWS, COLS = len(grid), len(grid[0])
 
         directions = [(-1,0),(1,0),(0,1),(0,-1)]
 
         dist_matrix = [[0] * COLS for _ in range(ROWS)]  # Store total distance from this empty land to all buildings 
+
+        min_dist = float('inf')
 
         empty_land = 0
 
@@ -48,11 +50,12 @@ class Solution:
 
                         q.append((nr, nc, dist + 1))
 
-                        local_dist = min(local_dist, dist_matrix[nr][nc])
+                        local_dist = min(local_dist, dist_matrix[nr][nc]) # Tricky! 
 
             return local_dist
+            
 
-        min_dist = float('inf')
+        # Run bfs for all buildings
 
         for r in range(ROWS):
 
@@ -60,7 +63,7 @@ class Solution:
 
                 if grid[r][c] == building:
 
-                    local_dist = bfs(r, c)  # Run bfs for all buildings
+                    local_dist = bfs(r, c)  
 
                     empty_land -= 1         # Control repeated visit by different building
 
