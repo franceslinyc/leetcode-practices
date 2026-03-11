@@ -63,11 +63,15 @@ class Solution:
 
                 if grid[r][c] == building:
 
-                    local_dist = bfs(r, c)  
+                    min_dist = bfs(r, c)
 
-                    empty_land -= 1         # Control repeated visit by different building
+                    empty_land -= 1 
 
-                    min_dist = local_dist
+                    # local_dist = bfs(r, c)  
+
+                    # empty_land -= 1         # Control repeated visit by different building
+
+                    # min_dist = local_dist
 
         return min_dist if min_dist != float('inf') else -1
 
