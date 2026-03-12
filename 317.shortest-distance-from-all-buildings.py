@@ -8,11 +8,11 @@
 class Solution:
     def shortestDistance(self, grid: List[List[int]]) -> int:
 
-        # method 1 bfs: time O(M^2 * N^2); space O(M * N)
+        # method 1 bfs: time O(B * M * N), where B = # of building, O((M*N) * M * N = O(M^2 * N^2) worst case; space O(M * N)
         
         ROWS, COLS = len(grid), len(grid[0])
 
-        directions = [(-1,0),(1,0),(0,1),(0,-1)]
+        direction = [[1,0], [-1,0], [0,1], [0,-1]]       # Can use tuple too, i.e., [(1,0),(-1,0),(0,1),(0,-1)]
 
         dist_matrix = [[0] * COLS for _ in range(ROWS)]  # Store total distance from this empty land to all buildings 
 
@@ -24,17 +24,17 @@ class Solution:
 
         def bfs(r, c): 
 
-            local_dist = float('inf')  # Store distance from current building 
+            local_dist = float('inf')  # Track minimum cumulative distance among valid cells so far
 
             q = deque()
 
             q.append((r, c, 0))
 
-            while q:  # Go through every reachable cell (empty land) from this building 
+            while q:  # Go through empty lands reachable from this building
 
                 row, col, dist = q.popleft()
 
-                for dr, dc in directions:
+                for dr, dc in direction:
 
                     nr, nc = row + dr, col + dc
 
@@ -44,17 +44,16 @@ class Solution:
 
                         grid[nr][nc] == empty_land):
 
-                        grid[nr][nc] -= 1               # Mark visited for this building; Differ from LC 200 & 695; Control repeated visit by different building
+                        grid[nr][nc] -= 1               # Ensure each BFS only visits cells reachable by all previous buildings; Differ from LC 200 & 695; 
 
-                        dist_matrix[nr][nc] += dist + 1 # Increment distance for this building 
+                        dist_matrix[nr][nc] += dist + 1 # Increment distance for this building
 
-                        q.append((nr, nc, dist + 1))
+                        q.append((nr, nc, dist + 1)) 
 
                         local_dist = min(local_dist, dist_matrix[nr][nc]) # Tricky! 
 
             return local_dist
             
-
         # Run bfs for all buildings
 
         for r in range(ROWS):
@@ -63,15 +62,11 @@ class Solution:
 
                 if grid[r][c] == building:
 
-                    min_dist = bfs(r, c)
+                    local_dist = bfs(r, c)  
 
-                    empty_land -= 1 
+                    min_dist = local_dist   # Since local_dist already represents the minimum cumulative distance
 
-                    # local_dist = bfs(r, c)  
-
-                    # empty_land -= 1         # Control repeated visit by different building
-
-                    # min_dist = local_dist
+                    empty_land -= 1         # Control repeated visit by different building
 
         return min_dist if min_dist != float('inf') else -1
 
