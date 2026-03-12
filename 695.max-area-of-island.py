@@ -46,23 +46,21 @@ class Solution:
 
         def bfs(r, c): 
 
+            local_area = 1   
+
             q = deque()
 
             q.append((r, c))
 
             grid[r][c] = 0                  # int, not str, so not "0"
 
-            res = 1   
-            
             while q: 
 
                 row, col = q.popleft()
 
                 for dr, dc in direction: 
 
-                    nr = row + dr
-
-                    nc = col + dc
+                    nr, nc = row + dr, col + dc
 
                     if (
                         0 <= nr < rows and
@@ -76,9 +74,9 @@ class Solution:
 
                         grid[nr][nc] = 0
 
-                        res += 1
+                        local_area += 1
 
-            return res 
+            return local_area 
 
         for r in range(rows): 
 
@@ -86,7 +84,9 @@ class Solution:
 
                 if grid[r][c] == 1:         # int, not str, so not "0"
                     
-                    area = max(area, bfs(r, c))
+                    local_area = bfs(r, c)
+                    
+                    area = max(area, local_area)
                     
         return area
 
