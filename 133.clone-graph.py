@@ -58,9 +58,9 @@ class Solution:
 
             current = q.popleft()
 
-            for neighbor in current.neighbors: 
+            for neighbor in current.neighbors: # Careful! current.neighbors is list, i.e., [neighbor1, neighbor2]
 
-                # If the neighbor has not be cloned yet, make the clone and add neighbor to the queue to process its neighbors
+                # If the neighbor has not be cloned yet, make the cloned neighbor and add neighbor to the queue to process its neighbors
                 
                 if neighbor not in this_map: 
 
@@ -68,7 +68,7 @@ class Solution:
 
                     q.append(neighbor)
 
-                # Otherwise, link the clone of the current node to the clone of the neighbor
+                # Otherwise, add the cloned neighbor to the cloned current's neighbor list
 
                 this_map[current].neighbors.append(this_map[neighbor]) # Not current.neighbors since current is "original" node, but we want "copy" or "clone" of current node
 
