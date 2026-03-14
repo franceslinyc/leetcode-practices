@@ -13,7 +13,7 @@ class Solution:
         
         # method 1: BFS: time O((M*N)^2); space O(M*N)
 
-        # # method 2: Multi Source BFS: time O(M*N); space O(M*N)
+        # # method 2: Multi Source BFS, Distance Propagation: time O(M*N); space O(M*N)
 
         # ROWS, COLS = len(rooms), len(rooms[0])
 
@@ -49,13 +49,13 @@ class Solution:
 
         #             rooms[nr][nc] == INF):
 
-        #             rooms[nr][nc] = rooms[row][col] + 1  # Parent distance propagation
+        #             rooms[nr][nc] = rooms[row][col] + 1  # Distance propagation
         #                                                  # Initially rooms[row][col] = 0 because it is a gate! 
 
         #             q.append((nr, nc))
 
 
-        # method 2: Multi Source BFS; Level BFS: time O(M*N); space O(M*N) 
+        # method 2: Multi Source BFS, Level BFS: time O(M*N); space O(M*N) 
 
         ROWS, COLS = len(rooms), len(rooms[0])
 
@@ -118,17 +118,14 @@ class Solution:
         # method 3: DFS or Backtracking but is slow because this approach reexplores the same areas again and again
 
 
-# Multi-source BFS:
+# Multi-source BFS, Distance Propagation:
 #
-# Start BFS from all source nodes at the same time (i.e., all gates with value 0). 
-# Because BFS expands outward in increasing distance order, the first time a cell is reached 
-# it is guaranteed to be from the closest source.
+# Start BFS from all source nodes (i.e., all gates with value 0) at the same time. 
 #
-# Level BFS:
+# Multi-source BFS, Level BFS:
 #
 # Process the queue layer by layer, where each layer represents nodes at the same distance from 
-# the start. After finishing one layer (for i in range(len(q))), increment the distance counter 
-# to represent moving one step further in the graph/grid.
+# the source node. 
 
 
 # @lc code=end
