@@ -9,7 +9,7 @@ class NumArray:
 
     def __init__(self, nums: List[int]): # Constructor; Set up the object
 
-        self.prefix = []                 # Initialize attribute or propertie 
+        self.prefix = []                 # Initialize attribute or propertie
 
         current = 0 
 
@@ -21,7 +21,7 @@ class NumArray:
         
     def sumRange(self, left: int, right: int) -> int: # Method 
 
-        right_sum = self.prefix[right]
+        right_sum = self.prefix[right]   # 
 
         left_sum = self.prefix[left - 1] if left > 0 else 0 
 
@@ -29,7 +29,7 @@ class NumArray:
         
 
 # Your NumArray object will be instantiated and called as such:
-# obj = NumArray(nums)                  # Call __init__ to create an object / instance
-# param_1 = obj.sumRange(left,right)    # Call a method on object 
+# obj = NumArray(nums)                  # Call __init__ to create object/instance
+# param_1 = obj.sumRange(left,right)    # Call method on object 
 # @lc code=end
 
