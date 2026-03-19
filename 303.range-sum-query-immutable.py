@@ -21,17 +21,15 @@ class NumArray:
         
     def sumRange(self, left: int, right: int) -> int: # Method 
 
-        # (0 -> right) - (0 -> left-1) = (left -> right)
-        
         right_sum = self.prefix[right]
 
         left_sum = self.prefix[left - 1] if left > 0 else 0 
 
         return right_sum - left_sum
         
-        
+
 # Your NumArray object will be instantiated and called as such:
-# obj = NumArray(nums)
-# param_1 = obj.sumRange(left,right)
+# obj = NumArray(nums)                  # Call __init__ to create an object / instance
+# param_1 = obj.sumRange(left,right)    # Call a method on object 
 # @lc code=end
 
