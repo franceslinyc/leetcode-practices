@@ -34,18 +34,12 @@ class Solution:
         # method 2: vertical scanning 
 
 
-# Outer loop loops through each character index for the first string
-# Inner loop checks for all strings at the same character index 
-# Not exactly but close: 
-# i = 0
-# Check "f" = "f" = "f"
-# Add to res
-# i = 1
-# Check "l" = "l" = "l"
-# Add to res
-# i = 2
-# Check "o" = "o" != "i"
-# Do not add
+# We iterate through each character index of the first string and, for each index, 
+# checks all other strings to ensure the characters match. If a mismatch is found 
+# or any string ends, it returns the prefix built so far. Otherwise, it appends 
+# the matching character to the result. The time complexity is O(N*M), where N is 
+# the length of the shortest string and M is the number of strings, and the space 
+# complexity is O(N) for storing the result.
 
 
 # @lc code=end
