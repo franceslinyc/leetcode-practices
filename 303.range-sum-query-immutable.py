@@ -9,7 +9,7 @@ class NumArray:
 
     def __init__(self, nums: List[int]): # Constructor; Set up the object
 
-        self.prefix = []                 # Initialize attribute or propertie
+        self.prefix = []                 # Initialize attribute or property
 
         current = 0 
 
@@ -21,9 +21,9 @@ class NumArray:
         
     def sumRange(self, left: int, right: int) -> int: # Method 
 
-        right_sum = self.prefix[right]   # 
+        right_sum = self.prefix[right]   # Sum up to right
 
-        left_sum = self.prefix[left - 1] if left > 0 else 0 
+        left_sum = self.prefix[left - 1] if left > 0 else 0 # Sum up to left (or more like left - 1)
 
         return right_sum - left_sum
         
