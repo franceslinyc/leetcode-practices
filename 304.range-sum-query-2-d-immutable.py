@@ -34,7 +34,7 @@ class NumMatrix:
 
         ROWS, COLS = len(matrix), len(matrix[0])
 
-        self.sum_matrix = [[0] * (COLS + 1) for r in range(ROWS + 1)]   # + 1 to include 0
+        self.sum_matrix = [[0] * (COLS + 1) for r in range(ROWS + 1)]    # + 1 to include 0
 
         for r in range(ROWS): 
 
@@ -42,42 +42,42 @@ class NumMatrix:
 
             for c in range(COLS): 
 
-                prefix += matrix[r][c]               # Read value; Similar to current += num in LC 303
+                prefix += matrix[r][c]               # Row sum or prefix sum for each row; Read value; Similar to current += num in LC 303
 
-                above = self.sum_matrix[r][c + 1]    # Reuse computed sum
+                above = self.sum_matrix[r][c + 1]    # Above = [prev row][current col]; Reuse computed sum
 
                 self.sum_matrix[r + 1][c + 1] = prefix + above
 
 
     def sumRegion(self, row1: int, col1: int, row2: int, col2: int) -> int:
         
-        row1, col1, row2, col2 = row1 + 1, col1 + 1, row2 + 1, col2 + 1
+        row1, col1, row2, col2 = row1 + 1, col1 + 1, row2 + 1, col2 + 1 # Adjust for index shifting
 
-        bottomRight = self.sum_matrix[row2][col2]
+        bottom_right = self.sum_matrix[row2][col2]
 
         above = self.sum_matrix[row1 - 1][col2]
 
         left = self.sum_matrix[row2][col1 - 1]
 
-        topLeft = self.sum_matrix[row1 - 1][col1 - 1]
+        top_left = self.sum_matrix[row1 - 1][col1 - 1]
 
-        return bottomRight - above - left + topLeft
+        return bottom_right - above - left + top_left
 
 
 #    3  0
 #    5  6
 
 # 0  0  0
+# 0  ?  ?
+# 0  ?  ?
+
 # 0  0  0
+# 0  3  3, where 3 is 3 (prefix) + 0 (above) and 3 is 3 (prefix) + 0 (above)
 # 0  0  0
 
 # 0  0  0
 # 0  3  3
-# 0  0  0
-
-# 0  0  0
-# 0  3  3
-# 0  8  14
+# 0  8  14, where 8 is 5 (prefix) + 3 (above) and 14 is 11 (prefix) + 3 (above)
 
 
 # Your NumMatrix object will be instantiated and called as such:
