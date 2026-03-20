@@ -26,7 +26,11 @@ class NumArray:
         left_sum = self.prefix[left - 1] if left > 0 else 0 # Sum up to left (or more like left - 1)
 
         return right_sum - left_sum
-        
+
+
+# e.g., [-2, 0, 3, -5, 2, -1]
+#     ->[-2,-2, 1, -4,-2, -3]
+
 
 # Your NumArray object will be instantiated and called as such:
 # obj = NumArray(nums)                  # Call __init__ to create object/instance
