@@ -8,25 +8,55 @@
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
 
+        # # method 1: Brute Force; O(N^2) time; O(1) space
+
+        # res = 0
+
+        # for i in range(len(nums)):
+
+        #     sum = 0
+
+        #     for j in range(i, len(nums)):
+
+        #         sum += nums[j]
+
+        #         if sum == k:
+
+        #             res += 1
+
+        # return res
+        
+
+        # method 2: Hash Map; O(N) time; O(N) space
+
         res = 0 
 
-        cum_sum = 0 
+        current_prefix_sum = 0 
 
-        prefix_sum = {0:1}
+        prefix_sum_map = {0:1} 
 
         for num in nums: 
 
-            cum_sum += num
+            current_prefix_sum += num
 
-            diff = cum_sum - k 
+            diff = current_prefix_sum - k        # prefix[j] - prefix[i] = k <=> prefix[i] = prefix[j] - k
 
-            if diff in prefix_sum: 
+            if diff in prefix_sum_map: 
 
-                res += prefix_sum[diff]
+                res += prefix_sum_map[diff]
 
-            prefix_sum[cum_sum] = prefix_sum.get(cum_sum, 0) + 1
+            prefix_sum_map[current_prefix_sum] = prefix_sum_map.get(current_prefix_sum, 0) + 1
 
         return res
+
+
+# We use a running prefix sum and a hashmap to store the frequency of each prefix sum. 
+# For each element, we check how many times previous prefix sums (current prefix sum - k) 
+# has occured, which tells us how many subarrays ending at the current index sum to k. This
+# gives us O(N) time since we traverse the array once, and O(N) space since we store prefix
+# sums in the hashmap. 
+
+
 
 
 # e.g., [1, -1, 1, 1, 1, 1]   k = 2
@@ -44,12 +74,6 @@ class Solution:
 # Index 3             , cum_sum = 2, diff = 0 in prefix_sum, update res += 2
 # Index 4             , cum_sum = 3, diff = 1 in prefix_sum, update res += 2
 # Index 5             , cum_sum = 4, diff = 2 in prefix_sum, update res += 1
-
-
-# We use a running cumulative sum and a hashmap to track how many times each prefix sum 
-# has occurred. For each element, we check how many previous sums equal cum_sum - k, 
-# which tells us how many subarrays ending here sum to k. Time is O(N) since we traverse 
-# the array once, and space complexity is O(N) since we store prefix sums in the hashmap.
 
 
 # @lc code=end
