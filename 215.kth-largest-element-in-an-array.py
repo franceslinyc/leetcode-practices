@@ -16,13 +16,13 @@ class Solution:
 
         for num in nums:   # O(n) time
 
-            heapq.heappush(min_heap, num)  # O(log k) time (log because heap is a binary heap; heap size is at most k+1)
+            heapq.heappush(min_heap, num)  # O(log k) time (log because heap is a binary heap; O(k) space (heap size is at most k+1)
 
             if len(min_heap) > k: 
 
-                heapq.heappop(min_heap)    # O(log k) time
+                heapq.heappop(min_heap)    # O(log k) time; O(k) space
 
-        return min_heap[0] # O(k) space        
+        return min_heap[0]   
 
 
         # method 2: quick select: O(N), O(N^2) time worst case; O(N) space
