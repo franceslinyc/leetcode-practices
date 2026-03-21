@@ -8,7 +8,7 @@
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
 
-        # # method 1: Prefix & Suffix; O(n) time; O(n) space
+        # # method 1: Prefix & Suffix; O(n) time; O(n) space (O(n) + O(n) + O(n) for prefix, postfix, and res array)
 
         # n = len(nums)
 
@@ -54,6 +54,18 @@ class Solution:
             postfix *= nums[i]    # Update postfix to include current element for next iteration 
 
         return res
+
+
+# We use a prefix and postfix pass: First, fill the result with prefix products (left products), 
+# then multiply by postfix products in reverse (right products). This runs in O(n) time and 
+# O(n) with output (res) array and O(1) extra space. 
+
+# e.g., 
+# nums =   [1, 2, 3, 4]
+# prefix = [1, 1, 2, 6]
+# postfix= [24,12,4, 1]
+# res    = [24,12,8, 6]
+
 
 # @lc code=end
 
