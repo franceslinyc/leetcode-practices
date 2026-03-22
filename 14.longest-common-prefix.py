@@ -42,5 +42,17 @@ class Solution:
 # complexity is O(N) for storing the result.
 
 
+# e.g., strs = ["flower", "flow", "flight"]
+
+#       i  0   1   2   3   4 ...
+# j 
+# 0        f   l   o   w   e   r
+# 1        f   l   o   w
+# 2        f   l   i   g   h   t
+
+# for i in range(len(strs[0])):        # Go character by character (Fix col)
+#     for j in range(len(strs)):       # Check all strings (Check for all rows)
+
+
 # @lc code=end
 
