@@ -39,5 +39,15 @@ class Solution:
 # is processed at most once. The algorithm runs in O(n) time with O(n) space due to the set.
 
 
+# e.g., [100,4,200,1,3,2]
+
+# 100 -> opening
+# 4
+# 200 -> opening
+# 1   -> opening -> 2 -> 3 -> 4
+# 3
+# 2
+
+
 # @lc code=end
 
