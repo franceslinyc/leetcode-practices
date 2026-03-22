@@ -10,7 +10,7 @@ class Solution:
 
         # method 1: hash set: time O(n), space O(n)
         
-        this_set = set(nums) 
+        this_set = set(nums) # Don't forget to convert! 
 
         max_length = 0
 
@@ -21,7 +21,7 @@ class Solution:
 
                 length = 1
 
-                while (num + length) in this_set: # Careful not num + 1
+                while (num + length) in this_set: # Careful! not num + 1
 
                     length += 1
 
@@ -30,7 +30,7 @@ class Solution:
         return max_length
 
 
-        # method 2: hash map 
+        # method 2: hash map: time O(n), space O(n) 
 
 
 # We use a hash set to allow O(1) lookups and only begins expanding a sequence when the 
