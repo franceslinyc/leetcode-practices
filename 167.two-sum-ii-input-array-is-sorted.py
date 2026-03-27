@@ -8,7 +8,7 @@
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
         
-        # mehtod 1: two pointers; time O(n), space O(1)
+        # mehtod 1: two pointers; time O(n); space O(1)
 
         l, r = 0, len(numbers) - 1
 
@@ -33,7 +33,7 @@ class Solution:
 
         # method 2: hash map; time O(n) space O(n); Not recommended since the arrary is sorted.
 
-        # method 3: binary search; time O(nlogn) space O(1)
+        # method 3: binary search; time O(n log n); space O(1)
 
 
 # @lc code=end
