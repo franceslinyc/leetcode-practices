@@ -8,9 +8,9 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
 
-        # method 1: two pointers; time O(n), space O(1)
+        # method 1: two pointers; time O(n^2), space O(1)
 
-        nums.sort()
+        nums.sort() # O(n log n) time but O(n log n) < O(n^2)
 
         res = []
 
@@ -19,37 +19,36 @@ class Solution:
             if num > 0: # Because the array is sorted, if the first number is 0, the rest cannot sum to 0.
 
                 break
-
-            # Skip duplicate for the first number, i.e., exit the loop. 
             
-            if i > 0 and num == nums[i - 1]:  
+            if i > 0 and num == nums[i - 1]:   # Skip duplicate values for the first number (nums[i]) to avoid duplicate triplets
 
                 continue 
 
-            l, r = i + 1, len(nums) - 1        # Similar to LC 167 Two Sum II
+            # Two pointer search for the remaining two numbers; Similar to LC 167 Two Sum II
+            
+            l, r = i + 1, len(nums) - 1 
 
             while l < r: 
 
-                sum_total = num + nums[l] + nums[r]
-
-                if sum_total == 0: 
+                if num + nums[l] + nums[r] == 0: 
 
                     res.append([num, nums[l], nums[r]])
                  
-                    # Remember to increment! Also, becasue we already move it forward, 
-                    # want to compare nums[l] to nums[l - 1] next. 
+                    # Move both pointers to look for new pairs
 
                     l += 1 
 
                     r -= 1
 
-                    # Skip duplicates for left pointer
+                    # Skip duplicates for the left pointer
                     
-                    while nums[l] == nums[l - 1] and l < r: # Not if nums[l] == nums[l - 1] and l < r:
+                    while l < r and nums[l] == nums[l - 1]: # Careful! nums[l-1] is the value just used in the triplet; nums[l] is the new updated value
 
                         l += 1
 
-                elif sum_total > 0: 
+                    # (Optional) Skip duplicates for the right pointer
+
+                elif num + nums[l] + nums[r] > 0: 
 
                     r -= 1
 
@@ -60,7 +59,7 @@ class Solution:
         return res # Careful! Need to be outside the for loop.
 
 
-        # method 2: hash map; time O(n), space O(n)
+        # method 2: hash map; time O(n^2), space O(n)
 
 
 # @lc code=end
