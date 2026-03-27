@@ -8,17 +8,21 @@ from typing import List
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         
+        # method 2: sorting: time O(n log n); space O(n)
+        
+        # method 3: hash map: time O(n); space O(n)
+        
         this_dict = {}
 
-        for i, n in enumerate(nums): 
+        for i, num in enumerate(nums): 
             
-            diff = target - n 
+            diff = target - num 
 
             if diff in this_dict: 
 
                 return [i, this_dict[diff]]
             
-            this_dict[n] = i      # Careful here! 
+            this_dict[num] = i      # Careful here! 
 
         # this_dict = {}
 
@@ -31,6 +35,9 @@ class Solution:
         #         return [i, this_dict[diff]]
             
         #     this_dict[nums[i]] = i
+
+
+# Related to LC 167, 15
 
 
 # @lc code=end
