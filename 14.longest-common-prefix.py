@@ -9,7 +9,9 @@ class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
 
         # method 1: horizontal scanning; time O(n * m), n: length of shortest string, m: # of string, space O(1)
-        
+
+        # method 2: vertical scanning ; time O(n * m), n: length of shortest string, m: # of string, space O(1)
+
         res = ""
 
         for i in range(len(strs[0])):         # Check character index, i.e., i = 0, ..., 5 for "flower"
@@ -28,10 +30,7 @@ class Solution:
             
             res += strs[0][i]     # Verify that all strings at that character index first (i.e., outside j loop), then add. 
 
-        return res
-
-
-        # method 2: vertical scanning 
+        return res 
 
 
 # We iterate through each character index of the first string and, for each index, 
@@ -39,7 +38,7 @@ class Solution:
 # or any string ends, it returns the prefix built so far. Otherwise, it appends 
 # the matching character to the result. The time complexity is O(N*M), where N is 
 # the length of the shortest string and M is the number of strings, and the space 
-# complexity is O(N) for storing the result.
+# complexity is O(1). (res is O(N) space but output is excluded from space complexity). 
 
 
 # e.g., strs = ["flower", "flow", "flight"]
