@@ -20,9 +20,9 @@ class Solution:
 
             if diff in this_dict: 
 
-                return [i, this_dict[diff]]
+                return [this_dict[diff], i]     # Careful! Better to have previous index first, current index second
             
-            this_dict[num] = i      # Careful here! 
+            this_dict[num] = i                  # Careful here! 
 
         # this_dict = {}
 
