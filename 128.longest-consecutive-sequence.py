@@ -36,7 +36,9 @@ class Solution:
 # We use a hash set to allow O(1) lookups and only begins expanding a sequence when the 
 # number is a start (i.e., (num - 1) is not in the set). From each starting point, 
 # it counts forward to measure the length of the consecutive sequence, ensuring each number 
-# is processed at most once. The algorithm runs in O(n) time with O(n) space due to the set.
+# is processed at most once. The algorithm runs in O(n) time with one pass to build the hash
+# set and one pass over unique elements, and O(n) space because the hash set stores up to 
+# n elements.
 
 
 # e.g., [100,4,200,1,3,2]
