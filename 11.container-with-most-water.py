@@ -20,7 +20,7 @@ class Solution:
 
             base = r - l     # ! Careful! Not l - r
 
-            area = min(height[l], height[r]) * base
+            area = base * min(height[l], height[r])
 
             max_area = max(max_area, area)
 
