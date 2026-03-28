@@ -27,7 +27,7 @@ class Solution:
             # Move the pointer at the shorter height, because shrinking the width only helps if 
             # we can potentially find a taller height to increase the area.
                 
-            if height[l] < height[r]: 
+            if height[l] <= height[r]: 
 
                 l += 1   # Move past the shorter height (height[l]) and try to find a taller one
 
