@@ -59,10 +59,11 @@ class Solution:
 
                 res += 1 * (left_max - height[l]) 
 
-                # water = base * height = 1 * (water level - current height)
-                # general formula: water = 1 * (min(left_max, right_max) - height[i]) 
-                # Since left_max < right_max, min(left_max, right_max) = left_max, 
-                # water here = left_max - height[l]. 
+                # general formula: 
+                # water = base * height = base * (water level - current height)
+                # water = 1 * (min(left_max, right_max) - height[i]) 
+                # But since left_max < right_max, min(left_max, right_max) = left_max, 
+                # water here = 1 * (left_max - height[l]). 
 
             else: 
 
