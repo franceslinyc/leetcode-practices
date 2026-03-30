@@ -16,6 +16,8 @@ class Solution:
 
         l = 0
         
+        # Check condition BEFORE expanding window 
+        
         for r in range(len(s)): 
 
             while s[r] in this_set:    # Careful! Keep shrinking window until all duplicates are removed
