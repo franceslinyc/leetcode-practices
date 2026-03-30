@@ -8,7 +8,7 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
 
-        # method 1: two pointers 
+        # method 1: two pointers: O(n) time; O(1) space
         
         # Similar to LC 122; Look for single largest upward move
 
