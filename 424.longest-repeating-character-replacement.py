@@ -8,40 +8,74 @@
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
 
-        this_set = set(s)
+        # # method 1 sliding window: O(m * n) time, m is total # of unique character, n is length of string; O(m) space
+        
+        # this_set = set(s)
 
-        res = 0
+        # res = 0
 
-        for c in this_set: 
+        # for c in this_set: 
 
-            count = 0
+        #     count = 0
 
-            l = 0
+        #     l = 0
 
-            for r in range(len(s)): 
+        #     for r in range(len(s)): 
 
-                if s[r] == c: 
+        #         if s[r] == c: 
 
-                    count += 1
+        #             count += 1
             
-                while (r - l + 1) - count > k:  # Keep shrinking window from left if too many replacements needed
+        #         while (r - l + 1) - count > k:  # Keep shrinking window from left if too many replacements needed
 
-                    if s[l] == c: 
+        #             if s[l] == c: 
 
-                        count -= 1
+        #                 count -= 1
 
-                    l += 1           # Always move the left pointer 
+        #             l += 1           # Always move the left pointer 
 
-                res = max(res, r - l + 1)       # Otherwise the window is valid, i.e., (r - l + 1) - count <= k
+        #         res = max(res, r - l + 1)       # Otherwise the window is valid, i.e., (r - l + 1) - count <= k
+
+        # return res
+
+
+        # method 2 sliding window, optimial: O(n) time, m is total # of unique character, n is length of string; O(m) space
+      
+        this_map = {}
+
+        res = 0 
+
+        l = 0 
+
+        max_freq_character = 0 
+
+        for r in range(len(s)): # Or while r < len(s) for r = 0
+
+            this_map[s[r]] = this_map.get(s[r], 0) + 1
+
+            max_freq_character = max(max_freq_character, this_map[s[r]])
+            
+            # The window remains valid as long as the number of characters to replace
+            # (i.e., window size - frequency of the most common character) is <= k.
+            # <=> When condition is broken, shrink the window.  
+            
+            while (r - l + 1) - max_freq_character > k: 
+
+                this_map[s[l]] -= 1
+
+                l += 1
+
+            res = max(res, (r - l + 1))
 
         return res
 
 
-# AABABBA
+# method 1
 
+# e.g., AABABBA
 # Initialize the set, i.e., this_set = {'A', 'B'}
-# Outer loop loops through each character in the set 
-# Inner loop expands the window one character at a time, from left to right
+# Outer loop loops through each character in the set. 
+# Inner loop expands the window one character at a time, from left to right.
 
 
 # @lc code=end
