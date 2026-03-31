@@ -16,7 +16,7 @@ class Solution:
 
         l = 0
         
-        # Check condition BEFORE expanding window 
+        # Expand the window via r; Make sure to check condition BEFORE expanding window 
         
         for r in range(len(s)): 
 
@@ -26,11 +26,9 @@ class Solution:
 
                 l += 1
             
-            # Add
-            this_set.add(s[r])
+            this_set.add(s[r])        # Then Add
 
-            # Update result 
-            res = max(res, r - l + 1)
+            res = max(res, r - l + 1) # Update result 
 
         return res 
 
