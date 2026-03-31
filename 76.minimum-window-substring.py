@@ -12,69 +12,58 @@ class Solution:
 
             return ""
         
-        this_count, this_window = {}, {}
+        this_count, this_window = {}, {} # Store freq of characters in t and freq of characters in current window of s, respectively
 
-        for c in t: 
+        for i in range(len(t)): 
 
-            this_count[c] = 1 + this_count.get(c, 0)
+            this_count[t[i]] = 1 + this_count.get(t[i], 0)
 
-        res = [-1, -1] 
+        res, res_length = [-1, -1], float("infinity") 
 
-        res_len = float("infinity")
-
-        have = 0 
-
-        need = len(this_count) # Careful not len(t)!
+        have, need = 0, len(this_count)  # Store how many characters that match required freq and **unique** characters we need to match
+                                         # Careful! Not need = len(t)
 
         # Similar to LC 3
 
         l = 0 
 
-        # Expand the window via r
+        # Expand the window via r; l to shrink, r to expand
 
         for r in range(len(s)): 
 
-            c = s[r]
-        
-            this_window[c] = 1 + this_window.get(c, 0) # Store all characters
+            this_window[s[r]] = 1 + this_window.get(s[r], 0)
 
-            # If this character is required and its count is now satisfied, increment have. 
+            if s[r] in this_count and this_window[s[r]] == this_count[s[r]]: 
 
-            if c in this_count and this_window[c] == this_count[c]: 
-            
                 have += 1
 
-            # # For understanding purpose 
+            while have == need:  # Keep updating and shrinking while the window is valid
 
-            # this_window[s[r]] = 1 + this_window.get(s[r], 0) 
+                # Update result if this window is smaller 
 
-            # if s[r] in this_count and this_window[s[r]] == this_count[s[r]]: 
-
-            #     have += 1
-
-            while have == need:  # Keep updating and shrinking when the window is valid
-
-                # Update
-
-                if (r - l + 1) < res_len: 
+                if (r - l + 1) < res_length: 
 
                     res = [l, r] # Both inclusive
 
-                    res_len = (r - l + 1)
+                    res_length = (r - l + 1)
 
                 # Shrink the window via l
 
                 this_window[s[l]] -= 1 # Remove leftmost character 
 
+                # Check if we break validity
+                
                 if s[l] in this_count and this_window[s[l]] < this_count[s[l]]: 
 
                     have -= 1
+                
+                # Move left pointer 
 
                 l += 1
 
         l, r = res 
 
-        return s[l: r + 1] if res_len != float("infinity") else ""
+        return s[l: r + 1] if res_length != float("infinity") else ""
     
         # s[start: end] start inclusive; end is not
 
@@ -82,6 +71,14 @@ class Solution:
 # s is the search space; t is the reference
 # Careful! use r to expand; use l to shrink        
 
+# Idea: 
+# Expand window (r += 1)
+# Try to make it valid
+# Once valid -> enter while have == need
+# Shrink from left (l += 1)
+# Eventually break validity (have -= 1)
+# Exit loop
+# Go back to expanding (r += 1)
 
 # @lc code=end
 
