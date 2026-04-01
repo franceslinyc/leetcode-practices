@@ -77,6 +77,15 @@ class Solution:
 # Outer loop loops through each character in the set. 
 # Inner loop expands the window one character at a time, from left to right.
 
+# method 2
+
+# We can a sliding window with a frequency map to track character counts. The window is valid 
+# as long as the number of replacements needed does not exceed k, i.e., 
+# (window size - frequency of the most common character) <= k. This value represents how many 
+# characters in the current window must be replaced to make all characters the same. 
+# The algorithm runs in O(n) time since each pointer moves at most once, and uses O(1) space 
+# assuming a fixed character set (e.g., uppercase letters).
+
 
 # @lc code=end
 
