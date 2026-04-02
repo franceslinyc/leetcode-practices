@@ -39,7 +39,7 @@ class Solution:
         # return res
 
 
-        # method 2 sliding window, optimial: O(n) time, m is total # of unique character, n is length of string; O(m) space
+        # method 2 sliding window, optimial: O(n) time, where n is length of string; O(m) space, where m is total # of unique character
       
         this_map = {}
 
@@ -47,19 +47,19 @@ class Solution:
 
         l = 0 
 
-        max_freq_character = 0 
+        highest_freq = 0 
 
         for r in range(len(s)): # Or while r < len(s) for r = 0
 
             this_map[s[r]] = this_map.get(s[r], 0) + 1
 
-            max_freq_character = max(max_freq_character, this_map[s[r]])
+            highest_freq = max(highest_freq, this_map[s[r]])
             
             # The window remains valid as long as the number of characters to replace
             # (i.e., window size - frequency of the most common character) is <= k.
             # <=> When condition is broken, shrink the window.  
             
-            while (r - l + 1) - max_freq_character > k: 
+            while (r - l + 1) - highest_freq > k: 
 
                 this_map[s[l]] -= 1
 
@@ -79,12 +79,12 @@ class Solution:
 
 # method 2
 
-# We can a sliding window with a frequency map to track character counts. The window is valid 
-# as long as the number of replacements needed does not exceed k, i.e., 
+# We can use a sliding window with a frequency map to track character counts. The window is 
+# valid as long as the number of replacements needed does not exceed k, i.e., 
 # (window size - frequency of the most common character) <= k. This value represents how many 
-# characters in the current window must be replaced to make all characters the same. 
-# The algorithm runs in O(n) time since each pointer moves at most once, and uses O(1) space 
-# assuming a fixed character set (e.g., uppercase letters).
+# characters in the current window must be replaced to make all characters the same. This 
+# runs in O(n) time since both pointers move at most once, and uses O(m) space, where m is
+# size of the character map. 
 
 
 # @lc code=end
