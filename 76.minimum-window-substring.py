@@ -8,6 +8,9 @@
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
 
+        # method: sliding window: O(n + m) time, where n is the length of string s, m is the total number of unique characters in
+        # string s and t; O(m) space
+        
         if t == "": 
 
             return ""
@@ -31,8 +34,10 @@ class Solution:
 
         for r in range(len(s)): 
 
-            this_window[s[r]] = 1 + this_window.get(s[r], 0)
+            this_window[s[r]] = this_window.get(s[r], 0) + 1
 
+            # Check validity
+            
             if s[r] in this_count and this_window[s[r]] == this_count[s[r]]: 
 
                 have += 1
@@ -47,11 +52,11 @@ class Solution:
 
                     res_length = (r - l + 1)
 
-                # Shrink the window via l
+                # Shrink the window via l 
 
                 this_window[s[l]] -= 1 # Remove leftmost character 
-
-                # Check if we break validity
+                
+                # Update validity if we break it
                 
                 if s[l] in this_count and this_window[s[l]] < this_count[s[l]]: 
 
@@ -61,17 +66,29 @@ class Solution:
 
                 l += 1
 
-        l, r = res 
+        l, r = res     # Retrieve the best window found
 
         return s[l: r + 1] if res_length != float("infinity") else ""
     
-        # s[start: end] start inclusive; end is not
+        # Careful! s[start: end] start inclusive; end is not
+        # Careful! string uses :, e.g., string[start: end]
 
-        
+
+# We can use a sliding window with two hash maps to track required character counts and the 
+# current window, expanding the right pointer and shrinking from the left when all requirements 
+# are met to maintain the minimum valid substring. The time complexity is O(n) since each 
+# character is visited at most twice, and the space complexity is O(m) where m is the number 
+# of unique characters in s and t.
+
+
+# Idea: 
+
 # s is the search space; t is the reference
 # Careful! use r to expand; use l to shrink        
 
+
 # Idea: 
+
 # Expand window (r += 1)
 # Try to make it valid
 # Once valid -> enter while have == need
