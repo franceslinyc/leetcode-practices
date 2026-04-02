@@ -8,6 +8,8 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
 
+        # method 1 sliding window: O(n) time, where n is length of string; O(m) space, where m is total # of unique character
+        
         this_set = set()
 
         res = 0
@@ -31,6 +33,18 @@ class Solution:
             res = max(res, r - l + 1) # Update result 
 
         return res 
+
+
+        # method 2: sliding window, optimial: O(n) time, where n is length of string; O(m) space, where m is total # of unique character
+
+
+# method 1
+
+# We can use a sliding window with a hash set to track characters in the current window. We'd 
+# keep expanding the right pointer while characters are unique, and shrink from the left when
+# a deplicate appears, and update the max length along the way. This runs in O(n) time since 
+# each character is processed at most twice, and O(m) space where m is the size of the character 
+# set.
 
 
 # a b c a b c b b
