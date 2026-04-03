@@ -26,6 +26,8 @@ class Solution:
 
                 res = min(res, r - l + 1)
                 
+                # Shrink the window: Remove from window and move left pointer 
+                
                 window_sum -= nums[l]            # Careful! Don't forget to decrement 
 
                 l += 1
