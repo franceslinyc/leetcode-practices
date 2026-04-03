@@ -10,9 +10,9 @@ class Solution:
 
         # # method 1 sliding window: O(m * n) time, m is total # of unique character, n is length of string; O(m) space
         
-        # this_set = set(s)
-
         # res = 0
+
+        # this_set = set(s)
 
         # for c in this_set: 
 
@@ -41,13 +41,13 @@ class Solution:
 
         # method 2 sliding window, optimial: O(n) time, where n is length of string; O(m) space, where m is total # of unique character
       
-        this_map = {}
-
         res = 0 
 
-        l = 0 
+        this_map = {}
 
         highest_freq = 0 
+
+        l = 0 
 
         for r in range(len(s)): # Or while r < len(s) for r = 0
 
