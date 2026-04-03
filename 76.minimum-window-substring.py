@@ -15,16 +15,16 @@ class Solution:
 
             return ""
         
-        this_count, this_window = {}, {} # Store freq of characters in t and freq of characters in current window of s, respectively
+        count_t, count_window = {}, {} # Store freq of characters in t and freq of characters in current window of s, respectively
 
         for i in range(len(t)): 
 
-            this_count[t[i]] = 1 + this_count.get(t[i], 0)
+            count_t[t[i]] = 1 + count_t.get(t[i], 0)
 
         res, res_length = [-1, -1], float("infinity") 
 
-        have, need = 0, len(this_count)  # Store how many characters that match required freq and **unique** characters we need to match
-                                         # Careful! Not need = len(t)
+        have, need = 0, len(count_t)  # Store how many characters that match required freq and **unique** characters we need to match
+                                      # Careful! Not need = len(t)
 
         # Similar to LC 3
 
@@ -34,11 +34,9 @@ class Solution:
 
         for r in range(len(s)): 
 
-            this_window[s[r]] = this_window.get(s[r], 0) + 1
-
-            # Check validity
+            count_window[s[r]] = count_window.get(s[r], 0) + 1
             
-            if s[r] in this_count and this_window[s[r]] == this_count[s[r]]: 
+            if s[r] in count_t and count_window[s[r]] == count_t[s[r]]:    # Check validity
 
                 have += 1
 
@@ -52,17 +50,13 @@ class Solution:
 
                     res_length = (r - l + 1)
 
-                # Shrink the window via l 
+                # Shrink the window via l: Remove from window, update validity, and move left pointer 
 
-                this_window[s[l]] -= 1 # Remove leftmost character 
+                count_window[s[l]] -= 1            # Careful! Don't forget 
                 
-                # Update validity if we break it
-                
-                if s[l] in this_count and this_window[s[l]] < this_count[s[l]]: 
+                if s[l] in count_t and count_window[s[l]] < count_t[s[l]]:  # Update validity if we break it
 
                     have -= 1
-                
-                # Move left pointer 
 
                 l += 1
 
@@ -96,6 +90,7 @@ class Solution:
 # Eventually break validity (have -= 1)
 # Exit loop
 # Go back to expanding (r += 1)
+
 
 # @lc code=end
 
