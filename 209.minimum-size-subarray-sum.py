@@ -26,19 +26,27 @@ class Solution:
 
                 res = min(res, r - l + 1)
                 
-                window_sum -= nums[l]
+                window_sum -= nums[l]            # Careful! Don't forget to decrement 
 
                 l += 1
 
         return 0 if res == float("inf") else res
 
 
+# We can use a sliding window and maintain a running sum to track the current window's sum. We expand the right pointer 
+# to grow the sum, and once it meets or exceeds the target, shrink from the left to find the minimum length, updating 
+# the result along the way. This runs in O(n) time since each element is visited at most twice, with O(1) extra space 
+# because we didn't use additional data structures that scale with the input size. 
+
+
+# Idea: 
+# 
 # [2 3 1 2 4 3]
 # target 7
 #  2
 #  2 3
 #  2 3 1 
-#  2 3 1 2 >= target -> update res, decrement total, shrink 
+#  2 3 1 2 >= target -> update res, decrement window_sum, shrink 
 #  3 1 2 
 #  3 1 2 4 >= target 
 #  1 2 4   >= target   
