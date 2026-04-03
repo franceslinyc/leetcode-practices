@@ -8,21 +8,25 @@
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
 
-        l = 0
-
-        total = 0
+        # method: sliding window: O(n) time; O(1) extra space
 
         res = float("inf")
 
+        window_sum = 0
+
+        # Similar to LC 3, 76
+
+        l = 0 
+
         for r in range(len(nums)): 
 
-            total += nums[r] 
+            window_sum += nums[r]
 
-            while total >= target: #if total >= target: 
+            while window_sum >= target: 
 
-                res = min(r - l + 1, res)
-
-                total -= nums[l]
+                res = min(res, r - l + 1)
+                
+                window_sum -= nums[l]
 
                 l += 1
 
@@ -40,7 +44,12 @@ class Solution:
 #  1 2 4   >= target   
 #  2 4
 #  2 3 4   >= target
-        
+#  3 4     >= target
+
+# [1 1 1 1 1 1 1 1]
+# target 11
+# never get to update res, i.e., res = float("inf"), return 0        
+
 
 # @lc code=end
 
