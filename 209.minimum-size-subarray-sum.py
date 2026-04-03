@@ -18,6 +18,8 @@ class Solution:
 
         l = 0 
 
+        # Expand the window via r; l to shrink, r to expand
+
         for r in range(len(nums)): 
 
             window_sum += nums[r]
@@ -26,7 +28,7 @@ class Solution:
 
                 res = min(res, r - l + 1)
                 
-                # Shrink the window: Remove from window and move left pointer 
+                # Shrink the window via l: Remove from window and move left pointer 
                 
                 window_sum -= nums[l]            # Careful! Don't forget to decrement 
 
