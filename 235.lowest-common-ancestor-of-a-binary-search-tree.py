@@ -15,7 +15,7 @@
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         
-        # # method 1 recrusivetime O(h), space O(h), where h: height of tree
+        # # method 1 recrusive: time O(h), space O(h), where h: height of tree
 
         # if not root or not p or not q: # if not root: 
 
@@ -56,19 +56,21 @@ class Solution:
 
 # @lc code=end
 
+
+# Since it’s a BST, we can use current as a pointer to traverse the tree. Starting from the
+# root, if both nodes are smaller, we go to the left subtree. If both nodes are greater, 
+# we'd go to the right subtree. If they split, the current node is the LCA. This gives us 
+# O(h) time complexity and O(h) space for recrusive method. O(1) space for iterative method.
+
+
 # Ques: 
+# 
 # 1. Are p and q guaranteed to exist in the tree?
 # 2. Can a node be an ancestor of itself?
-# 
+
+
 # BST: 
+# 
 # 1. Left subtree's value < current's 
 # 2. Right subtree's value > current's
 # 3. Both left and right substree are also BSTs.
-#
-# Idea:
-# Since it’s a BST, we can use ordering to decide direction.
-# If both nodes are smaller, we go to the left subtree.
-# If both are greater, we go to the right subtree.
-# If they split, the current node is the LCA.
-# This gives us O(h) time complexity. 
-# O(h) space for recrusive method. O(1) space for iterative method.
