@@ -10,9 +10,9 @@ class Solution:
 
         # method 1 sliding window: O(n) time, where n is length of string; O(m) space, where m is total # of unique character
         
-        this_set = set()
-
         res = 0
+
+        this_set = set()
 
         # Similar to LC 76; l to shrink, r to expand
 
