@@ -47,7 +47,7 @@ class Solution:
                 # Update result if this window is smaller 
 
                 if (r - l + 1) < res_length: 
-
+                                                                                                                                                                                                                                         
                     res = [l, r] # Both inclusive
 
                     res_length = (r - l + 1)
