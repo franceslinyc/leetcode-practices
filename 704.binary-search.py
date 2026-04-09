@@ -8,13 +8,13 @@
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
 
-        # method 1: recursive binary search 
+        # method 1: recursive binary search: O(log n) time; O(log n) space 
 
-        # method 2: iterative binary search
+        # method 2: iterative binary search: O(log n) time; O(1) space
 
         l, r = 0, len(nums) - 1
 
-        while l <= r: # If l < r instead, then we'd skip the final element, which is when l = r.
+        while l <= r: # Inclusive range [l, r]; Must check when l == r (last element)
 
             m = l + ((r - l) // 2) # m = (l + r) // 2
 
@@ -33,8 +33,9 @@ class Solution:
         return -1
     
 
-        # method 3 upper bound 
-        # method 4 lower bound
+        # TODO
+        # method 3 upper bound: O(log n) time; O(1) space 
+        # method 4 lower bound: O(log n) time; O(1) space
     
 
 # @lc code=end
