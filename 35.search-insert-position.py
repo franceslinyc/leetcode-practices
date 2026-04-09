@@ -44,29 +44,29 @@ class Solution:
 
             elif nums[m] < target: 
 
-                l = m + 1
+                l = m + 1          # m is definitely too small
 
         return l
 
 
-# method 2
+# method 3
 
-# [2] target = 1
-#  l
-#  r 
-#  m = (0 + 0) // 2 = 0, value too big, e.g., 2 > 1, search left, i.e., [l, m - 1]
-#  l = 0    
-#  r = -1
-# since 0 > -1: exit 
+# Ideas: 
 
-# [2] target = 3
-#  l
-#  r
-#  m = (0 + 0) // 2 = 0, value too small, e.g., 2 < 3, search right, i.e., [m + 1, r]
-#  l = 1
-#  r = 0
-# since 1 > 0: exit
-        
+# nums = [1, 3, 3, 5, 7], target = 3
+
+# range = [0, 5)
+
+# m = (0 + 5) // 2 = 2, since nums[2] = 3 == 3, search left, i.e., 
+# range = [0, 2)
+
+# m = (0 + 2) // 2 = 1, since nums[1] = 3 == 3, search left, i.e., 
+# range = [0, 1)
+
+# m = (0 + 1) // 2 = 0, since nums[0] = 1 < 3, search right, i.e., 
+# range = [1, 1) 
+# Exit while loop since l == r and return l = 1        
+
 
 # @lc code=end
 
