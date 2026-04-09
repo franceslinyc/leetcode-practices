@@ -50,53 +50,55 @@ class Solution:
 
         # return False                     # Not found in any row
 
+
         # method 1 binary search: O(log m + log n) time, which reduces to O(log(m*n)); O(1) space
 
         ROWS, COLS = len(matrix), len(matrix[0])
 
         top, bottom = 0, ROWS - 1
 
-        while top <= bottom:
+        while top <= bottom: 
 
-            row = (top + bottom) // 2
+            row = top + (bottom - top) // 2
 
-            if target > matrix[row][-1]:
+            if matrix[row][0] <= target <= matrix[row][-1]: 
 
-                top = row + 1
+                break 
 
-            elif target < matrix[row][0]:
+            elif matrix[row][-1] < target: # If the target is greater than the largest elemet of this row, 
+                                           # search down, i.e., [row + 1, bottom]
+
+                top = row + 1 
+
+            else:                          # Otherwise, search up, i.e., [top, row - 1]
 
                 bottom = row - 1
 
-            else:
-
-                break
-
-        if not (top <= bottom):
+        if not top <= bottom:  # All rows checked, none can contain target
 
             return False
-
-        row = (top + bottom) // 2
+        
+        row = top + (bottom - top) // 2
 
         l, r = 0, COLS - 1
 
-        while l <= r:
+        while l <= r: 
 
-            m = (l + r) // 2
+            m = l + (r - l) // 2
 
-            if target > matrix[row][m]:
-
-                l = m + 1
-
-            elif target < matrix[row][m]:
-
-                r = m - 1
-
-            else:
+            if matrix[row][m] == target: 
 
                 return True
 
-        return False        
+            elif matrix[row][m] > target:  # Search left
+
+                r = m - 1
+
+            else: 
+
+                l = m + 1
+
+        return False
 
 
         # method 2 binary search (one pass): O(log(m*n)) time; O(1) space
