@@ -16,17 +16,17 @@ class Solution:
 
         while l <= r: # Inclusive range [l, r]; Must check when l == r (last element)
 
-            m = l + ((r - l) // 2) # m = (l + r) // 2
+            m = l + ((r - l) // 2) # Avoid overflow, compared to m = (l + r) // 2
 
             if nums[m] == target: 
 
                 return m
             
-            elif nums[m] > target: # Narrow search to [l, m - 1]
+            elif nums[m] > target: # Too big, search left, i.e., [l, m - 1]
 
                 r = m - 1
             
-            else:                  # Narrow search to [m + 1, r]
+            else:                  # Too small, search right, i.e., [m + 1, r]
 
                 l = m + 1
         
