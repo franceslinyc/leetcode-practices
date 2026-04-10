@@ -66,12 +66,19 @@ class Solution:
 
 # @lc code=end
 
+
+# We can use binary search on the eating speed k, checking feasibility by summing the hours 
+# needed for all piles at each step. The time complexity is O(n log m) where n is length of 
+# piles and m is the maximum pile size, and the space complexity is O(1).
+
+
 # Idea: 
 
 # piles = [3,6,7,11], h = 8
 
 # time = \sum ⌈ pile / k ⌉
 
+# search space 
 # k = [1, 2, 3, ..., 11]
 # k = 11, then h = 4 < 8 valid 
 # k = 10, then h = 5 < 8 valid
@@ -81,4 +88,4 @@ class Solution:
 
 # Can follow leftmost / lower bound template
 # Change while l <= r to while l < r
-# Change r = k + 1    to r = k still work.
+# Change r = k + 1 to r = k still work
