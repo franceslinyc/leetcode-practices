@@ -20,21 +20,21 @@ class Solution:
 
                 return m
 
-            if nums[l] <= nums[m]: # If left sorted, e.g., [4, 5, 6, 7, 0, 1, 2] because [4, 5, 6, 7] is sorted. 
+            if nums[l] <= nums[m]: # If left portion is sorted, e.g., [4, 5, 6, 7, 0, 1, 2] because [4, 5, 6, 7] is sorted. 
 
                 if nums[l] <= target <= nums[m]: 
 
-                    r = m - 1 # Search left
+                    r = m - 1      # Search left
                 
-                else: 
+                else:              # target > nums[m] or target < nums[l]
 
                     l = m + 1
 
-            else: # If right sorted, e.g., [5, 6, 7, 0, 1, 2, 4] because [0, 1, 2, 4] is sorted.
+            else:                  # If right portion sorted, e.g., [5, 6, 7, 0, 1, 2, 4] because [0, 1, 2, 4] is sorted.
 
                 if nums[m] <= target <= nums[r]:
 
-                    l = m + 1 # Search right
+                    l = m + 1      # Search right
 
                 else: 
 
