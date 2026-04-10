@@ -47,14 +47,20 @@ class Solution:
 
             if nums[m] < nums[r]: # Minimum is at m or to the left
 
-                r = m             # Minimum is in [l, m], keep m
+                r = m             # Keep m in the search space
 
             else:                 # Minimum is to the right
 
-                l = m + 1         # Minimum is in [m + 1, r]
+                l = m + 1         # m is definitely too small
 
         return nums[l]
 
-     
+
+# We can use binary search to compare the middle element with the right boundary to determine 
+# which half contains the minimum, always keeping the candidate in the search space until it 
+# converges to a single index. This runs in O(log n) time since we halve the search space each
+# step, and O(1) space as we only use pointers.
+
+
 # @lc code=end
 
