@@ -38,6 +38,8 @@ class Solution:
 
             m = (r + l) // 2
 
+            # THINK "Find first index where value >= target" 
+
             if nums[m] >= target:  # m might be the answer, but maybe there’s an earlier one
 
                 r = m              # Keep m in the search space. Else, r = m - 1 will discard m
@@ -46,7 +48,7 @@ class Solution:
 
                 l = m + 1          # m is definitely too small
 
-        return l
+        return l # Return the first position where nums[m] >= target or the correct insertion point
 
 
 # method 3
