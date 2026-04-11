@@ -26,7 +26,7 @@ class Solution:
 
         #     res = min(res, nums[m])
 
-        #     if nums[m] >= nums[r]: # nums[m] in left side, go right, i.e., [m + 1, r]
+        #     if nums[m] >= nums[l]: # nums[m] in left side, go right, i.e., [m + 1, r]
 
         #         l = m + 1
 
@@ -45,7 +45,10 @@ class Solution:
 
             m = l + (r - l) // 2
 
-            if nums[m] < nums[r]: # Minimum is at m or to the left
+            # ASK “Which side contains the rotation point (the minimum)?”
+            
+            if nums[m] < nums[r]: # Right side is clean, so pivot must be on the left? 
+                                  # Minimum is at m or to the left
 
                 r = m             # Keep m in the search space
 
@@ -61,6 +64,13 @@ class Solution:
 # converges to a single index. This runs in O(log n) time since we halve the search space each
 # step, and O(1) space as we only use pointers.
 
+# Idea: 
+
+# nums = [1,2,3,4,5] output = 1
+# nums[2] = 3 < 5 -> Search left
+
+# nums = [3,4,5,1,2] output = 1
+# nums[2] = 5 >= 2 -> Search right
 
 # @lc code=end
 
