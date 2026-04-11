@@ -20,6 +20,8 @@ class Solution:
 
                 return m
 
+            # ASK “Which side is sorted, and does the target live there?”
+
             if nums[l] <= nums[m]: # If left portion is sorted, e.g., [4, 5, 6, 7, 0, 1, 2] because [4, 5, 6, 7] is sorted. 
 
                 if nums[l] <= target <= nums[m]: 
@@ -51,6 +53,8 @@ class Solution:
 
 # Idea: 
 
+# Example #1
+
 # nums = [4,5,6,7,0,1,2], target = 0 
 #         l           r
 # l = 0, r = 6, m = 3 -> nums[3] = 7 -> left [4, 5, 6, 7] is sorted -> Is 4 <= 0 <= 7? No. -> l = m + 1 = 4
@@ -64,6 +68,16 @@ class Solution:
 #                 r
 # l = 4, r = 4, m = 4 -> nums[4] == 0. Find it!
 
+# Example #2
+
+# nums = [0,1,2,4,5,6,7], target = 6
+#         l           r
+# l = 0, r = 6, m = 3 -> nums[3] = 4 -> left [0,1,2,4] is sorted 
+
+# Example #3
+# nums = [6,7,0,1,2,4,5] 
+#         l           r
+# l = 0, r = 6, m = 3 -> nums[3] = 1 -> right [1,2,4,5] is sorted
 
 # @lc code=end
 
