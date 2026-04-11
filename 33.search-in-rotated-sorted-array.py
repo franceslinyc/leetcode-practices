@@ -43,6 +43,12 @@ class Solution:
         return -1
 
 
+# We can use a modified binary search by checking which half is sorted at each step and 
+# narrowing the search space based on whether the target lies within that sorted portion. 
+# This runs in O(log n) time since we halve the search space each iteration, and O(1) space 
+# as we only use pointers.
+
+
 # Idea: 
 
 # nums = [4,5,6,7,0,1,2], target = 0 
