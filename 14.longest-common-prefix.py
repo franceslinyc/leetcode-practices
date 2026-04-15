@@ -28,7 +28,8 @@ class Solution:
 
             #         return res
             
-            res += strs[0][i]     # Verify that all strings at that character index first (i.e., outside j loop), then add. 
+            res += strs[0][i]     # Verify that all strings at that character index first (i.e., outside j loop), 
+                                  # then add. 
 
         return res 
 
