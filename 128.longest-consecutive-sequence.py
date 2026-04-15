@@ -14,7 +14,7 @@ class Solution:
 
         max_length = 0
 
-        for num in this_set: # Loop through unique values only to prevent O(n^2) 
+        for num in this_set: # Careful! Loop through unique values only to prevent O(n^2) 
                              # Set is iterable, but it is NOT indexable 
 
             if (num - 1) not in this_set:         # Check if it is the starting number
