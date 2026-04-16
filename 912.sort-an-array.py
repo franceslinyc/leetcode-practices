@@ -8,7 +8,7 @@
 class Solution:
     def sortArray(self, nums: List[int]) -> List[int]:
 
-        # # method 1 quick sort: O(n log n) average time, O(n^2) worst case; O(log n) recursive stack; 11/21 cases passed
+        # # method 1 quick sort: O(n log n) average time, O(n^2) worst case; O(log n) recursive stack; Time Limit Exceeded
 
         # def partition(arr, L, R): 
 
