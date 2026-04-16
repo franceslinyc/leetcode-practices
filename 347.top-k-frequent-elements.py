@@ -12,7 +12,7 @@ class Solution:
 
         for num in nums: 
 
-            count[num] = count.get(num, 0) + 1    # .get retrun value
+            count[num] = count.get(num, 0) + 1    # .get return value
 
         freq = [[] for i in range(len(nums) + 1)] # i.e., [[],[],[], ...]
 
@@ -24,7 +24,7 @@ class Solution:
 
         for i in range(len(freq) - 1, 0, -1):     # Careful that start is inclusive; stop is not 
 
-            for num in freq[i]:   # Loop through each num in freq[i]
+            for num in freq[i]:   # Careful! Loop through each num in freq[i]
 
                 res.append(num) 
 
