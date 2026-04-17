@@ -49,11 +49,12 @@ class Solution:
         # Merge two sorted halves 
         def merge(arr, L, M, R):
 
-            left, right = arr[L:M+1], arr[M+1:R+1] # string[start:end]; start is inclusive, end is not
-
+            left, right = arr[L:M+1], arr[M+1:R+1]   # O(n) space worst case
+                                                     # string[start:end]; start is inclusive, end is not
+              
             # i = pointer for main array
-            # j = pointer for left
-            # k = pointer for right
+            # j = pointer for left half
+            # k = pointer for right half
             i, j, k = L, 0, 0
 
             # Merge both arrays
@@ -100,16 +101,15 @@ class Solution:
 
             m = (l + r) // 2
 
-            # Sort left half
-            merge_sort(arr, l, m)
+            # Now sort subarrays; log n levels of recursion
+            merge_sort(arr, l, m)         # After this call, the left half, i.e., arr[l:m+1], is sorted
 
-            # Sort right half
-            merge_sort(arr, m + 1, r)
+            merge_sort(arr, m + 1, r)     # After this call, the right half, i.e., arr[m+1:r+1], is sorted
 
-            # Merge sorted halves
+            # Merge sorted halves; O(n) time
             merge(arr, l, m, r)
 
-        merge_sort(nums, 0, len(nums) - 1)
+        merge_sort(nums, 0, len(nums) - 1) # n time
         
         return nums
 
@@ -131,28 +131,32 @@ class Solution:
 # left half = [5, 2], right half = [3, 1]
 
 # Step 2: Solve LEFT half
-# [5, 2]
+# [5, 2, 3, 1]
+#  0, 1, 2, 3 
+# Focus on [5, 2]
 # merge_sort(nums, 0, 1)
 # l = 0, r = 1 -> m = 0
 # Now [5] and [2]
 # merge_sort(0,0) -> return
 # merge_sort(1,1) -> return
-# NOW merge(0,0,1)
+# NOW merge(nums, 0,0,1), i.e., merge nums[0:1] (i.e., [5]) and nums[1:2] (i.e., [2])
 # [2, 5]
 
 # Step 3: Solve RIGHT half
-# [3, 1]
+# [5, 2, 3, 1]
+#  0, 1, 2, 3 
+# Focus on [3, 1]
 # merge_sort(nums, 2, 3)
 # l = 2, r = 3 -> m = 2
 # Now [3] and [1]
 # merge_sort(2,2) -> return
 # merge_sort(3,3) -> return
-# NOW merge(2,2,3)
+# NOW merge(nums, 2,2,3), i.e., merge nums[2:3] (i.e., [3]) and nums[3:4] (i.e., [1])
 # [1, 3]
 
 # Step 4: Final merge
-# left  = [2,5]
-# right = [1,3]
+# left  = [2, 5]
+# right = [1, 3]
 # [1, 2, 3, 5]
 
 
