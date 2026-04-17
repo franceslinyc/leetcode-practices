@@ -22,9 +22,9 @@ class Solution:
 
             return []
         
-        q = deque([root])
-
         res = []
+
+        q = deque([root])
 
         while q: # Continue if there are still nodes to process
 
