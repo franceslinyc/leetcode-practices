@@ -14,7 +14,7 @@
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
 
-        # method 1 bfs
+        # method 1 bfs: time O(n), space O(n), where n: # of nodes; balanced BFS -> time O(log n)
 
         if not root: 
 
@@ -53,14 +53,25 @@ class Solution:
 
         # def dfs(node, depth): 
 
+        #     # Base case
         #     if not node: 
+
         #         return None
             
+        #     # Because we go right first, this will be the right most node. 
+            
         #     if depth == len(res):      # If this is the first time reaching this depth, store it
+                
         #         res.append(node.val)
             
-        #     dfs(node.right, depth + 1) # Go right first
+        #     # Important! Visit right first 
+        #     # Recurse to the right (first) and left child by increasing depth
+            
+        #     dfs(node.right, depth + 1)
+
         #     dfs(node.left, depth + 1)
+        
+        # # Start dfs from root at depth 0 
         
         # dfs(root, 0)
 
