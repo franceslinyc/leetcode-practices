@@ -18,13 +18,16 @@ class Solution:
 
         if not root: 
             return None
-        
+
+        # Swap children at current node
         tmp = root.left
         root.left = root.right
         root.right = tmp
 
-        self.invertTree(root.left)     # Recursively invert the left subtree
-        self.invertTree(root.right)    # Right
+        # Now fix subtrees
+        self.invertTree(root.left)     # After this call, the left subtree is fully inverted
+
+        self.invertTree(root.right)    # After this call, the right subtree is fully inverted
         
         return root
 
