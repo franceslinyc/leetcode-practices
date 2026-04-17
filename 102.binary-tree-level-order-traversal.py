@@ -14,7 +14,40 @@
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
 
-        # method 1 DFS: time O(n), space O(n), where n: # of nodes 
+        # # method 1 DFS: time O(n), space O(n), where n: # of nodes 
+
+        # res = []
+
+        # def dfs(node, depth):
+
+        #     # Base case
+
+        #     if not node:
+
+        #         return None
+
+        #     # Create a new list for this level if this is a first-time visit
+
+        #     if len(res) == depth:
+
+        #         res.append([])
+
+        #     # Add current node's value to its corresponding level
+            
+        #     res[depth].append(node.val)
+
+        #     # Recurse to the left and right child by increasing depth
+
+        #     dfs(node.left, depth + 1)
+
+        #     dfs(node.right, depth + 1)
+
+        # # Start dfs from root at depth 0 
+
+        # dfs(root, 0)
+
+        # return res
+
 
         # method 2 BFS: time O(n), space O(n), where n: # of nodes; balanced BFS -> time O(log n)
 
