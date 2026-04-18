@@ -31,7 +31,7 @@ class Solution:
             # right[1] -> height of right subtree
             # left[0] -> whether left subtree is balanced
             # right[0] -> whether right subtree is balanced
-            balanced = abs(left[1] - right[1]) <= 1 and left[0] and right[0] 
+            balanced = (abs(left[1] - right[1]) <= 1 and left[0] and right[0])
 
             # Return height of parent (current) node = max height of children + 1 
             return [balanced, max(left[1], right[1]) + 1]
