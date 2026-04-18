@@ -17,13 +17,16 @@ class Solution:
         # method 1 recursive DFS
 
         if not root: 
+
             return 0 
         
-        return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right)) 
+        return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
+
 
         # # method 2 BFS via queue
 
         # if not root: 
+
         #     return 0 
         
         # q = deque([root])
@@ -48,12 +51,15 @@ class Solution:
 
         # return level
 
+
 # 3 9 20 15 7
 # 1 2 2  3  3
+
 
         # # method 3 DFS via stack
 
         # if not root: 
+
         #     return 0 
         
         # s = [[root, 1]] 
@@ -67,10 +73,13 @@ class Solution:
         #     if node: 
 
         #         res = max(res, depth)
+
         #         s.append([node.left, depth + 1])
+
         #         s.append([node.right, depth + 1])
 
         # return res 
+
 
 # 7  3
 # 15 3
@@ -78,8 +87,9 @@ class Solution:
 # 9  2
 # 3  1
 
-        # Preorder (node first) vs Inorder (node middle) vs Postorder (node last)
-        # https://www.geeksforgeeks.org/dsa/preorder-vs-inorder-vs-postorder/
+
+# Preorder (node first) vs Inorder (node middle) vs Postorder (node last)
+# https://www.geeksforgeeks.org/dsa/preorder-vs-inorder-vs-postorder/
 
     
 # @lc code=end
