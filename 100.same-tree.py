@@ -14,7 +14,25 @@
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
 
-        # method 1 dfs: O(n) time worst case, O(log n) time best case for balanced tree; O(n) space
+        # # method 1 dfs: O(n) time worst case, O(log n) time best case for balanced tree; O(n) space
+
+        # # Base case 1: If both nodes are None, they are same.
+        # if not q and not p: 
+
+        #     return True
+
+        # # Base case 2: If both nodes exist AND their values are equal, we still need to 
+        # # check their subtrees.
+        # if p and q and p.val == q.val: 
+
+        #     # Recrusively check left and right subtree of both trees
+        #     return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+
+        # # Base case 3: If one node is None and the other is not, they are not the same.
+        # else: 
+
+        #     return False
+
 
         # method 2 bfs: O(n) time; O(n) space
 
@@ -24,6 +42,7 @@ class Solution:
 
         # Traverse both trees in parallel
         while q1 and q2:
+
             # Process all nodes at the current level
             for _ in range(len(q1)):
                 
@@ -35,6 +54,7 @@ class Solution:
                 if node_p is None and node_q is None:
 
                     continue
+                    
                 # Case 2: one is None OR values differ -> different 
                 if node_p is None or node_q is None or node_p.val != node_q.val:
 
