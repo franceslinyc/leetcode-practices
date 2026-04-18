@@ -14,23 +14,29 @@
 class Solution:
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
 
-        self.res = 0 
+        self.diameter = 0 
 
-        def dfs(curr): 
+        def dfs(current): 
 
-            if not curr: 
+            # Base case: empty node has height 0
+            if not current: 
+
                 return 0 
 
-            left = dfs(curr.left)     # Recursively find height of left and right subtrees
-            right = dfs(curr.right)
+            # Recursively find height of left and right subtrees
+            left = dfs(current.left)        
+            
+            right = dfs(current.right)
 
-            self.res = max(self.res, left + right) # Update res
+            self.diameter = max(self.diameter, left + right) # Update diameter
 
-            return max(left, right) + 1  # Return height to parent (current) node; + 1 for parent (current) node
+            # Return height of parent (current) node = max height of children + 1 
+            return max(left, right) + 1  
         
         dfs(root)
 
-        return self.res
-        
+        return self.diameter
+
+
 # @lc code=end
 
