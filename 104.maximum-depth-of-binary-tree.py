@@ -14,7 +14,7 @@
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
         
-        # method 1 recursive DFS
+        # method 1 recursive DFS: O(n) time worst case, O(log n) best case; O(n) space
 
         if not root: 
 
@@ -44,7 +44,7 @@ class Solution:
         # return self.max_depth
 
 
-        # # method 2 BFS via queue
+        # # method 2 BFS via queue: O(n) time; O(n) space
 
         # if not root: 
 
@@ -77,7 +77,7 @@ class Solution:
 # 1 2 2  3  3
 
 
-        # # method 3 DFS via stack
+        # # method 3 DFS via stack: O(n) time; O(n) space
 
         # if not root: 
 
