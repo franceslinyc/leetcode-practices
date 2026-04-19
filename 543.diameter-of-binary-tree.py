@@ -14,6 +14,8 @@
 class Solution:
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
 
+        # method 1 recursive DFS: O(n) time worst case, O(log n) best case; O(n) space
+
         self.diameter = 0 
 
         def dfs(current): 
@@ -37,6 +39,9 @@ class Solution:
         dfs(root)
 
         return self.diameter
+
+
+        # method 2 DFS with Stack: O(n) time; O(n) space
 
 
 # @lc code=end
