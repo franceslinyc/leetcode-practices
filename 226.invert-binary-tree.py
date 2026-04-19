@@ -17,6 +17,7 @@ class Solution:
         # method 1 recursive DFS
 
         if not root: 
+
             return None
 
         # Swap children at current node
@@ -30,6 +31,32 @@ class Solution:
         self.invertTree(root.right)    # After this call, the right subtree is fully inverted
         
         return root
+
+
+        # # method 1 variation recursive DFS
+
+        # def dfs(current):
+
+        #     if not current: 
+
+        #         return None
+
+        #     tmp = current.left
+
+        #     current.left = current.right
+
+        #     current.right = tmp
+
+        #     dfs(current.left)
+
+        #     dfs(current.right)
+
+        #     return current
+
+        # dfs(root)
+
+        # return root 
+
 
         # # method 2 BFS
 
