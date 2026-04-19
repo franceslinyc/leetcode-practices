@@ -14,7 +14,7 @@
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
 
-        # method 1 recursive DFS
+        # method 1 recursive DFS: O(n) time; O(n) space
 
         if not root: 
 
@@ -22,7 +22,9 @@ class Solution:
 
         # Swap children at current node
         tmp = root.left
+
         root.left = root.right
+        
         root.right = tmp
 
         # Now fix subtrees
@@ -58,31 +60,39 @@ class Solution:
         # return root 
 
 
-        # # method 2 BFS
+        # # method 2 BFS: O(n) time; O(n) space
 
         # if not root: 
+
         #     return None
         
         # q = deque([root])
 
         # while q: 
+
         #     node = q.popleft()
 
         #     tmp = node.left
+        
         #     node.left = node.right
+
         #     node.right = tmp
 
         #     if node.left: 
+
         #         q.append(node.left)
 
         #     if node.right: 
+
         #         q.append(node.right)
     
         # return root
 
-        # # method 3 iterative DFS
+
+        # # method 3 iterative DFS: O(n) time; O(n) space
 
         # if not root: 
+
         #     return None
         
         # s = [root]
@@ -92,13 +102,17 @@ class Solution:
         #     node = s.pop()
 
         #     tmp = node.left
+
         #     node.left = node.right
+
         #     node.right = tmp
 
         #     if node.left: 
+
         #         s.append(node.left)
 
         #     if node.right: 
+
         #         s.append(node.right)
 
         # return root
