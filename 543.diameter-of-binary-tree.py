@@ -28,7 +28,8 @@ class Solution:
             
             right = dfs(current.right)
 
-            self.diameter = max(self.diameter, left + right) # Update diameter
+            # Update diameter
+            self.diameter = max(self.diameter, left + right) 
 
             # Return height of parent (current) node = max height of children + 1 
             return max(left, right) + 1  
