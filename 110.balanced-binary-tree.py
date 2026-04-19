@@ -14,6 +14,8 @@
 class Solution:
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
 
+        # method 1 recursive DFS: O(n) time; O(h) space, where h is height, O(log n) best case for balanced tree, O(n) worst case        
+        
         def dfs(current): 
 
             # Base case: an empty node is balanced with height 0
@@ -37,6 +39,9 @@ class Solution:
             return [balanced, max(left[1], right[1]) + 1]
 
         return dfs(root)[0]
+
+        
+        # method 2 iterative DFS: O(n) time; O(n) space
 
 
 # @lc code=end
