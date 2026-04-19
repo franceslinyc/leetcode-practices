@@ -23,6 +23,27 @@ class Solution:
         return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
 
 
+        # # method 1 variation recursive DFS
+
+        # self.max_depth = 0
+
+        # def dfs(current, depth): 
+
+        #         if not current: 
+
+        #                 return 
+
+        #         self.max_depth = max(self.max_depth, depth) 
+
+        #         dfs(current.left, depth + 1)
+
+        #         dfs(current.right, depth + 1)
+
+        # dfs(root, 1)
+
+        # return self.max_depth
+
+
         # # method 2 BFS via queue
 
         # if not root: 
