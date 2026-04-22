@@ -27,7 +27,7 @@ class Solution:
         
         root.right = tmp
 
-        # Now fix subtrees
+        # Now fix subtrees; Use self to call the method, but on this specific object
         self.invertTree(root.left)     # After this call, the left subtree is fully inverted
 
         self.invertTree(root.right)    # After this call, the right subtree is fully inverted
