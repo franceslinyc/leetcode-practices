@@ -112,6 +112,12 @@ class Solution:
 # Preorder (node first) vs Inorder (node middle) vs Postorder (node last)
 # https://www.geeksforgeeks.org/dsa/preorder-vs-inorder-vs-postorder/
 
+
+# We’d use a recursive DFS: at each node, compute the max depth of its left and right subtrees 
+# and return max(left, right) + 1, with the base case returning 0 for null nodes. This runs in 
+# O(n) time since every node is visited once, and O(n) space for the recursion stack, where 
+# O(log n) for best case balanced tree, and O(n) for worst case.
+    
     
 # @lc code=end
 
