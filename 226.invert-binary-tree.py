@@ -117,6 +117,12 @@ class Solution:
 
         # return root
 
-    
+
+# We’d solve this with a recursive DFS: at each node, swap its left and right children, 
+# then recursively invert both subtrees, returning the root at the end. This runs in O(n) 
+# time since we visit every node once, and O(n) space for the recursion stack, where the
+# larget height of a tree is n.
+
+
 # @lc code=end
 
