@@ -63,11 +63,13 @@ class Solution:
 
             level = []
 
+            # Iterate exactly over the current level size
+
             for i in range(len(q)): # Process each node in the current level
 
                 # Process each node
                 
-                node = q.popleft()  # Pops exactly that many nodes
+                node = q.popleft()  # Process node level-by-level, VS LC 200
 
                 level.append(node.val) 
 
