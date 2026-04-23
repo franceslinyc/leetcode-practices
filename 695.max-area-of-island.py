@@ -10,49 +10,61 @@ class Solution:
 
         # # method 1 dfs
 
-        # #direction = [[1,0], [-1,0], [0,1], [0,-1]]
-        # rows, cols = len(grid), len(grid[0])
-        # area = 0
-        # visit = set()
+        # direction = [[1,0], [-1,0], [0,1], [0,-1]]
+
+        # max_area = 0
 
         # def dfs(r, c): 
-        #     if (
-        #         r < 0 or r == rows or 
-        #         c < 0 or c == cols or 
-        #         grid[r][c] == 0 or
-        #         (r, c) in visit
-        #     ):
-        #         return 0 
-        #     visit.add((r, c))
-        #     return (1 + dfs(r + 1, c) +
-        #                 dfs(r - 1, c) +
-        #                 dfs(r, c + 1) +
-        #                 dfs(r, c - 1))
 
-        # for r in range(rows): 
-        #     for c in range(cols): 
-        #         if grid[r][c] == 1 and (r, c) not in visit: # Redundant
-        #             area = max(area, dfs(r, c))
-        # return area
+        #     if not (
+        #         0 <= r < ROWS and
+
+        #         0 <= c < COLS and 
+
+        #         grid[r][c] == 1
+        #     ):    
+        #         return 0
+
+        #     grid[r][c] = 0
+            
+        #     area = 1 
+            
+        #     for dr, dc in direction: 
+                
+        #         area += dfs(r + dr, c + dc)
+                
+        #     return area
+
+        # ROWS, COLS = len(grid), len(grid[0])
+
+        # for r in range(ROWS): 
+
+        #     for c in range(COLS): 
+
+        #         if grid[r][c] == 1:
+
+        #             area = dfs(r, c)
+                    
+        #             max_area = max(max_area, area)
+
+        # return max_area
 
 
         # method 2 bfs
 
-        rows, cols = len(grid), len(grid[0])
-
         direction = [[1,0], [-1,0], [0,1], [0,-1]]
 
-        area = 0
+        max_area = 0
 
         def bfs(r, c): 
 
-            local_area = 1   
+            area = 1   
+
+            grid[r][c] = 0                  # int, not str, so not "0"
 
             q = deque()
 
             q.append((r, c))
-
-            grid[r][c] = 0                  # int, not str, so not "0"
 
             while q: 
 
@@ -63,32 +75,34 @@ class Solution:
                     nr, nc = row + dr, col + dc
 
                     if (
-                        0 <= nr < rows and
+                        0 <= nr < ROWS and
 
-                        0 <= nc < cols and
+                        0 <= nc < COLS and
 
                         grid[nr][nc] == 1   # int, not str, so not "0"
-                        ):
-
-                        q.append((nr, nc))
+                    ):
 
                         grid[nr][nc] = 0
 
-                        local_area += 1
+                        q.append((nr, nc))
 
-            return local_area 
+                        area += 1
 
-        for r in range(rows): 
+            return area
 
-            for c in range(cols): 
+        ROWS, COLS = len(grid), len(grid[0])
+
+        for r in range(ROWS): 
+
+            for c in range(COLS): 
 
                 if grid[r][c] == 1:         # int, not str, so not "0"
                     
-                    local_area = bfs(r, c)
+                    area = bfs(r, c)        # Return "local" area
                     
-                    area = max(area, local_area)
+                    max_area = max(max_area, area)
                     
-        return area
+        return max_area
 
 
 # Refer to notes for LC 200
