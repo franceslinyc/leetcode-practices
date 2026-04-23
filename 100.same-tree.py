@@ -29,7 +29,7 @@ class Solution:
         #     # Recrusively check left and right subtree of both trees
         #     return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
 
-        # # Base case 3: If one node is None and the other is not, they are not the same.
+        # # Base case 3: If one is None while the other is not, or both exist but their values differ, they are not the same.
 
         # else: 
 
@@ -53,12 +53,14 @@ class Solution:
                 node_q = q2.popleft()
 
                 # Case 1: both nodes are None -> structurally same at this position
-                if node_p is None and node_q is None:
+                #if node_p is None and node_q is None:
+                if not node_p and not node_q: 
 
                     continue
 
                 # Case 2: Either one is None -> different 
-                if node_p is None or node_q is None:
+                #if node_p is None or node_q is None:
+                if not node_p or not node_q: 
 
                     return False
 
