@@ -88,7 +88,7 @@ class Solution:
 
         while q:                     # Process all levels 
 
-            distance += 1
+            distance += 1            # Move to next level; Neighbors will have this distance
 
             for i in range(len(q)):  # Process all nodes in the current level; Level means something, e.g., tree depth, distance steps (here), time steps (LC 994)
 
@@ -116,6 +116,9 @@ class Solution:
                         q.append((nr, nc))
 
                         #visit.add((nr, nc))
+
+        # Do not return since rooms is updated in-place 
+
 
 
         # method 3: DFS or Backtracking but is slow because this approach reexplores the same areas again and again
