@@ -55,7 +55,7 @@ class Solution:
 
                 return False
 
-            # Recursively validate left and right subtree with updated range
+            # Recursively check if left and right subtree is valide with updated range
             return dfs(node.left, left, node.val) and dfs(node.right, node.val, right)
 
         return dfs(root, float("-inf"), float("inf"))
