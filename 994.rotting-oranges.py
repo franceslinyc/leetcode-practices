@@ -14,9 +14,13 @@ class Solution:
 
         direction = [[1,0],[-1,0],[0,1],[0,-1]]
 
+        # Multi-source BFS because instead of q = [(one starting point)], 
+        # q = [(all rotten oranges)]
+
+        # Put all rotten oranges in the queue
         q = deque()
 
-        fresh = 0    # Count the #s of fresh oranges             
+        fresh = 0    # Count the #s of fresh oranges remained         
 
         for r in range(ROWS): 
 
@@ -36,7 +40,7 @@ class Solution:
 
             time += 1
 
-            for i in range(len(q)):        # Process the current level 
+            for i in range(len(q)):  # Process all nodes in the current level; Level means something, e.g., tree depth, distance steps (LC 286), time steps (here)
 
                 row, col = q.popleft()
                 
