@@ -37,23 +37,23 @@ class Solution:
 
         # # method 1 variation recursive DFS
 
-        # def dfs(current):
+        # def dfs(node):
 
-        #     if not current: 
+        #     if not node: 
 
         #         return None
 
-        #     tmp = current.left
+        #     tmp = node.left
 
-        #     current.left = current.right
+        #     node.left = node.right
 
-        #     current.right = tmp
+        #     node.right = tmp
 
-        #     dfs(current.left)
+        #     dfs(node.left)
 
-        #     dfs(current.right)
+        #     dfs(node.right)
 
-        #     return current
+        #     return node
 
         # dfs(root)
 

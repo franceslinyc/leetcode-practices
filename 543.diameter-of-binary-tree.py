@@ -18,17 +18,17 @@ class Solution:
 
         self.diameter = 0 
 
-        def dfs(current): 
+        def dfs(node): 
 
             # Base case: empty node has height 0
-            if not current: 
+            if not node: 
 
                 return 0 
 
             # Recursively find height of left and right subtrees
-            left = dfs(current.left)        
+            left = dfs(node.left)        
             
-            right = dfs(current.right)
+            right = dfs(node.right)
 
             # Update diameter
             self.diameter = max(self.diameter, left + right) 

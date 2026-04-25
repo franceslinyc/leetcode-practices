@@ -27,17 +27,17 @@ class Solution:
 
         # self.max_depth = 0
 
-        # def dfs(current, depth): 
+        # def dfs(node, depth): 
 
-        #         if not current: 
+        #         if not node: 
 
         #                 return 
 
         #         self.max_depth = max(self.max_depth, depth) 
 
-        #         dfs(current.left, depth + 1)
+        #         dfs(node.left, depth + 1)
 
-        #         dfs(current.right, depth + 1)
+        #         dfs(node.right, depth + 1)
 
         # dfs(root, 1)
 

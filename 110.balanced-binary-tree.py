@@ -16,17 +16,17 @@ class Solution:
 
         # method 1 recursive DFS: O(n) time; O(h) space, where h is height, O(log n) best case for balanced tree, O(n) worst case        
         
-        def dfs(current): 
+        def dfs(node): 
 
             # Base case: an empty node is balanced with height 0
-            if not current: 
+            if not node: 
 
                 return [True, 0] 
 
             # Recursively check left and right subtrees 
-            left = dfs(current.left)
+            left = dfs(node.left)
 
-            right = dfs(current.right)
+            right = dfs(node.right)
 
             # A tree is balanced if height difference is <= 1
             # left[1] -> height of left subtree
@@ -40,7 +40,32 @@ class Solution:
 
         return dfs(root)[0]
 
+
+        # # method 1 variation recursive DFS via coding inverview pattern
+
+        # def dfs(node): 
+
+        #     if not node: 
+
+        #         return 0
+
+        #     left = dfs(node.left)
+
+        #     right = dfs(node.right)
+
+        #     if left == -1 or right == -1: 
+
+        #         return -1
+
+        #     if abs(left - right) > 1: 
+
+        #         return -1
+
+        #     return max(left, right) + 1   # Return height if balanced. Else, return -1. 
+
+        # return dfs(root) != -1
         
+
         # method 2 iterative DFS: O(n) time; O(n) space
 
 
