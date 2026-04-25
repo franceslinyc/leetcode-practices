@@ -14,6 +14,8 @@
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
 
+        method 1: dfs
+        
         def dfs(node, max_val):
 
             # Base case
@@ -35,6 +37,33 @@ class Solution:
 
         return dfs(root, root.val)
         
+
+        # # method 2: bfs
+        
+        # res = 0
+        
+        # q = deque()
+
+        # q.append((root,-float('inf')))
+
+        # while q:
+
+        #     node, max_val = q.popleft()
+
+        #     if node.val >= max_val:
+
+        #         res += 1
+
+        #     if node.left:
+
+        #         q.append((node.left, max(max_val,node.val)))
+
+        #     if node.right:
+
+        #         q.append((node.right, max(max_val,node.val)))
+
+        # return res
+
 
 # @lc code=end
 
