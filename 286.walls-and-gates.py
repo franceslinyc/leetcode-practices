@@ -65,6 +65,9 @@ class Solution:
 
         #visit = set() # Use it if grid cannot be modified 
 
+        # Multi-source BFS because instead of q = [(one starting point)], 
+        # q = [(all gates)]
+
         # Put all gates in the queue
 
         q = deque()
@@ -83,11 +86,11 @@ class Solution:
 
         distance = 0
 
-        while q:                          # Process all levels 
+        while q:                     # Process all levels 
 
             distance += 1
 
-            for i in range(len(q)):       # Process ALL nodes in the current level
+            for i in range(len(q)):  # Process all nodes in the current level; Level means something, e.g., tree depth, distance steps (here), time steps (LC 994)
 
                 row, col = q.popleft()
 
