@@ -11,8 +11,8 @@ class Solution:
         # method 1 hash map: O(M*N) time, M: length of a string, N: #s of strings in strs; O(M*N) space for output list 
         
         res = defaultdict(list) # Instead of {}, handle edge case where a dictionary key is accessed before it exists. 
-                                # Default dict with a list; 
-                                # Initialize res[tuple(count)] = [] automatically
+                                # Automatically default an empty list for missing keys
+
         for s in strs: 
 
             count = [0] * 26
@@ -25,7 +25,11 @@ class Solution:
             
             # Use this frequency count as a dictionary key, and use it to group all anagrams together.
 
-            res[tuple(count)].append(s) # res[count].append(s) won't work; list cannot be key in dict, but tuple can.
+            #res[tuple(count)].append(s) # res[count].append(s) won't work; list cannot be key in dict, but tuple can.
+
+            key = tuple(count)
+
+            res[key].append(s)
 
         return list(res.values())       # Otherwise, res.values() return a dict, not list
 
