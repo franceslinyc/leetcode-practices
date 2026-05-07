@@ -32,8 +32,7 @@ class Solution:
 
                     return res
 
-# Idea: 
-# 
+
 # We use a hash map to count frequencies, then apply bucket sort (array of lists indexed by 
 # frequency) to group numbers by how often they appear, and scan the buckets from highest 
 # frequency down until k elements are collected. The solution runs in O(n) time since each 

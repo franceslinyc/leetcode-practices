@@ -33,7 +33,7 @@ class Solution:
 
         current_prefix_sum = 0 
 
-        prefix_sum_map = {0:1} 
+        prefix_sum_map = {0:1} #{}
 
         for num in nums: 
 
@@ -56,24 +56,32 @@ class Solution:
 # gives us O(N) time since we traverse the array once, and O(N) space since we store prefix
 # sums in the hashmap. 
 
+# e.g., 
+# [1, -1, 1, 1, 1, 1]   k = 2
 
+# current_prefix_sum = 0
+# prefix_sum_map = {0:1} Without this, index = 3 won't work.
+# res = 0
 
+# index = 0, num = 1
+# current_prefix_sum = 1
+# need = 1 - k = 1 - 2 = -1 Not seen -> Do not update res
+# prefix_sum_map = {0:1, 1:1}
 
-# e.g., [1, -1, 1, 1, 1, 1]   k = 2
+# index = 1, num = -1
+# current_prefix_sum = 0
+# need = 0 - k = 0 - 2 = -2 Not seen -> Do not update res
+# prefix_sum_map = {0:2, 1:1}
 
-# prefix_sum = {0:2, # key:value = prefix_sum: count
-#               1:2, 
-#               2:1,
-#               3:1, 
-#               4:1}
+# index = 2, num = 1
+# current_prefix_sum = 1
+# need = 1 - k = 1 - 2 = -1 Not seen -> Do not update res
+# prefix_sum_map = {0:2, 1:2}
 
-# Start prefix = {0:1}, cum_sum = 0, res = 0
-# Index 0             , cum_sum = 1
-# Index 1             , cum_sum = 0
-# Index 2             , cum_sum = 1
-# Index 3             , cum_sum = 2, diff = 0 in prefix_sum, update res += 2
-# Index 4             , cum_sum = 3, diff = 1 in prefix_sum, update res += 2
-# Index 5             , cum_sum = 4, diff = 2 in prefix_sum, update res += 1
+# index = 3, num = 1
+# current_prefix_sum = 2
+# need = 2 - k = 2 - 2 = 0 Seen 2 times -> res += 2 -> res = 2
+# prefix_sum_map = {0:2, 1:2, 2:1}
 
 
 # @lc code=end

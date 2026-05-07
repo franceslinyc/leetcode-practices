@@ -34,8 +34,6 @@ class Solution:
         return list(res.values())       # Otherwise, res.values() return a dict, not list
 
 
-# Idea:
-# 
 # We use a hash map where the key is a tuple (of the 26-character count) and the value is 
 # a list of strings. For each string, we compute its character frequency and use that tuple 
 # as the key to group anagrams together. The solution is O(MN) time because we process N 
