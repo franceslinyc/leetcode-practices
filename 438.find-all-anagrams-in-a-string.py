@@ -8,13 +8,13 @@
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
 
-        # method 1: brute force
+        # method 1: brute force via Neetcode
 
 
-        # method 2: prefix count + sliding window: O(n + m) time; O(m) space, where n is the length of the string s, and m is the length of the string p
+        # method 2: prefix count + sliding window via Neetcode: O(n + m) time; O(m) space, where n is the length of the string s, and m is the length of the string p
 
 
-        # # method 3: sliding window: O(n + m) time, where n is the length of the string s, and m is the length of the string p; O(1) space
+        # # method 3: sliding window via Neetcode: O(n + m) time, where n is the length of the string s, and m is the length of the string p; O(1) space
 
         # if len(p) > len(s): 
 
