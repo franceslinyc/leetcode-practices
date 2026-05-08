@@ -24,15 +24,17 @@ class Solution:
 
             window_sum += nums[r]
 
+            # Current window works. Try shrinking it to find the smallest valid one.
+            
             while window_sum >= target: 
 
-                res = min(res, r - l + 1)
+                res = min(res, r - l + 1) # Update res BEFORE shrinking
                 
-                # Shrink the window via l: Remove from window and move left pointer 
-                
-                window_sum -= nums[l]            # Careful! Don't forget to decrement 
+                window_sum -= nums[l] 
 
                 l += 1
+
+            #res = min(res, r - l + 1)    # Careful! Do not update res here, since AFTER shrinking,  window_sum may be < target
 
         return 0 if res == float("inf") else res
 
