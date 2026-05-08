@@ -28,9 +28,9 @@ class Solution:
 
                 l += 1
             
-            this_set.add(s[r])        # Then Add
+            this_set.add(s[r])         # Then Add
 
-            res = max(res, r - l + 1) # Update result 
+            res = max(res, r - l + 1)  # Update result 
 
         return res 
 
