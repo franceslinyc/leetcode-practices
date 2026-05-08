@@ -9,8 +9,8 @@ class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
 
         # method 1: sliding window: O(n) time ; O(1) space for 26 characters
-        # TODO Practice additional fixed size questions 
-        # TODO Come back to optimize
+        
+        # Related to LC 438
         
         if len(s1) > len(s2): 
 
