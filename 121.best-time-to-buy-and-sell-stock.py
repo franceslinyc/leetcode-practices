@@ -16,7 +16,7 @@ class Solution:
 
         l, r = 0, 1
 
-        while r < len(prices): 
+        for r in range(len(prices)):  # Or while r < len(prices): 
 
             if prices[r] > prices[l]: # This version ensures no negative profit is calculated 
 
@@ -28,7 +28,7 @@ class Solution:
 
                 l = r
 
-            r += 1 # Always move r 
+            #r += 1 # Always move r 
 
         return max_profit
 
