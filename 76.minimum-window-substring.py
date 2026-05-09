@@ -15,15 +15,15 @@ class Solution:
 
             return ""
         
-        count_t, count_window = {}, {} # Store freq of characters in t and freq of characters in current window of s, respectively
+        t_count, w_count = {}, {} # Store freq of characters in t and freq of characters in current window of s, respectively
 
         for i in range(len(t)): 
 
-            count_t[t[i]] = 1 + count_t.get(t[i], 0)
+            t_count[t[i]] = 1 + t_count.get(t[i], 0)
 
         res, res_length = [-1, -1], float("infinity") 
 
-        have, need = 0, len(count_t)  # Store how many characters that match required freq and **unique** characters we need to match
+        have, need = 0, len(t_count)  # Store how many characters that match required freq and **unique** characters we need to match
                                       # Careful! Not need = len(t)
 
         # Similar to LC 3
@@ -34,9 +34,9 @@ class Solution:
 
         for r in range(len(s)): 
 
-            count_window[s[r]] = count_window.get(s[r], 0) + 1
+            w_count[s[r]] = w_count.get(s[r], 0) + 1
             
-            if s[r] in count_t and count_window[s[r]] == count_t[s[r]]:    # Check validity
+            if s[r] in t_count and w_count[s[r]] == t_count[s[r]]:    # Check validity
 
                 have += 1
 
@@ -50,11 +50,11 @@ class Solution:
 
                     res_length = (r - l + 1)
 
-                # Shrink the window via l: Remove from window, update validity, and move left pointer 
+                # Shrink the window via l to find the smallest valid window: Remove from window, update validity, and move left pointer 
 
-                count_window[s[l]] -= 1            # Careful! Don't forget 
+                w_count[s[l]] -= 1            # Careful! Don't forget 
                 
-                if s[l] in count_t and count_window[s[l]] < count_t[s[l]]:  # Update validity if we break it
+                if s[l] in t_count and w_count[s[l]] < t_count[s[l]]:  # Update validity if we break it
 
                     have -= 1
 
@@ -86,7 +86,7 @@ class Solution:
 # Expand window (r += 1)
 # Try to make it valid
 # Once valid -> enter while have == need
-# Shrink from left (l += 1)
+# Shrink from left (l += 1) to find the smallest valid window
 # Eventually break validity (have -= 1)
 # Exit loop
 # Go back to expanding (r += 1)
