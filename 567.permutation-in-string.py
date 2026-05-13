@@ -41,6 +41,43 @@ class Solution:
         return False
 
 
+        # # method 1-2: sliding window: O(n) time ; O(1) space
+
+        # # Like method 1,  but uses {}, instead of []. 
+
+        # if len(s1) > len(s2): 
+
+        #     return False
+
+        # s1_count, s2_count = {}, {}
+
+        # for c in s1: 
+
+        #     s1_count[c] = s1_count.get(c, 0) + 1
+
+        # l = 0 
+
+        # for r in range(len(s2)): 
+
+        #     s2_count[s2[r]] = s2_count.get(s2[r], 0) + 1
+
+        #     if (r - l + 1) == len(s1): 
+
+        #         if s1_count == s2_count: 
+
+        #             return True
+                
+        #         s2_count[s2[l]] -= 1
+
+        #         if s2_count[s2[l]] == 0: 
+
+        #             s2_count.pop(s2[l])
+
+        #         l += 1
+
+        # return False
+
+
         # method 2: hash map via Neetcode
 
 
