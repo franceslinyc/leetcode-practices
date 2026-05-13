@@ -18,8 +18,6 @@ class Solution:
 
         l = 0 
 
-        # Expand the window via r; l to shrink, r to expand
-
         for r in range(len(nums)): 
 
             window_sum += nums[r]
