@@ -70,15 +70,6 @@ class Solution:
         return res
 
 
-# method 1
-
-# e.g., AABABBA
-# Initialize the set, i.e., this_set = {'A', 'B'}
-# Outer loop loops through each character in the set. 
-# Inner loop expands the window one character at a time, from left to right.
-
-# method 2
-
 # We can use a sliding window with a frequency map to track character counts. The window is 
 # valid as long as the number of replacements needed does not exceed k, i.e., 
 # (window size - frequency of the most common character) <= k. This value represents how many 
