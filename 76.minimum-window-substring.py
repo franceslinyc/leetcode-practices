@@ -17,9 +17,9 @@ class Solution:
         
         t_count, w_count = {}, {} # Store freq of characters in t and freq of characters in current window of s, respectively
 
-        for i in range(len(t)): 
+        for c in t: 
 
-            t_count[t[i]] = 1 + t_count.get(t[i], 0)
+            t_count[c] = t_count.get(c, 0) + 1
 
         res, res_length = [-1, -1], float("infinity") 
 
@@ -29,8 +29,6 @@ class Solution:
         # Similar to LC 3
 
         l = 0 
-
-        # Expand the window via r; l to shrink, r to expand
 
         for r in range(len(s)): 
 
@@ -90,6 +88,31 @@ class Solution:
 # Eventually break validity (have -= 1)
 # Exit loop
 # Go back to expanding (r += 1)
+
+
+# e.g., 
+
+# s = "ADOBECODEBANC"
+# t = "ABC"
+
+# t_count = {'A': 1, 'B': 1, 'C': 1}
+# need = 3   # Must satisfy A, B, and C
+# have = 0
+
+# r hits 
+# 'A':  w_count = {'A':1}          
+# A in t_count AND w_count['A'] == t_count['A'] = 1 -> have=1
+# 'D':  w_count = {'A':1,'D':1}                              
+# D not in t_count                                  -> have=1
+# 'O':  w_count = {'A':1,'D':1, 'O':1}                       
+# O not in t_count                                  -> have=1
+# 'B':  w_count = {'A':1, 'D':1, 'O':1, 'B':1}               
+# B in t_count AND w_count['B'] == t_ount['B'] = 1  -> have=2
+# 'E':  w_count = {'A':1, 'D':1, 'O':1, 'B':1, 'E':1}        
+# E not in t_count                                  -> have=2
+# 'C':  w_count = {'A':1, 'D':1, 'O':1, 'B':1, 'E':1, 'C':1} 
+# C in t_count AND w_count['C'] == t_count['C'] = 1 -> have=3 
+
 
 
 # @lc code=end
