@@ -57,7 +57,7 @@ class Solution:
         # return res
 
 
-        # method 3: sliding window, variation: O(n + m) time, where n is the length of the string s, and m is the length of the string p; O(1) space
+        # method 3-1: sliding window, variation: O(n + m) time, where n is the length of the string s, and m is the length of the string p; O(1) space
 
         # Mimic LC 567
 
@@ -90,6 +90,45 @@ class Solution:
                 res.append(l)
 
         return res
+
+
+        # method 3-2: sliding window, variation: O(n + m) time, where n is the length of the string s, and m is the length of the string p; O(1) space
+
+        # Like method 3-1 above, but uses {}, instead of []. 
+
+        # if len(p) > len(s): 
+
+        #     return []
+
+        # s_count, p_count = {}, {}
+
+        # for c in p: 
+
+        #     p_count[c] = p_count.get(c, 0) + 1
+
+        # res = []
+
+        # l = 0 
+
+        # for r in range(len(s)): 
+
+        #     s_count[s[r]] = s_count.get(s[r], 0) + 1
+
+        #     if (r - l + 1) == len(p): # Careful! Not len(s_count) == len(p_count), which count # of keys.  
+
+        #         if s_count == p_count: 
+
+        #             res.append(l)
+
+        #         s_count[s[l]] -= 1
+
+        #         if s_count[s[l]] == 0: # Careful! Need to clean up the map.
+
+        #             s_count.pop(s[l])
+
+        #         l += 1
+
+        # return res
 
 
         # method 4: sliding window, optimal 
