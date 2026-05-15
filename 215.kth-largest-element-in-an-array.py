@@ -10,17 +10,19 @@ class Solution:
 
         # method 1: min heap: O(N log K) time; O(K) space
 
-        # !Careful not to use heapify(nums) since this builds heap ds with size n (more work)
+        # Similar to LC 703
+
+        # Careful! Don't use heapify(nums) since this builds heap ds with size n (more work)
 
         min_heap = []      
 
-        for num in nums:   # O(n) time
+        for num in nums:   # O(N) time
 
-            heapq.heappush(min_heap, num)  # O(log k) time (log because heap is a binary heap; O(k) space (heap size is at most k+1)
+            heapq.heappush(min_heap, num)  # O(log K) time (log because heap is a binary heap; O(K) space (heap size is at most K+1)
 
             if len(min_heap) > k: 
 
-                heapq.heappop(min_heap)    # O(log k) time; O(k) space
+                heapq.heappop(min_heap)    # O(log K) time; O(K) space
 
         return min_heap[0]   
 
