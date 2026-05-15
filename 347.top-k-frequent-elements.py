@@ -8,6 +8,37 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
 
+        # # method 2: min heap: O(N log K) time; O(N + K) space
+
+        # count = {}
+
+        # for num in nums: 
+
+        #     count[num] = count.get(num, 0) + 1
+
+        # min_heap = [] # Track freq; Store cnt (freq value), num
+
+        # for num in count.keys(): 
+
+        #     heappush(min_heap, [count[num], num]) # Careful! Store [cnt, num] so heap ranks by freq (smallest freq gets poped)
+
+        #     if len(min_heap) > k: 
+
+        #         heappop(min_heap)
+
+        # res = []
+
+        # for _ in range(k): 
+
+        #     cnt, num = heappop(min_heap) 
+
+        #     res.append(num)
+
+        # return res
+
+
+        # method 3: bucket sort: O(N) time; O(N) space
+
         count = {}
 
         for num in nums: 
@@ -18,7 +49,7 @@ class Solution:
 
         for num, cnt in count.items():            # .items return key:value pair
 
-            freq[cnt].append(num)
+            freq[cnt].append(num)                 # cnt (freq value)
 
         res = []
 
@@ -31,7 +62,7 @@ class Solution:
                 if len(res) == k: # Stop immediately when k num are collected
 
                     return res
-
+    
 
 # We use a hash map to count frequencies, then apply bucket sort (array of lists indexed by 
 # frequency) to group numbers by how often they appear, and scan the buckets from highest 
