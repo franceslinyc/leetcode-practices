@@ -28,12 +28,12 @@ class Solution:
 
             right = dfs(node.right)
 
-            # A tree is balanced if height difference is <= 1
+            # Check whether left subtree is balanced
+            # Check whether right subtree is balanced
+            # Check whether current node is balanced, i.e., height difference is <= 1
             # left[1] -> height of left subtree
             # right[1] -> height of right subtree
-            # left[0] -> whether left subtree is balanced
-            # right[0] -> whether right subtree is balanced
-            balanced = (abs(left[1] - right[1]) <= 1 and left[0] and right[0])
+            balanced = (left[0] and right[0] and abs(left[1] - right[1]) <= 1)
 
             # Return height of parent (current) node = max height of children + 1 
             return [balanced, max(left[1], right[1]) + 1]
