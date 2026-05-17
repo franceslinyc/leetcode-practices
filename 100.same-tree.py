@@ -58,16 +58,16 @@ class Solution:
 
                     continue
 
-                # Case 2: Either one is None -> different 
+                # Case 2: Either one is None or value differs -> different 
                 #if node_p is None or node_q is None:
-                if not node_p or not node_q: 
+                if not node_p or not node_q or node_p.val != node_q.val: 
 
                     return False
 
-                # Case 3: Value differ -> different 
-                if node_p.val != node_q.val: 
+                # # Case 3: Value differ -> different 
+                # if node_p.val != node_q.val: 
 
-                    return False
+                #     return False
 
                 # Add children for further comparison
                 # Careful! None is meaningful, do not use if node_p.left to check. ALWAYS append. 
