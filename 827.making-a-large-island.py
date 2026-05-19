@@ -59,6 +59,7 @@ class Solution:
             total_size = 1  # the flipped cell itself            
 
             visited = set() # Prevent double counting of neighbors sharing the same island
+                            # Cannot overwrite grid; need original label to look up neighbor
 
             nei = [[r+1,c], [r-1,c], [r,c+1], [r,c-1]]
             
