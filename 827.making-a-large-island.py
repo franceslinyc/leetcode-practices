@@ -22,9 +22,9 @@ class Solution:
 
                 return 0
 
-            grid[r][c] = label
+            grid[r][c] = label   # Mark visited and encode island label so connect() can look it up later
 
-            size = 1 
+            size = 1             # island size
 
             nei = [[r+1,c], [r-1,c], [r,c+1], [r,c-1]] 
             
@@ -36,10 +36,10 @@ class Solution:
 
         # 1. Precompute island sizes
 
-        label_size_map = defaultdict(int) # Store island label: size; Default to 0 to avoid KeyError on unseen label  
+        label_size_map = defaultdict(int) # Store island label: island size; Default to 0 to avoid KeyError on unseen label  
         
         label = 2  # Use label to label distinct island
-                   # Start at 2 because 0 reserved for water; 1 reserved for unvisited island 
+                   # Start at 2: 0 reserved for water; 1 reserved for unvisited island 
 
         for r in range(N):
 
@@ -51,14 +51,14 @@ class Solution:
 
                     label += 1
 
-        # At this stage, we'd have a complete map, where keys start at 2, so label 0 (water) and 
-        # 1 (unvisited land) safely return 0 via defaultdict
+        # At this stage, we'd have a complete map, where its label (keys) start at 2, and label 0 (water) 
+        # and 1 (unvisited land) safely return 0 via defaultdict. 
 
         def connect(r, c):
 
-            visited = set() # Can't modify grid here; labels needed for remaining connect() calls
+            total_size = 1  # the flipped cell itself            
 
-            res = 1  
+            visited = set() # Prevent double counting of neighbors sharing the same island
 
             nei = [[r+1,c], [r-1,c], [r,c+1], [r,c-1]]
             
@@ -68,9 +68,9 @@ class Solution:
 
                     visited.add(grid[nr][nc])
                     
-                    res += label_size_map[grid[nr][nc]] 
+                    total_size += label_size_map[grid[nr][nc]]  # Sum sizes of all distinct neighboring islands
                     
-            return res
+            return total_size
 
         # 2. Try flipping water cell
 
@@ -86,6 +86,15 @@ class Solution:
 
         return res
 
+
+# e.g., 
+# 2 2 0 3    <- flip the 0 at (0,2)
+# 2 0 0 3       
+# 0 0 0 0
+
+# res = 1    # the flipped cell itself
+# neighbor (0,1) -> label 2 -> label_size_map[2] = 3  -> total_size = 4
+# neighbor (0,3) -> label 3 -> label_size_map[3] = 2  -> total_size = 6
 
 # @lc code=end
 
