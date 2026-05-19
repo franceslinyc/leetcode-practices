@@ -21,6 +21,8 @@ class Solution:
 
         def dfs(crs): # crs: current course
 
+            # ASK: What does "can I finish course crs"?
+
             # base case #1
 
             if crs in visiting:   # Seen on this path, i.e., detect a cycle
@@ -33,13 +35,15 @@ class Solution:
 
                 return True
 
-            # Recursively run dfs on **prerequisite**
+            # ASK: Can I finish the prerequisite?
+
+            # Go deeper
             
             visiting.add(crs)
 
             for pre in prereq_map[crs]: 
 
-                if not dfs(pre): 
+                if not dfs(pre):     # Recursively run dfs on **prerequisite**
 
                     return False
 
@@ -49,7 +53,7 @@ class Solution:
 
             return True
 
-        # Recursively run dfs on **course**
+        # Run dfs on **course**
 
         for c in range(numCourses): 
 
@@ -59,6 +63,20 @@ class Solution:
 
         return True        
 
+
+
+# dfs(crs):
+#     1. Is crs in visiting?       
+#     2. Is prereq_map[crs] == []? 
+#     3. Otherwise, loop through prereqs, call dfs(pre) on each
+#                   └─ dfs(pre):
+#                          1. Is pre in visiting?
+#                          2. Is prereq_map[pre] == []?
+#                          3. otherwise: loop through pre's prereqs...
+#                                        └─ dfs(pre's pre):
+#                                               1. ...
+#                                               2. ...
+#                                               3. ...
 
 # e.g., 
 # prerequisites = [[0,1],[0,2],[1,3],[1,4],[3,4]]
