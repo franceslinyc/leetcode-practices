@@ -17,7 +17,7 @@ class Solution:
 
             prereq_map[crs].append(pre)
 
-        visiting = set()
+        visit = set()
 
         def dfs(crs): # crs: current course
 
@@ -25,7 +25,7 @@ class Solution:
 
             # base case #1
 
-            if crs in visiting:   # Seen on this path, i.e., detect a cycle
+            if crs in visit:   # Seen on this path, i.e., detect a cycle
 
                 return False 
 
@@ -39,7 +39,7 @@ class Solution:
 
             # Go deeper
             
-            visiting.add(crs)
+            visit.add(crs)
 
             for pre in prereq_map[crs]: 
 
@@ -47,7 +47,7 @@ class Solution:
 
                     return False
 
-            visiting.remove(crs)
+            visit.remove(crs)
 
             prereq_map[crs] = []     # Avoid running dfs again 
 
@@ -66,11 +66,11 @@ class Solution:
 
 
 # dfs(crs):
-#     1. Is crs in visiting?       
+#     1. Is crs in visit?       
 #     2. Is prereq_map[crs] == []? 
 #     3. Otherwise, loop through prereqs, call dfs(pre) on each
 #                   └─ dfs(pre):
-#                          1. Is pre in visiting?
+#                          1. Is pre in visit?
 #                          2. Is prereq_map[pre] == []?
 #                          3. otherwise: loop through pre's prereqs...
 #                                        └─ dfs(pre's pre):
