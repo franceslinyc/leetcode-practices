@@ -10,9 +10,13 @@ class Solution:
 
         # method 1 DFS + Cycle Detection: O(V + E) time; O(V + E) space, where V is the # of courses and E is the # of prerequisites.
         
-        prereq_map = {i: [] for i in range(numCourses)}  # Store course: prerequisite
-                                                         # {0: [], 1: [], ...}
+        # Make adj list to store course: prerequisite
+        
+        # prereq_map = {i: [] for i in range(numCourses)}  # Store course: prerequisite
+        #                                                  # {0: [], 1: [], ...}
 
+        prereq_map = defaultdict(list) # faster 
+        
         for crs, pre in prerequisites:
 
             prereq_map[crs].append(pre)
@@ -62,6 +66,7 @@ class Solution:
                 return False
 
         return True        
+
 
 
 # dfs(crs):
