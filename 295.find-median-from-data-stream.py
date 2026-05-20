@@ -17,7 +17,7 @@ class MedianFinder:
 
         if self.right and num > self.right[0]: 
 
-            heappush(self.right, num)
+            heappush(self.right, num) # Not self.right.append(num); this gives list only not heap
 
         else: 
 
