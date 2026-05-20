@@ -7,6 +7,10 @@
 # @lc code=start
 class Solution:
     def numDistinctIslands(self, grid: List[List[int]]) -> int:
+        
+        # method DFS + normalized coordinates: O(MN) time; O(MN) space, where M is # of rows, N is # of columns.
+
+        ROWS, COLS = len(grid), len(grid[0])
 
         def dfs(r, c):
 
@@ -20,9 +24,9 @@ class Solution:
 
             seen.add((r, c))
 
-            # Instead of storing the absolute position, store the position RELATIVE to the island's starting cell (r0, c0).
+            # Instead of storing the absolute position, store the position relative to the island's top-left starting cell (r0, c0).
 
-            current_island.add((r - r0, c - c0))    # Store this cell as normalized coordinate relative to island's top-left start
+            current_island.add((r - r0, c - c0)) 
 
             # Explore all 4 directions
 
@@ -34,13 +38,13 @@ class Solution:
 
             dfs(r, c - 1)
 
-            # nei = [[r+1,c], [r-1,c], [r,c+1], [r,c-1]] 
+            # Functionally identical, but more verbose 
             
+            # nei = [[r+1,c], [r-1,c], [r,c+1], [r,c-1]]  
+
             # for nr, nc in nei:    
 
             #     dfs(nr, nc)     
-
-        ROWS, COLS = len(grid), len(grid[0])
 
         seen = set()
 
@@ -51,13 +55,13 @@ class Solution:
             for c in range(COLS):
 
                 r0, c0 = r, c          # Use the first discovered land cell of this island as the reference point for normalization. 
-                                       # Every other land cell in the island will be stored to this starting point. 
+                                       # Every other land cell in the island will be stored relative to this starting point. 
 
                 current_island = set() # Store normalized coordinates of every land cells in this island
 
-                dfs(r, c)
+                dfs(r, c)              # Get "signature" of the current island 
 
-                if current_island:     # Only add if an island was found; Skip water cells 
+                if current_island:     # Only add if an island was found; skip water cells 
 
                     unique_islands.add(frozenset(current_island))
 
