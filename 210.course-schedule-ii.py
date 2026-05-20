@@ -10,7 +10,9 @@ class Solution:
 
         # method 1 DFS + Cycle Detection: O(V + E) time; O(V + E) space, where V is the # of courses and E is the # of prerequisites.
 
-        prereq_map = {i: [] for i in range(numCourses)}
+        # prereq_map = {i: [] for i in range(numCourses)}
+
+        prereq_map = defaultdict(list) # faster 
 
         for crs, pre in prerequisites:
 
@@ -18,11 +20,11 @@ class Solution:
 
         res = []
 
-        visit, path = set(), set()
+        path, visit = set(), set()
 
         def dfs(crs):
 
-            if crs in path:       # Cycle detected -> False 
+            if crs in path:        # Cycle detected -> False 
 
                 return False
 
@@ -36,7 +38,7 @@ class Solution:
 
             for pre in prereq_map[crs]:
 
-                if dfs(pre) == False:     # Recursively run dfs on **prerequisite**
+                if not dfs(pre):     # if dfs(pre) == False: Recursively run dfs on **prerequisite** 
 
                     return False
 
@@ -50,7 +52,7 @@ class Solution:
 
         for c in range(numCourses):
 
-            if dfs(c) == False:
+            if not dfs(c):           # if dfs(c) == False: 
 
                 return []
 
