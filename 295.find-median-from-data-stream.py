@@ -7,6 +7,8 @@
 # @lc code=start
 class MedianFinder:
 
+    # method heap: O(M log N) time for addNum(), O(M) time for findMedian(); O(N) space
+    
     def __init__(self):
 
         self.left = []  # max_heap
