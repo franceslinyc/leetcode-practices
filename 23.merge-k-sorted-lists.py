@@ -19,6 +19,8 @@ class Solution:
 
             return None
         
+        # Repeatedly merge the lists in pairs; Use a divide and conquer strategy, similar to how merge sort works 
+        
         while len(lists) > 1: # log K time: Halve each round
 
             merge_list = []  
@@ -29,17 +31,17 @@ class Solution:
 
                 if (i + 1) < len(lists): 
 
-                    l2 = lists[i + 1]    # Even list: l2 has a pair
+                    l2 = lists[i + 1]           # Even list: l2 has a pair
                 
                 else: 
 
-                    l2 = None            # Odd list: Last list unpaired, carries forward
+                    l2 = None                   # Odd list: Last list unpaired, carries forward
 
                 merge_list.append(self.merge_two_lists(l1, l2)) # O(N) combined time
 
             lists = merge_list 
 
-        return lists[0]     # Careful! 
+        return lists[0]     # Careful! Not return lists
     
     def merge_two_lists(self, l1, l2): 
 
