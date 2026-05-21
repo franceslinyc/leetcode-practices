@@ -13,9 +13,11 @@
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
         
-        dummy = ListNode()  # [0] -> None; Does not move, i.e., stay at the head
+        dummy = ListNode()  # Anchor the head
+                            # Does not move, i.e., stay at the head; dummy: [0] -> None; 
 
-        node = dummy        # node (or current); Does move 
+        node = dummy        # Walk the list
+                            # Does move; node (or current)
 
         while list1 and list2: 
 
@@ -25,13 +27,15 @@ class Solution:
 
                 list1 = list1.next
 
-            else:           # Include list1.val >= list2.val
+            else:            # Include list1.val >= list2.val
 
                 node.next = list2
 
                 list2 = list2.next
 
-            node = node.next
+            node = node.next # Don't forget!
+
+        # Attach the entire list, list1 or list2 
 
         if list1: 
 
@@ -55,8 +59,6 @@ class Solution:
 #  |
 #  v
 # [0] -> [1] -> [1] -> [2] -> [3] -> [4] -> [4] -> None
-
-
 
 
 # @lc code=end
