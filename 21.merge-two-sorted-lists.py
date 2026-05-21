@@ -13,6 +13,8 @@
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
         
+        # method iteration: O(N + M) time, where M is length of list1, N is length of list2; O(1) space
+        
         dummy = ListNode()  # Anchor the head
                             # Does not move, i.e., stay at the head; dummy: [0] -> None; 
 
@@ -50,6 +52,9 @@ class Solution:
         #  otherwise return [0,1,1,2,3,4,4]
 
 
+# @lc code=end
+
+
 # dummy
 #  |
 #  v
@@ -59,7 +64,3 @@ class Solution:
 #  |
 #  v
 # [0] -> [1] -> [1] -> [2] -> [3] -> [4] -> [4] -> None
-
-
-# @lc code=end
-
