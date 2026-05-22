@@ -38,7 +38,7 @@ class Solution:
 
             for pre in prereq_map[crs]:
 
-                if not dfs(pre):     # if dfs(pre) == False: Recursively run dfs on **prerequisite** 
+                if not dfs(pre):     # Recursively run dfs on course's prerequisite's prerequisite's prerequisite's... till prerequisite is in visit (base case).
 
                     return False
 
@@ -52,7 +52,7 @@ class Solution:
 
         for c in range(numCourses):
 
-            if not dfs(c):           # if dfs(c) == False: 
+            if not dfs(c): 
 
                 return []
 
