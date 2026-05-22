@@ -12,6 +12,8 @@ class Solution:
 
         ROWS, COLS = len(grid), len(grid[0])
 
+        direction = [[1,0], [-1,0], [0,1], [0,-1]]
+
         def dfs(r, c):
 
             if r < 0 or c < 0 or r >= ROWS or c >= COLS:
@@ -30,19 +32,21 @@ class Solution:
 
             # Explore all 4 directions
 
-            dfs(r + 1, c)
+            for dr, dc in direction:                           # method 1: LC 200, 695, 827
 
-            dfs(r - 1, c)
-
-            dfs(r, c + 1)
-
-            dfs(r, c - 1)
-
-            # Functionally identical, but more verbose 
+                dfs(r + dr, c + dc)
             
-            # nei = [[r+1,c], [r-1,c], [r,c+1], [r,c-1]]  
+            # dfs(r + 1, c)                                    # method 3: More explicit
 
-            # for nr, nc in nei:    
+            # dfs(r - 1, c)
+
+            # dfs(r, c + 1)
+
+            # dfs(r, c - 1)
+            
+            # neighbor = [[r+1,c], [r-1,c], [r,c+1], [r,c-1]]  # method 2 
+
+            # for nr, nc in neighbor:    
 
             #     dfs(nr, nc)     
 
@@ -66,6 +70,9 @@ class Solution:
                     unique_islands.add(frozenset(current_island))
 
         return len(unique_islands)        
+
+
+# @lc code=end
 
 
 # current_island
@@ -103,7 +110,3 @@ class Solution:
 # unique_islands.add(frozenset({(0,0), (0,1), (1,0)}))  <- Island B silently ignored, duplicate
 # unique_islands = {frozenset({(0,0), (0,1), (1,0)}) =}
 # len(unique_islands) = 1
-
-
-# @lc code=end
-
