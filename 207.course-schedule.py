@@ -47,7 +47,7 @@ class Solution:
 
             for pre in prereq_map[crs]: 
 
-                if not dfs(pre):     # Recursively run dfs on **prerequisite**
+                if not dfs(pre):     # Recursively run dfs on course's prerequisite's prerequisite's prerequisite's... till prerequisite has no prerequisite (base case).
 
                     return False
 
