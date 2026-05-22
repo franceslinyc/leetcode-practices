@@ -63,12 +63,10 @@ class Solution:
 
         INF = 2147483647
 
-        #visit = set() # Use it if grid cannot be modified 
-
         # Multi-source BFS because instead of q = [(one starting point)], 
         # q = [(all gates)]
 
-        # Put all gates in the queue
+        # 1. Put all gates in the queue
 
         q = deque()
 
@@ -80,11 +78,9 @@ class Solution:
 
                     q.append([r, c])
 
-                    #visit.add((r, c))
+        # 2. Run BFS from all gates
 
-        # Run BFS from all gates
-
-        distance = 0
+        distance = 0                 # Starting distance at a gate 
 
         while q:                     # Process all levels 
 
@@ -94,8 +90,6 @@ class Solution:
 
                 row, col = q.popleft()
 
-                #rooms[row][col] = dist
-
                 for dr, dc in direction: 
 
                     nr, nc = row + dr, col + dc
@@ -104,24 +98,45 @@ class Solution:
                     
                         0 <= nc < COLS and 
 
-                        rooms[nr][nc] == INF     # rooms[nr][nc] == INF already mean unvisited! 
-
-                        #rooms[nr][nc] != -1 and 
-
-                        #(nr, nc) not in visit
+                        rooms[nr][nc] == INF      # rooms[nr][nc] == INF already mean unvisited! 
                     ): 
                         
-                        rooms[nr][nc] = distance
+                        rooms[nr][nc] = distance  # Mark visited cell with distance 
 
                         q.append((nr, nc))
 
-                        #visit.add((nr, nc))
-
         # Do not return since rooms is updated in-place 
 
-
-
         # method 3: DFS or Backtracking but is slow because this approach reexplores the same areas again and again
+
+
+# @lc code=end
+
+
+# e.g., 
+# Input: rooms = [
+#     [2147483647,-1,        0,         2147483647],
+#     [2147483647,2147483647,2147483647,-1        ],
+#     [2147483647,-1,        2147483647,-1        ],
+#     [0,         -1,        2147483647,2147483647]
+# ]
+
+# q = [(0,2), (3,0)]
+
+# while loop 1: # distance = 1
+#     pop (0,2) -> process neighbors
+#     pop (3,0) -> process neighbors
+#     q after for loop = [(0,3), (1,2), (2,0)]
+
+# while loop 2: # distance = 2
+#     pop(0,3) -> process neighbors
+#     pop(1,2) -> process neighbors
+#     pop(2,0) -> process neighbors
+#     q after for loop = [(1,1), (2,2), (1,0)]
+
+# while loop 3: # distance = 3
+
+# while loop 4: # distance = 4
 
 
 # Multi-source BFS, Distance Propagation:
@@ -132,7 +147,4 @@ class Solution:
 #
 # Process the queue layer by layer, where each layer represents nodes at the same distance from 
 # the source node. 
-
-
-# @lc code=end
 
