@@ -21,7 +21,7 @@ class Solution:
 
             prereq_map[crs].append(pre)
 
-        path = set()
+        path = set()                 # Cycle-detection set 
 
         def dfs(crs): # crs: current course
 
@@ -57,9 +57,9 @@ class Solution:
 
             return True
 
-        # Run dfs on **course**
+        # Run dfs on all **course**
 
-        for c in range(numCourses): 
+        for c in range(numCourses): # Run dfs on 0, 1, 2, n-1 in order, with no awareness of the graph structure.
 
             if not dfs(c): 
 
@@ -67,6 +67,8 @@ class Solution:
 
         return True        
 
+
+# @lc code=end
 
 
 # dfs(crs):
@@ -104,7 +106,3 @@ class Solution:
 # 2   [0]
 
 # dfs: 0 -> 1 -> 2 -> 0 (Is a cycle)
-
-
-# @lc code=end
-
