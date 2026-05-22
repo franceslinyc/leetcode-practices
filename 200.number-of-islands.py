@@ -8,11 +8,11 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         
-        # # method 1 dfs
+        # No advantage using BFS 
+        
+        # # method 1 DFS: time O(M*N); space O(M*N)
 
         # direction = [[1,0], [-1,0], [0,1], [0,-1]]
-
-        # island = 0
 
         # def dfs(r, c): 
 
@@ -32,6 +32,8 @@ class Solution:
 
         # ROWS, COLS = len(grid), len(grid[0])
 
+        # island = 0
+
         # for r in range(ROWS): 
 
         #     for c in range(COLS): 
@@ -45,13 +47,9 @@ class Solution:
         # return island
 
 
-        # method 2 bfs
+        # method 2 BFS: time O(M*N); space O(M*N)
 
         direction = [[1,0], [-1,0], [0,1], [0,-1]]
-
-        island = 0
-
-        #visit = set() # Can ignore; Alternative way
 
         # BFS function to explore an entire island
 
@@ -59,7 +57,7 @@ class Solution:
 
             # Mark the starting land cell as visited 
 
-            grid[r][c] = "0"  # visit.add((r, c)) 
+            grid[r][c] = "0"  
 
             q = deque()
 
@@ -77,22 +75,22 @@ class Solution:
 
                     nc = col + dc # nc: new col
 
-                    if (
-                        0 <= nr < ROWS and 
+                    if (0 <= nr < ROWS and 
 
                         0 <= nc < COLS and 
                         
-                        grid[nr][nc] == "1" # and
-                        # (nr, nc) not in visit
+                        grid[nr][nc] == "1" 
                     ):
                         
-                        grid[nr][nc] = "0" # visit.add((nr, nc))
+                        grid[nr][nc] = "0" 
 
                         q.append((nr, nc)) 
 
         # Traverse every cell in the grid
 
         ROWS, COLS = len(grid), len(grid[0])
+    
+        island = 0
 
         for r in range(ROWS): 
 
@@ -100,7 +98,7 @@ class Solution:
 
                 # If we find unvisited land, 
 
-                if grid[r][c] == "1": # if grid[r][c] == "1" and (r, c) not in visit: 
+                if grid[r][c] == "1": 
                     
                     bfs(r, c)   # Explore all connected cells
                     
@@ -109,21 +107,45 @@ class Solution:
         return island
 
 
+# @lc code=end
+
+
+# e.g., 
+# Input: grid = [
+#   ["1","1","0","0","0"], 
+#   ["1","1","0","0","0"], 
+#   ["0","0","1","0","0"], 
+#   ["0","0","0","1","1"]
+# ]
+# Output: 3 
+
+# 1 at (0,0) -> add (0,1), (1,0)
+# 1 at (0,1) -> add (1,1)
+# 1 at (1,0) -> (1,1) already marked, nothing new
+# 1 at (1,1) -> all neighbors 0, nothing new
+# island 1 done
+
+# 1 at (2,2) -> all neighbors 0, nothing new
+# island 2 done
+
+# 1 at (3,3) -> add (3,4)
+# 1 at (3,4) -> all neighbors 0, nothing new
+# island 3 done
+
+# Start at (0,0) 
+# BFS all neighbors
+#     add neighbors' neighbors to q
+# BFS neighbors' neighbors but it's 0 
+
+
 # Ques: 
 # 1. Grid is non-empty?
 # 2. Cells are only "0" or "1"? 
 # 3. We only search/connect left/right/up/down?
 # 4. Can we modify the grid? 
-# 
-# BFS: 
-# 
-# DFS: 
-# 
+
+
 # We treat each land cell as a node in a graph. We iterate through the grid, and whenever we find 
 # an unvisited land cell, we increment the island count and perform a DFS or BFS to mark the 
 # entire connected component as visited. Since each cell is processed once, the time complexity is 
 # O(m x n), and space complexity is O(m x n).
-
-
-# @lc code=end
-

@@ -8,11 +8,11 @@
 class Solution:
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
 
-        # # method 1 dfs
+        # No advantage using BFS 
+
+        # # method 1 DFS: time O(M*N); space O(M*N)
 
         # direction = [[1,0], [-1,0], [0,1], [0,-1]]
-
-        # max_area = 0
 
         # def dfs(r, c): 
 
@@ -37,6 +37,8 @@ class Solution:
 
         # ROWS, COLS = len(grid), len(grid[0])
 
+        # max_area = 0
+
         # for r in range(ROWS): 
 
         #     for c in range(COLS): 
@@ -50,21 +52,19 @@ class Solution:
         # return max_area
 
 
-        # method 2 bfs
+        # method 2 BFS: time O(M*N); space O(M*N)
 
         direction = [[1,0], [-1,0], [0,1], [0,-1]]
 
-        max_area = 0
-
         def bfs(r, c): 
-
-            area = 1   
 
             grid[r][c] = 0                  # int, not str, so not "0"
 
             q = deque()
 
             q.append((r, c))
+
+            area = 1   
 
             while q: 
 
@@ -74,12 +74,11 @@ class Solution:
 
                     nr, nc = row + dr, col + dc
 
-                    if (
-                        0 <= nr < ROWS and
+                    if (0 <= nr < ROWS and
 
                         0 <= nc < COLS and
 
-                        grid[nr][nc] == 1   # int, not str, so not "0"
+                        grid[nr][nc] == 1   # int, not str, so not "1"
                     ):
 
                         grid[nr][nc] = 0
@@ -91,6 +90,8 @@ class Solution:
             return area
 
         ROWS, COLS = len(grid), len(grid[0])
+
+        max_area = 0
 
         for r in range(ROWS): 
 
@@ -105,8 +106,7 @@ class Solution:
         return max_area
 
 
-# Refer to notes for LC 200
-
-
 # @lc code=end
 
+
+# Refer to LC 200's notes

@@ -8,9 +8,11 @@
 class Solution:
     def largestIsland(self, grid: List[List[int]]) -> int:
 
+        # No advantage using BFS 
+
         # method DFS: O(N^2) time; O(N^2) space
 
-        N = len(grid)
+        direction = [[1,0], [-1,0], [0,1], [0,-1]]
 
         def out_of_bound(r, c):
 
@@ -25,14 +27,18 @@ class Solution:
             grid[r][c] = label   # Mark visited and encode island label so connect() can look it up later
 
             size = 1             # island size
-
-            neighbor = [[r+1,c], [r-1,c], [r,c+1], [r,c-1]] 
             
-            for nr, nc in neighbor:
-                
-                size += dfs(nr, nc, label)
+            for dr, dc in direction: 
 
-            # size += dfs(r+1, c, label)
+                size += dfs(r + dr, c + dc, label)            # method 1: LC 200, 695
+
+            # neighbor = [[r+1,c], [r-1,c], [r,c+1], [r,c-1]] # method 2
+            
+            # for nr, nc in neighbor:
+                
+            #     size += dfs(nr, nc, label)
+
+            # size += dfs(r+1, c, label)                      # method 3 NO
 
             # size += dfs(r-1, c, label)
 
@@ -43,6 +49,8 @@ class Solution:
             return size
 
         # 1. Precompute island sizes
+
+        N = len(grid)
 
         label_size_map = defaultdict(int) # Store island label: island size; Default to 0 to avoid KeyError on unseen label  
         
@@ -63,14 +71,20 @@ class Solution:
         # and 1 (unvisited land) safely return 0 via defaultdict. In addition, the grid now stores labels 
         # for land cells, so given a neighbor's label, we can look up its island size. 
 
+        def connect(r, c): 
+
             total_size = 1  # the flipped cell itself            
 
             visited = set() # Prevent double counting of neighbors sharing the same island
                             # Cannot overwrite grid; need original label to look up neighbor
 
-            neighbor = [[r+1,c], [r-1,c], [r,c+1], [r,c-1]]
+            for dr, dc in direction: 
+
+                nr, nc = r + dr, c + dc
             
-            for nr, nc in neighbor:
+            # neighbor = [[r+1,c], [r-1,c], [r,c+1], [r,c-1]]
+            
+            # for nr, nc in neighbor:
 
                 if not out_of_bound(nr, nc) and grid[nr][nc] not in visited:
 
