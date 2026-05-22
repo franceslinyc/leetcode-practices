@@ -26,12 +26,20 @@ class Solution:
 
             size = 1             # island size
 
-            nei = [[r+1,c], [r-1,c], [r,c+1], [r,c-1]] 
+            neighbor = [[r+1,c], [r-1,c], [r,c+1], [r,c-1]] 
             
-            for nr, nc in nei:
+            for nr, nc in neighbor:
                 
                 size += dfs(nr, nc, label)
-            
+
+            # size += dfs(r+1, c, label)
+
+            # size += dfs(r-1, c, label)
+
+            # size += dfs(r, c+1, label)
+
+            # size += dfs(r, c-1, label)
+
             return size
 
         # 1. Precompute island sizes
@@ -52,18 +60,17 @@ class Solution:
                     label += 1
 
         # At this stage, we'd have a complete map, where its label (keys) start at 2, and label 0 (water) 
-        # and 1 (unvisited land) safely return 0 via defaultdict. 
-
-        def connect(r, c):
+        # and 1 (unvisited land) safely return 0 via defaultdict. In addition, the grid now stores labels 
+        # for land cells, so given a neighbor's label, we can look up its island size. 
 
             total_size = 1  # the flipped cell itself            
 
             visited = set() # Prevent double counting of neighbors sharing the same island
                             # Cannot overwrite grid; need original label to look up neighbor
 
-            nei = [[r+1,c], [r-1,c], [r,c+1], [r,c-1]]
+            neighbor = [[r+1,c], [r-1,c], [r,c+1], [r,c-1]]
             
-            for nr, nc in nei:
+            for nr, nc in neighbor:
 
                 if not out_of_bound(nr, nc) and grid[nr][nc] not in visited:
 
@@ -88,14 +95,16 @@ class Solution:
         return res
 
 
+# @lc code=end
+
+
 # e.g., 
 # 2 2 0 3    <- flip the 0 at (0,2)
 # 2 0 0 3       
 # 0 0 0 0
 
-# res = 1    # the flipped cell itself
-# neighbor (0,1) -> label 2 -> label_size_map[2] = 3  -> total_size = 4
-# neighbor (0,3) -> label 3 -> label_size_map[3] = 2  -> total_size = 6
-
-# @lc code=end
-
+# total_size = 1   # the flipped cell itself at (0,2)
+# neighbor (1,2)  (r+1,c) -> label 0 -> label_size_map[0] = 0 (water)        -> total_size = 1
+# neighbor (-1,2) (r-1,c) -> out of bounds                                   -> total_size = 1
+# neighbor (0,3)  (r,c+1) -> label 3 -> visited={3}, label_size_map[3] = 2   -> total_size = 3
+# neighbor (0,1)  (r,c-1) -> label 2 -> visited={2,3}, label_size_map[2] = 3 -> total_size = 6
