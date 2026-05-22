@@ -17,7 +17,8 @@ class Solution:
         # Multi-source BFS because instead of q = [(one starting point)], 
         # q = [(all rotten oranges)]
 
-        # Put all rotten oranges in the queue
+        # 1. Put all *originally* rotten oranges in the queue
+
         q = deque()
 
         fresh = 0    # Count the #s of fresh oranges remained         
@@ -33,6 +34,8 @@ class Solution:
                 if grid[r][c] == 1: 
 
                     fresh += 1
+
+        # 2. Run BFS from all rotten oranges
 
         time = 0 
 
@@ -56,7 +59,7 @@ class Solution:
 
                     ): 
 
-                        grid[nr][nc] = 2   # Mark as rotten 
+                        grid[nr][nc] = -1   # Mark as rotten; Doesn't have to be 2 
 
                         q.append((nr, nc))
 
