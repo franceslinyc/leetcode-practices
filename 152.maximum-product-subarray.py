@@ -43,9 +43,9 @@ class Solution:
             
             current_max = max(current_max * num, current_min * num, num)
 
-                            # current_max * num: Extend the best product so far
-                            # current_min * num: Maybe the worst flips to the best, e.g., negative * negative
-                            # num: Restart fresh here, e.g., current num is larger than any product chain, zero
+                            # current_max * num: Extend prev max
+                            # current_min * num: Maybe the worst can flip to the best, e.g., negative * negative
+                            # num: Restart subarray, e.g., current num is larger than any product chain, zero
 
             current_min = min(tmp, current_min * num, num) # Track the most negative value ready to flip
 
