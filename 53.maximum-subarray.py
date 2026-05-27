@@ -18,7 +18,7 @@ class Solution:
 
         #     if current_sum < 0: 
 
-        #         current_sum = 0 
+        #         current_sum = 0    # restart subarray
 
         #     current_sum += num
             
