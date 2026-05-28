@@ -42,7 +42,7 @@ class Solution:
         return max_sum
 
 
-        # # method 7 DP O(N) time; O(N) space
+        # # method 7 dp O(N) time; O(N) space
 
         # if len(nums) == 0: 
 
@@ -63,7 +63,7 @@ class Solution:
         # return max_sum
 
 
-        # # method 8 DP, Space Optimized O(N) time; O(1) space
+        # # method 8 dp (space optimized): O(N) time; O(1) space
 
         # if len(nums) == 0: 
 
