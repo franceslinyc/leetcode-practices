@@ -31,9 +31,9 @@ class Solution:
 
         max_sum = nums[0]
 
-        current_sum = nums[0]   # current_sum = 0 
+        current_sum = 0
 
-        for num in nums[1:]:    # for num in nums: 
+        for num in nums: 
 
             current_sum = max(current_sum + num, num) # Either prev sum value + current num or current num
 
