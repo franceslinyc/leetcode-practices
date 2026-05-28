@@ -43,7 +43,7 @@ class Solution:
             
             current_max = max(current_max * num, current_min * num, num)
 
-                            # current_max * num: Extend prev max
+                            # current_max * num: Extend previous max
                             # current_min * num: Maybe the worst can flip to the best, e.g., negative * negative
                             # num: Restart subarray, e.g., current num is larger than any product chain, zero
 
@@ -61,6 +61,16 @@ class Solution:
 
 
 # e.g., [2,3,-2,4] output 6
+
+# iter 0
+# tmp = 2, current_max = 2, current_min = 2, res = 2
+# iter 1
+# tmp = 6, current_max = 6, current_min = 3, res = 6
+# iter 2
+# tmp = -12, current_max = -2, current_min = -12, res = 6
+# iter 3
+# tmp = -8, current_max = 4, current_min = -48, res = 6
+
 
 # e.g., [-2,0,-1] output 0
 
