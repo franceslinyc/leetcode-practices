@@ -16,11 +16,11 @@ class Solution:
 
         # for num in nums: 
 
-        #     if current_sum < 0: 
+        #     if current_sum < 0:    
 
-        #         current_sum = 0    # restart subarray
+        #         current_sum = 0    # Restart subarray
 
-        #     current_sum += num
+        #     current_sum += num     # Always extend
             
         #     max_sum = max(max_sum, current_sum)
 
