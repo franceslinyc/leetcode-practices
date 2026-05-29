@@ -41,7 +41,7 @@ class Solution:
 
             return n
 
-        dp = [0] * (n + 1)           # dp[i] = number of ways to reach step i
+        dp = [0] * (n + 1)           # dp[i] = number of ways to reach position i
 
         dp[1], dp[2] = 1, 2          # base cases; dp[0] = 0 does not make sense
 
@@ -76,14 +76,19 @@ class Solution:
 # @lc code=end
 
 
-# n = 1 -> F(1) = 1 way               <- base cases
-# n = 2 -> F(2) = 2 way               <- base cases
-# n = 3 -> F(3) = F(2) + F(1) = 3 way
-# n = 4 -> F(4) = F(3) + F(2) = 5 way
-#          F(n) = F(n - 1) + F(n - 2) <- formula 
+# 1. Define f(i) = number of ways to reach position i.
 
-# F(3) = 3 way
-# {1+1+1, 1+2, 2+1} 
+# 1. To reach stair i, it must come from i-1 or i-2.
 
-# F(4) = 5 way
-# {1+1+1+1, 1+1+2, 1+2+1, 2+1+1, 2+2} 
+# 2. Therefore:
+
+#    ways(i) = ways(i-1) + ways(i-2)
+
+# 3. A recursive tree shows overlapping subproblems.
+
+# 4. Use memoization to avoid recomputing.
+
+# 5. Convert memoized recursion into bottom-up DP.
+
+# 6. Observe only the previous two states are needed,
+#    so optimize space to O(1).
