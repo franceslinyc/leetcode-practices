@@ -14,7 +14,8 @@
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
 
-        method 1: dfs
+        # method 1: dfs: O(n) time; O(n) space
+        # preorder traversal, i.e., root -> left -> right
         
         def dfs(node, max_val):
 
@@ -26,19 +27,20 @@ class Solution:
             # Check if current node is good, i.e., a node is good when its value >= max value seen so far 
             res = 1 if node.val >= max_val else 0 
 
-            max_val = max(max_val, node.val)
+            # Update max_val before recursing 
+            max_val = max(max_val, node.val) 
 
-            # Recursively count good nodes in left and right subtree 
-            res += dfs(node.left, max_val)
+            # Recursively count good nodes in left and right subtree and sum the counts 
+            res += dfs(node.left, max_val) 
 
-            res += dfs(node.right, max_val)
+            res += dfs(node.right, max_val) 
 
             return res 
 
-        return dfs(root, root.val)
+        return dfs(root, root.val) 
         
 
-        # # method 2: bfs
+        # # method 2: bfs: O(n) time; O(n) space
         
         # res = 0
         
@@ -68,14 +70,8 @@ class Solution:
 # @lc code=end
 
 
-#     3
-#    / \
-#   1   4
-#      / \
-#     1   5
-
-# 3 -> good (first node)
-# 1 -> not good (less than 3)
-# 4 -> good (>= 3)
-# 1 -> not good (less than 4)
-# 5 -> good (>= 4)
+# 1. What counts as "good"? Node value >= max value seen on path from root to it
+# 2. What do I need from ancestors? The running maximum, i.e., carry max_val down
+# 3. How does it update? max(max_val, node.val)
+# 4. What do I return? A count return 0 at null, accumulate with + 
+# 5. dfs(node, max_val)
