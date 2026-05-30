@@ -14,7 +14,27 @@
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
 
-        # # method 1 bfs
+        # method 1: dfs: O(n) time; O(n) space
+
+        def dfs(node, left, right): 
+
+            # Base case
+            if not node: 
+
+                return True
+
+            # Check if current node is within valid range
+            if not (left < node.val < right): 
+
+                return False
+
+            # Recursively check if left and right subtree is valid with updated range
+            return dfs(node.left, left, node.val) and dfs(node.right, node.val, right)
+
+        return dfs(root, float("-inf"), float("inf"))
+    
+
+        # # method 2 bfs
 
         # if not root: 
 
@@ -41,41 +61,11 @@ class Solution:
         # return True
 
 
-        # method 2 dfs
-
-        def dfs(node, left, right): 
-
-            # Base case
-            if not node: 
-
-                return True
-
-            # Check if current node is within valid range
-            if not (left < node.val < right): 
-
-                return False
-
-            # Recursively check if left and right subtree is valid with updated range
-            return dfs(node.left, left, node.val) and dfs(node.right, node.val, right)
-
-        return dfs(root, float("-inf"), float("inf"))
-
-
-# A tree is valid only if
-# 1. current node is within bound 
-# 2. left subtree is valid
-# 3. right subtree is valid
-
-
-# left must be < node.val --> update right boundary 
-# right must be > node.val --> update left boundary 
-# 
-#                    5        -Inf < 5 < Inf
-#                   / \
-# -Inf < 3 < 5     3   7      5 < 7 < Inf
-#                     / \
-# 5 < 4 < 7 Fails    4   8    7 < 8 < Inf 
-
-        
 # @lc code=end
 
+
+# 1. What counts as "valid"? Node value must be strictly inside a range (min, max)
+# 2. What do I need from ancestors? Both a floor and a ceiling, i.e., carry left, right down
+# 3. How does it update? Asymmetric: Going left tightens ceiling to node.val, going right tightens floor to node.val
+# 4. What do I return? A bool return True at null, combine with and
+# 5. dfs(node, left, right)
