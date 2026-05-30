@@ -72,4 +72,8 @@ class Solution:
 
         return res
 
+
+        # method 4 iterative dfs, optimized: O(k + h) time, O(n) worst case; O(h) space
+
+
 # @lc code=end
