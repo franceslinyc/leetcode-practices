@@ -16,7 +16,7 @@ class Solution:
 
         # method 1: dfs: O(n) time; O(n) space
 
-        def dfs(node, left, right): 
+        def dfs(node, min_val, max_val): 
 
             # Base case
             if not node: 
@@ -24,12 +24,12 @@ class Solution:
                 return True
 
             # Check if current node is within valid range
-            if not (left < node.val < right): 
+            if not (min_val < node.val < max_val): 
 
                 return False
 
             # Recursively check if left and right subtree is valid with updated range
-            return dfs(node.left, left, node.val) and dfs(node.right, node.val, right)
+            return dfs(node.left, min_val, node.val) and dfs(node.right, node.val, max_val)
 
         return dfs(root, float("-inf"), float("inf"))
     
@@ -40,7 +40,7 @@ class Solution:
 
         #     return None
         
-        # q = deque([(root, float("-Inf"), float("Inf"))])
+        # q = deque([(root, float("-Inf"), float("Inf"))]) # Careful! []
 
         # while q: 
 
@@ -52,11 +52,11 @@ class Solution:
             
         #     if node.left: 
 
-        #         q.append((node.left, left, node.val))    # update right boundary
+        #         q.append((node.left, left, node.val)) 
             
         #     if node.right: 
 
-        #         q.append((node.right, node.val, right))  # update left boundary
+        #         q.append((node.right, node.val, right))
         
         # return True
 
@@ -68,4 +68,4 @@ class Solution:
 # 2. What do I need from ancestors? Both a floor and a ceiling, i.e., carry left, right down
 # 3. How does it update? Asymmetric: Going left tightens ceiling to node.val, going right tightens floor to node.val
 # 4. What do I return? A bool return True at null, combine with and
-# 5. dfs(node, left, right)
+# 5. dfs(node, min_val, max_val)
