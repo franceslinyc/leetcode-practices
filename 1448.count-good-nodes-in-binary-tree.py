@@ -15,7 +15,6 @@ class Solution:
     def goodNodes(self, root: TreeNode) -> int:
 
         # method 1: dfs: O(n) time; O(n) space
-        # preorder traversal, i.e., root -> left -> right
         
         def dfs(node, max_val):
 
