@@ -30,7 +30,7 @@ class Solution:
 
             dfs(node.right)
 
-            return res
+            # no return needed
 
         dfs(root)
 
