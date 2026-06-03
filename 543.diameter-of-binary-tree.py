@@ -14,12 +14,14 @@
 class Solution:
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
 
-        # method 1 recursive DFS: O(n) time worst case, O(log n) best case; O(n) space
+        # method 1 recursive DFS: O(n) time worst case, O(log n) best case; O(n) space; post-order traversal
 
-        self.diameter = 0 
+        diameter = 0 
 
         def dfs(node): 
 
+            nonlocal diameter
+            
             # Base case: empty node has height 0
             if not node: 
 
@@ -31,14 +33,14 @@ class Solution:
             right = dfs(node.right)
 
             # Update diameter
-            self.diameter = max(self.diameter, left + right) 
+            diameter = max(diameter, left + right) 
 
-            # Return height of parent (current) node = max height of children + 1 
-            return max(left, right) + 1  
+            # Return height of current node to parent, i.e., 1 (edge to parent) + max height of children
+            return 1 + max(left, right) 
         
         dfs(root)
 
-        return self.diameter
+        return diameter
 
 
         # method 2 DFS with Stack: O(n) time; O(n) space
@@ -46,3 +48,7 @@ class Solution:
 
 # @lc code=end
 
+
+# 1. "What's the best path through me?" -> update global
+
+# 2. "What can I offer my parent?" -> return value
