@@ -70,13 +70,12 @@ class Solution:
         return res
 
 
+# @lc code=end
+
+
 # We can use a sliding window with a frequency map to track character counts. The window is 
 # valid as long as the number of replacements needed does not exceed k, i.e., 
 # (window size - frequency of the most common character) <= k. This value represents how many 
 # characters in the current window must be replaced to make all characters the same. This 
 # runs in O(n) time since both pointers move at most once, and uses O(m) space, where m is
 # size of the character map. 
-
-
-# @lc code=end
-
