@@ -24,11 +24,11 @@ class Solution:
 
         def dfs(crs):
 
-            if crs in path:        # Cycle detected -> False 
+            if crs in path:         # Cycle detected -> False 
 
                 return False
 
-            if crs in visit:       # Already processed -> True
+            if crs in visit:        # Already processed -> True
 
                 return True
 
@@ -66,3 +66,24 @@ class Solution:
 
 # @lc code=end
 
+# LC 145 postorder DFS on tree may help! 
+
+# prerequisites = [[1,0],[2,0],[3,1],[3,2]]
+# prereq_map = 
+# crs pre
+# 1   [0]
+# 2   [0]
+# 3   [1, 2]
+
+# dfs: 3 -> 1 -> 0
+# dfs: 3 -> 2 -> 0 (already cleared)
+
+# dfs(3)          path={3}
+#   dfs(1)        path={3,1}
+#     dfs(0)      path={3,1,0}
+#                 ✓ base → append(0), path={3,1},   visit={0},     res=[0]
+#   ← backtrack(1)→ append(1),        path={3},     visit={0,1},   res=[0,1]
+#   dfs(2)        path={3,2}
+#     dfs(0)      ✓ in visit → skip
+#   ← backtrack(2)→ append(2),        path={3},     visit={0,1,2}, res=[0,1,2]
+# ← backtrack(3)  → append(3),        path={},      visit={0,1,2,3}, res=[0,1,2,3]
