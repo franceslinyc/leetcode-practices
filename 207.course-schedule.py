@@ -21,7 +21,7 @@ class Solution:
 
             prereq_map[crs].append(pre)
 
-        path = set()                 # Cycle-detection set 
+        path = set()                   # Cycle-detection set 
 
         def dfs(crs): # crs: current course
 
@@ -29,7 +29,7 @@ class Solution:
 
             # base case #1
 
-            if crs in path:           # Cycle detected -> False
+            if crs in path:            # Cycle detected -> False
 
                 return False 
 
@@ -70,19 +70,7 @@ class Solution:
 
 # @lc code=end
 
-
-# dfs(crs):
-#     1. Is crs in path?       
-#     2. Is prereq_map[crs] == []? 
-#     3. Otherwise, loop through prereqs, call dfs(pre) on each
-#                   └─ dfs(pre):
-#                          1. Is pre in path?
-#                          2. Is prereq_map[pre] == []?
-#                          3. otherwise: loop through pre's prereqs...
-#                                        └─ dfs(pre's pre):
-#                                               1. ...
-#                                               2. ...
-#                                               3. ...
+# LC 145 postorder DFS on tree may help! 
 
 # e.g., 
 # prerequisites = [[0,1],[0,2],[1,3],[1,4],[3,4]]
@@ -97,6 +85,17 @@ class Solution:
 # dfs: 0 -> 1 -> 3 -> 4
 # dfs: 0 -> 2
 
+# dfs(0)
+#   dfs(1)
+#     dfs(3)
+#       dfs(4) ✓ base
+#     ← backtrack(3)
+#     dfs(4) ✓ base
+#   ← backtrack(1)
+#   dfs(2) ✓ base
+# ← backtrack(0)
+
+
 # e.g., 
 # prerequisites = [[0,1],[1,2],[2,0]]
 # prereq_map = 
@@ -105,4 +104,17 @@ class Solution:
 # 1   [2]
 # 2   [0]
 
-# dfs: 0 -> 1 -> 2 -> 0 (Is a cycle)
+
+# dfs(crs):
+#     1. Is crs in path?       
+#     2. Is prereq_map[crs] == []? 
+#     3. Otherwise, loop through prereqs, call dfs(pre) on each
+#                   └─ dfs(pre):
+#                          1. Is pre in path?
+#                          2. Is prereq_map[pre] == []?
+#                          3. otherwise: loop through pre's prereqs...
+#                                        └─ dfs(pre's pre):
+#                                               1. ...
+#                                               2. ...
+#                                               3. ...
+
