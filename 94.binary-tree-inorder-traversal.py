@@ -52,23 +52,30 @@ class Solution:
 #      6   7 9
 
 # dfs(1)
-#   dfs(2)                         ← go left from 1
-#     dfs(4)                       ← go left from 2
-#       dfs(None)                  ← 4 has no left, base case return
-#       append 4  ✓                ← visit 4
-#       dfs(None)                  ← 4 has no right, base case return
-#     append 2    ✓                ← left subtree of 2 done, visit 2
-#     dfs(5)                       ← go right from 2
-#       dfs(6)                     ← go left from 5
-#         dfs(None)                ← 6 has no left, base case return
-#         append 6  ✓              ← visit 6
-#         dfs(None)                ← 6 has no right, base case return
-#       append 5    ✓              ← left subtree of 5 done, visit 5
-#       dfs(7)                     ← go right from 5
-#         dfs(None)                ← 7 has no left, base case return
-#         append 7  ✓              ← visit 7
-#         dfs(None)                ← 7 has no right, base case return
-#   append 1        ✓              ← left subtree of 1 done, visit 1
-# 
-# ...
-
+#   dfs(2)
+#     dfs(4)
+#       dfs(None) ✓ base
+#     ← append(4),  res=[4]
+#       dfs(None) ✓ base
+#   ← append(2),    res=[4,2]
+#     dfs(5)
+#       dfs(6)
+#         dfs(None) ✓ base
+#       ← append(6),  res=[4,2,6]
+#         dfs(None) ✓ base
+#     ← append(5),    res=[4,2,6,5]
+#       dfs(7)
+#         dfs(None) ✓ base
+#       ← append(7),  res=[4,2,6,5,7]
+#         dfs(None) ✓ base
+# ← append(1),        res=[4,2,6,5,7,1]
+#   dfs(3)
+#     dfs(None) ✓ base
+#   ← append(3),    res=[4,2,6,5,7,1,3]
+#     dfs(8)
+#       dfs(9)
+#         dfs(None) ✓ base
+#       ← append(9),  res=[4,2,6,5,7,1,3,9]
+#         dfs(None) ✓ base
+#     ← append(8),    res=[4,2,6,5,7,1,3,9,8]
+#       dfs(None) ✓ base
