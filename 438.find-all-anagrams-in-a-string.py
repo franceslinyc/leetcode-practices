@@ -79,7 +79,7 @@ class Solution:
 
             s_count[ord(s[r]) - ord('a')] += 1
 
-            if (r - l + 1) > len(p): # keep window size equal to len(p)
+            if (r - l + 1) > len(p):      # Keep window size equal to len(p)
 
                 s_count[ord(s[l]) - ord('a')] -= 1
 
@@ -136,3 +136,9 @@ class Solution:
 
 # @lc code=end
 
+
+# We can use a sliding window with two frequency arrays of size 26 to track character counts
+# in s and p. The window is valid as long as both frequency arrays are equal, i.e.,
+# s_count == p_count. We expand the window by adding s[r], shrink from the left whenever
+# the window exceeds len(p), then check for a match. This runs in O(n + m) time where n
+# and m are the lengths of s and p, and uses O(1) space since both arrays are fixed size 26.
