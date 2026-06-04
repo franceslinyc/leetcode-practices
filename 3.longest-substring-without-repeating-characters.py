@@ -14,8 +14,6 @@ class Solution:
 
         this_set = set()
 
-        # Similar to LC 76; l to shrink, r to expand
-
         l = 0
         
         # Expand the window via r; Make sure to check condition BEFORE expanding window 
@@ -37,8 +35,9 @@ class Solution:
 
         # method 2: sliding window, optimial: O(n) time, where n is length of string; O(m) space, where m is total # of unique character
 
+        
+# @lc code=end
 
-# method 1
 
 # We can use a sliding window with a hash set to track characters in the current window. We'd 
 # keep expanding the right pointer while characters are unique, and shrink from the left when
@@ -55,7 +54,3 @@ class Solution:
 # a b c   res = 3
 # c b     res = 2
 # b       res = 1
-
-        
-# @lc code=end
-
