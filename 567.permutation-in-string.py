@@ -28,7 +28,7 @@ class Solution:
 
             s2_count[ord(s2[r]) - ord("a")] += 1
 
-            if (r - l + 1) > len(s1): # while works but not necessary since the window size is fixed
+            if (r - l + 1) > len(s1): # While works but don't need to since the window size is fixed
 
                 s2_count[ord(s2[l]) - ord("a")] -= 1
 
@@ -171,20 +171,6 @@ class Solution:
         #         return True
         
         # return False
-
-
-# Idea: 
-
-# s1 = "abc"        -> count: [1,1,1,0,0,...,0]
-# window = "bca"    -> count: [1,1,1,0,0,...,0]
-
-# [1,1,1,0,...,0] == [1,1,1,0,...,0] -> All 26 match 
-
-# method 1: template-friendly
-
-# method 4: more compact, but index can be tricky
-
-# method 3: most optimal, but harder to explain in interview
 
 
 # @lc code=end
