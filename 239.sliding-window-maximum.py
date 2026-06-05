@@ -41,7 +41,9 @@ class Solution:
 
             # When the widown is full, record the max and move l forward
 
-            if (r + 1) >= k:      # Careful! r + 1 = elements seen so far; l only moves here (l does not move regularly)
+            #if (r + 1) >= k:      # Careful! r + 1 = elements seen so far; l only moves here (l does not move regularly)
+
+            if (r - l + 1) >= k: 
 
                 output.append(nums[q[0]]) # Leftmost position is always the max value  
 
