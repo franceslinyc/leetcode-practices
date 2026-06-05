@@ -34,7 +34,7 @@ class Solution:
 
             w_count[s[r]] = w_count.get(s[r], 0) + 1
             
-            if s[r] in t_count and w_count[s[r]] == t_count[s[r]]:    # Check validity
+            if s[r] in t_count and w_count[s[r]] == t_count[s[r]]:    # Check validity, i.e., If s[r] is in t_count and its count in w_count matches t_count, increment have.
 
                 have += 1
 
@@ -50,6 +50,8 @@ class Solution:
 
                 # Shrink the window via l to find the smallest valid window: Remove from window, update validity, and move left pointer 
 
+                # Like LC 209 except we add a if() here
+
                 w_count[s[l]] -= 1            # Careful! Don't forget 
                 
                 if s[l] in t_count and w_count[s[l]] < t_count[s[l]]:  # Update validity if we break it
@@ -58,7 +60,7 @@ class Solution:
 
                 l += 1
 
-        l, r = res     # Retrieve the best window found
+        l, r = res     # Retrieve the best window found once the outer for loop is done running
 
         return s[l: r + 1] if res_length != float("infinity") else ""
     
@@ -66,19 +68,16 @@ class Solution:
         # Careful! string uses :, e.g., string[start: end]
 
 
+# @lc code=end
+
+
 # We can use a sliding window with two hash maps to track required character counts and the 
 # current window, expanding the right pointer and shrinking from the left when all requirements 
 # are met to maintain the minimum valid substring. The time complexity is O(n) since each 
 # character is visited at most twice, and the space complexity is O(m) where m is the number 
 # of unique characters in s and t.
-
-
-# Idea: 
-
-# s is the search space; t is the reference
-# Careful! use r to expand; use l to shrink        
-
-
+ 
+ 
 # Idea: 
 
 # Expand window (r += 1)
@@ -112,8 +111,3 @@ class Solution:
 # E not in t_count                                  -> have=2
 # 'C':  w_count = {'A':1, 'D':1, 'O':1, 'B':1, 'E':1, 'C':1} 
 # C in t_count AND w_count['C'] == t_count['C'] = 1 -> have=3 
-
-
-
-# @lc code=end
-
