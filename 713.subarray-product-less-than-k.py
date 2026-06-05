@@ -32,7 +32,35 @@ class Solution:
         # method 2: binary search; O(n log n) time; O(n) space
 
 
-        # mehtod 3: sliding window; O(n) time; O(1) space 
+        # # mehtod 3: sliding window; O(n) time; O(1) space 
+        
+        # res = 0
+
+        # l = 0
+
+        # cum_prod = 1
+
+        # for r in range(len(nums)):
+
+        #     cum_prod *= nums[r]
+
+        #     while l <= r and cum_prod >= k: # Make sure we never shrink past the right pointer l <= r
+
+        #         cum_prod //= nums[l]        # /= integer //= float
+
+        #         l += 1
+
+        #     # Count all valid subarrays ending at r and add at once 
+        #     res += (r - l + 1) # res += 1
+
+        # return res
+
+
+        # mehtod 3: sliding window (move edge case outside); O(n) time; O(1) space 
+
+        if k <= 1: 
+
+            return 0
         
         res = 0
 
@@ -44,9 +72,9 @@ class Solution:
 
             cum_prod *= nums[r]
 
-            while l <= r and cum_prod >= k: # Make sure we never shrink past the right pointer l <= r
+            while cum_prod >= k: 
 
-                cum_prod //= nums[l]        # /= integer //= float
+                cum_prod //= nums[l]         # /= integer //= float
 
                 l += 1
 
@@ -56,16 +84,20 @@ class Solution:
         return res
 
 
-# After the while loop finishes, nums[l:r+1] is the LONGEST valid window ending at r
-# whose product is < k. Therefore, every subarray ending at r and starting
-# anywhere from l to r is also valid: 
+# @lc code=end
+
+
+# After the while loop finishes, nums[l:r+1] is the LONGEST valid window ending at r whose 
+# product is < k. Therefore, every subarray ending at r and starting anywhere from l to r 
+# is also valid: 
 # [r]
 # [r-1, r]
 # [r-2, r]
 # ...
 # [l, ..., r]
 #
-# Number of valid subarrays ending at r: r - l + 1. Then, we add all of them at once.
+# Number of valid subarrays ending at r: r - l + 1. Then, we add all of them at once before 
+# r advances.
 
 
 # e.g., 
@@ -101,7 +133,3 @@ class Solution:
 #     [5, 2, 6]  -> product 60  < 100 
 # r - l + 1 = 3 - 1 + 1 = 3
 # res += 3  → res=8
-
-
-# @lc code=end
-
