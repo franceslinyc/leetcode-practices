@@ -51,19 +51,18 @@ class Solution:
 
         while l < r: 
 
-            if left_max < right_max: 
+            if left_max <= right_max:               # Left is the bottleneck wall because water only fill out to the shorter wall
 
-                l += 1                              # Move to next index (i) on the left
+                l += 1                              # Move l up
 
-                left_max = max(left_max, height[l]) # Maintain the tallest left boundary up to index l
+                left_max = max(left_max, height[l]) # Maintain the tallest left wall seen so far
 
                 res += 1 * (left_max - height[l]) 
 
-                # general formula: 
-                # water = base * height = base * (water level - current height)
-                # water = 1 * (min(left_max, right_max) - height[i]) 
-                # But since left_max < right_max, min(left_max, right_max) = left_max, 
-                # water here = 1 * (left_max - height[l]). 
+                # water per cell = base * (bottleneck wall - current height)
+                # = 1 * (min(left_max, right_max) - height[l])
+                # since left_max <= right_max, min(left_max, right_max) = left_max
+                # = 1 * (left_max - height[l])
 
             else: 
 
@@ -76,14 +75,8 @@ class Solution:
         return res
 
 
-# method 1
+# @lc code=end
 
-# height =    [0,1,0,2,1,0,1,3,2,1,2,1]
-# left_max =  [0,1,1,2,2,2,2,3,3,3,3,3]
-# right_max = [3,3,3,3,3,3,3,3,2,2,2,1]
-# res       = [0,0,1,0,1,2,1,0,0,1,0,0]
-
-# method 2
 
 # Water at each position depends on the min of the max height to its left and right, 
 # i.e., water = base × height = 1 × (min(left_max, right_max) - height[i]).
@@ -92,5 +85,21 @@ class Solution:
 # is determined only by left_max.
 
 
-# @lc code=end
+# e.g., 
+# height = [0,1,0,2,1,0,1,3,2,1,2,1]
+# Output: 6
 
+#  l                     r
+# [0,1,0,2,1,0,1,3,2,1,2,1]
+# left_max=0, right_max=1, 0 <= 1 → move l (l at 1 now)
+# left_max = max(0, height[1]) = max(0,1) = 1, water = 1 * (1-1) = 0
+
+#    l                   r
+# [0,1,0,2,1,0,1,3,2,1,2,1]
+# left_max=1, right_max=1, 1 <= 1 → move l (l at 2 now)
+# left_max = max(1, height[2]) = max(1,0) = 1, water = 1 * (1-0) = 1 ✓
+
+#      l                 r
+# [0,1,0,2,1,0,1,3,2,1,2,1]
+# left_max=1, right_max=1, 1 <= 1 → move l (l at 3 now)
+# left_max = max(1, height[3]) = max(1,2) = 2, water = 1 * (2-2) = 0
