@@ -18,7 +18,7 @@ class Solution:
 
                 l += 1
 
-            while r > l and not s[r].isalnum(): # Move r backward
+            while l < r and not s[r].isalnum(): # Move r backward
 
                 r -= 1
 
@@ -27,6 +27,7 @@ class Solution:
                 return False
             
             l += 1
+
             r -= 1
 
         return True
@@ -42,7 +43,7 @@ class Solution:
 
     #             l += 1
 
-    #         while r > l and not self.isalnum_v2(s[r]): # Move r backward
+    #         while l < r and not self.isalnum_v2(s[r]): # Move r backward
 
     #             r -= 1
 
@@ -51,6 +52,7 @@ class Solution:
     #             return False
             
     #         l += 1
+
     #         r -= 1
 
     #     return True    
@@ -81,6 +83,7 @@ class Solution:
         #         return False
             
         #     l += 1
+        
         #     r -= 1
 
         # return True
