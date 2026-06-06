@@ -56,7 +56,7 @@ class Solution:
 
                     l += 1
             
-        return res # Careful! Need to be outside the for loop.
+        return res 
 
 
         # method 2: hash map; time O(n^2), space O(n)
