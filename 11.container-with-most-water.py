@@ -18,9 +18,9 @@ class Solution:
 
         while l < r: 
 
-            base = r - l     # ! Careful! Not l - r
+            base = r - l                             # ! Careful! 
 
-            area = base * min(height[l], height[r])
+            area = base * min(height[l], height[r])  # min because water only fill out to the shorter wall
 
             max_area = max(max_area, area)
 
