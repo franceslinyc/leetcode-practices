@@ -18,7 +18,7 @@ class Solution:
 
             if sum_current == target: 
 
-                return [l + 1, r + 1] # Not return [l, r], read the question again!
+                return [l + 1, r + 1]    # Not return [l, r], read the question again!
             
             elif sum_current > target: 
 
@@ -28,7 +28,7 @@ class Solution:
 
                 l += 1
 
-        return [-1, -1] # Okay to not include this
+        return [-1, -1]    # Okay to not include this
 
 
         # method 2: hash map; time O(n) space O(n); Not recommended since the arrary is sorted.
