@@ -14,19 +14,19 @@ class Solution:
 
         while l < r: 
 
-            sum_current = numbers[l] + numbers[r]
+            current_sum = numbers[l] + numbers[r]
 
-            if sum_current == target: 
+            if current_sum == target: 
 
                 return [l + 1, r + 1]    # Not return [l, r], read the question again!
             
-            elif sum_current > target: 
+            elif current_sum < target: 
 
-                r -= 1
+                l += 1
             
             else: 
 
-                l += 1
+                r -= 1
 
         return [-1, -1]    # Okay to not include this
 
