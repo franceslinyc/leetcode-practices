@@ -22,27 +22,36 @@ class Solution:
 
             # ASK “Which side is sorted, and does the target live there?”
 
-            if nums[l] <= nums[m]: # If left portion is sorted, e.g., [4, 5, 6, 7, 0, 1, 2] because [4, 5, 6, 7] is sorted. 
+            # If left portion is sorted, e.g., [4, 5, 6, 7, 0, 1, 2] because [4, 5, 6, 7] is sorted. 
+            # If the target falls in this range, search the left subarrary. Else, go to the right side.
+
+            if nums[l] <= nums[m]: 
 
                 if nums[l] <= target <= nums[m]: 
 
-                    r = m - 1      # Search left
+                    r = m - 1
                 
                 else:              # target > nums[m] or target < nums[l]
 
-                    l = m + 1
+                    l = m + 1      # Else, go right
 
-            else:                  # If right portion sorted, e.g., [5, 6, 7, 0, 1, 2, 4] because [0, 1, 2, 4] is sorted.
+            # If right portion sorted, e.g., [5, 6, 7, 0, 1, 2, 4] because [0, 1, 2, 4] is sorted.
+            # If the target falls in this range, search the right subarrary. Else, go to the left side.
+
+            else:                  
 
                 if nums[m] <= target <= nums[r]:
 
-                    l = m + 1      # Search right
+                    l = m + 1 
 
                 else: 
 
-                    r = m - 1 
+                    r = m - 1      # Else, go left 
 
         return -1
+
+
+# @lc code=end
 
 
 # We can use a modified binary search by checking which half is sorted at each step and 
@@ -78,6 +87,3 @@ class Solution:
 # nums = [6,7,0,1,2,4,5] 
 #         l           r
 # l = 0, r = 6, m = 3 -> nums[3] = 1 -> right [1,2,4,5] is sorted
-
-# @lc code=end
-
