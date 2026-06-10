@@ -8,8 +8,7 @@
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
 
-        # # method 1: brute force: O(m*n) time, m is max # of banana in a pile, and n is length of piles
-        # # O(1) space
+        # # method 1: brute force: O(m*n) time, m is max # of banana in a pile, and n is length of piles; O(1) space
 
         # speed = 1 # k bananas per hour
 
@@ -30,8 +29,8 @@ class Solution:
         
         # return speed
 
-        # method 2 binary search: n * (log m) time, where n is length of piles, and m is max # of bananas in a pile; 
-        # O(1) space
+
+        # method 2 binary search: n * (log m) time, where n is length of piles, and m is max # of bananas in a pile; O(1) space
 
         l, r = 1, max(piles)    # Careful! k is in the range [1, max(piles)] 
 
@@ -47,7 +46,7 @@ class Solution:
 
             for pile in piles:  # O(n) time
 
-                total_time += math.ceil(float(pile) / k)
+                total_time += math.ceil(pile / k)  # /: true division; //: floor division 
 
             # Careful! Condition shouldn't be inside for loop.
             
@@ -76,7 +75,7 @@ class Solution:
 
 # piles = [3,6,7,11], h = 8
 
-# time = \sum ⌈ pile / k ⌉
+# time = \sum ⌈pile / k⌉
 
 # search space 
 # k = [1, 2, 3, ..., 11]
