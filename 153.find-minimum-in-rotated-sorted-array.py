@@ -59,6 +59,9 @@ class Solution:
         return nums[l]
 
 
+# @lc code=end
+
+
 # We can use binary search to compare the middle element with the right boundary to determine 
 # which half contains the minimum, always keeping the candidate in the search space until it 
 # converges to a single index. This runs in O(log n) time since we halve the search space each
@@ -71,6 +74,3 @@ class Solution:
 
 # nums = [3,4,5,1,2] output = 1
 # nums[2] = 5 >= 2 -> Search right
-
-# @lc code=end
-
