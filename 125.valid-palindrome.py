@@ -12,7 +12,7 @@ class Solution:
         
         l, r = 0, len(s) - 1
 
-        while l < r:             # l < r for comparing mirrored characters; l <= r will end up with one unnecessary comparison
+        while l < r:  # l < r for comparing mirrored characters; l <= r will end up with one unnecessary comparison
 
             while l < r and not s[l].isalnum(): # Move l forward untill it points to an alphanumeric character
 
