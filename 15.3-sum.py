@@ -30,7 +30,9 @@ class Solution:
 
             while l < r: 
 
-                if num + nums[l] + nums[r] == 0: 
+                current_sum = num + nums[l] + nums[r]
+                
+                if current_sum == 0: 
 
                     res.append([num, nums[l], nums[r]])
                  
@@ -46,15 +48,19 @@ class Solution:
 
                         l += 1
 
-                    # (Optional) Skip duplicates for the right pointer
+                    # # (Optional) Skip duplicates for the right pointer
 
-                elif num + nums[l] + nums[r] > 0: 
+                    # while l < r and nums[r] == nums[r + 1]: 
 
-                    r -= 1
+                    #     r -= 1                    
+
+                elif current_sum < 0: 
+
+                    l += 1
 
                 else: 
 
-                    l += 1
+                    r -= 1
             
         return res 
 
