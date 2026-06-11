@@ -8,48 +8,48 @@
 class Solution:
     def searchInsert(self, nums: List[int], target: int) -> int:
         
-        # method 2: binary search II (standard binary search): O(log n) time; O(1) space  
+        # # method 2: binary search II (standard binary search): O(log n) time; O(1) space  
 
-        l, r = 0, len(nums) - 1
+        # l, r = 0, len(nums) - 1
 
-        while l <= r: 
+        # while l <= r: 
 
-            m = (l + r) // 2
+        #     m = (l + r) // 2
 
-            if nums[m] == target: 
+        #     if nums[m] == target: 
 
-                return m
+        #         return m
 
-            elif nums[m] < target: # value too small, search right, i.e., [m + 1, r]
+        #     elif nums[m] < target: # value too small, search right, i.e., [m + 1, r]
 
-                l = m + 1
+        #         l = m + 1
             
-            else:                  # value too big, search left, i.e., [l, m - 1]
+        #     else:                  # value too big, search left, i.e., [l, m - 1]
 
-                r = m - 1
+        #         r = m - 1
 
-        return l 
+        # return l 
 
 
-        # # method 3: binary search (lower bound): O(log n) time; O(1) space  
+        # method 3: binary search (lower bound): O(log n) time; O(1) space  
 
-        # l, r = 0, len(nums)  # Search in [l, r); Allow insert at the end of the array
+        l, r = 0, len(nums)  # Search in [l, r); Allow insert at the end of the array
 
-        # while l < r:         # Stop at l == r 
+        while l < r:         # Stop at l == r 
 
-        #     m = (r + l) // 2
+            m = (r + l) // 2
 
-        #     # ASK "Find first index where value >= target" 
+            # ASK "Find first index where value >= target" 
 
-        #     if nums[m] >= target:  # m might be the answer, but maybe there’s an earlier one
+            if nums[m] >= target:  # m might be the answer, but maybe there’s an earlier one
 
-        #         r = m              # Keep m in the search space. Otherwise, r = m - 1 will discard m
+                r = m              # Keep m in the search space. Otherwise, r = m - 1 will discard m
 
-        #     elif nums[m] < target: 
+            elif nums[m] < target: 
 
-        #         l = m + 1          # m is definitely too small
+                l = m + 1          # m is definitely too small
 
-        # return l # Return the first position where nums[m] >= target or the correct insertion point
+        return l # Return the first position where nums[m] >= target or the correct insertion point
 
 
 # @lc code=end
