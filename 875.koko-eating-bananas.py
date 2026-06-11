@@ -70,6 +70,26 @@ class Solution:
 # needed for all piles at each step. The time complexity is O(n log m) where n is length of 
 # piles and m is the maximum pile size, and the space complexity is O(1).
 
+# 1. Define the Search Space
+
+# answer in [1, max(piles)] 
+
+# 2. Reframe as a Yes/No Question
+
+# "Is k fast enough?"
+
+# total_time += math.ceil(pile / k)
+# total_time <= h   →  k is fast enough, try smaller  →  res = k, r = k - 1
+# total_time > h    →  k is too slow, try bigger      →  l = k + 1
+
+# 3. Choose the exit condition 
+
+# Why <=? With a closed interval [l, r], the space is empty when l > r. 
+
+# 4. Return the correct value 
+
+# return res
+
 
 # Idea: 
 
