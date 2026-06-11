@@ -9,10 +9,10 @@ class Solution:
     def findMin(self, nums: List[int]) -> int:
 
         # # method 1 binary search: O(log n) time; O(1) space 
-
-        # res = nums[0]
         
         # l, r = 0, len(nums) - 1
+
+        # res = nums[0]
 
         # while l <= r: 
 
@@ -45,16 +45,15 @@ class Solution:
 
             m = l + (r - l) // 2
 
-            # ASK “Which side contains the rotation point (the minimum)?”
+            # ASK "Which half is m in: right (clean) or left (rotated)?"
             
-            if nums[m] < nums[r]: # Right side is clean, so pivot must be on the left? 
-                                  # Minimum is at m or to the left
+            if nums[m] < nums[r]:  # m is in the right (clean) half
+                                   # minimum is at m or to the left of m
+                r = m              # keep m in the search space
 
-                r = m             # Keep m in the search space
-
-            else:                 # Minimum is to the right
-
-                l = m + 1         # m is definitely too small
+            else:                  # m is in the left (rotated) half
+                                   # minimum is to the right of m
+                l = m + 1          # m is definitely not the minimum
 
         return nums[l]
 
@@ -74,3 +73,4 @@ class Solution:
 
 # nums = [3,4,5,1,2] output = 1
 # nums[2] = 5 >= 2 -> Search right
+
