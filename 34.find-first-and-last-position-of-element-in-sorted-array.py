@@ -50,11 +50,45 @@ class Solution:
 
         return i
 
-
-        # method 1 variation via Coding Interview Patterns: O(log n) time; O(1) space  
-        
+               
         # method 2 binary search II: O(log n) time; O(1) space  
 
         
 # @lc code=end
 
+
+# Input: nums = [5,7,7,8,8,10], target = 8
+# Output: [3,4]
+
+# Input: nums = [5,7,7,8,8,10], target = 6
+# Output: [-1,-1]
+
+# method 1
+
+# 1. Define the Search Space
+
+# answer in [0, len(nums) - 1] 
+
+# 2. Reframe as a Yes/No Question
+
+# Run binary search twice with different behavior on a match:
+
+# #1 pass: find leftmost  → on match, keep searching left  → r = m - 1
+# #2 pass: find rightmost → on match, keep searching right → l = m + 1
+
+# On a match, instead of returning immediately like LC 704, you record the candidate and keep narrowing:
+
+# if nums[m] == target:
+#     i = m              # record best answer so far
+#     if left_most:
+#         r = m - 1      # maybe something equal is further left
+#     else:
+#         l = m + 1      # maybe something equal is further right
+
+# 3. Choose the exit condition 
+
+# Why <=? With a closed interval [l, r], the space is empty when l > r. 
+
+# 4. Return the correct value 
+
+# return i where i holds the last recorded match
