@@ -55,20 +55,40 @@ class Solution:
 # @lc code=end
 
 
+# Input: nums = [1,3,5,6], target = 5
+# Output: 2      F F T T
+
+# Input: nums = [1,3,5,6], target = 2
+# Output: 1      F T T T
+
+# Input: nums = [1,3,5,6], target = 7
+# Output: 4      F F T T
+
+
 # method 3
 
-# Ideas: 
+# 1. Define the Search Space
 
-# nums = [1, 3, 3, 5, 7], target = 3
+# answer in [0, len(nums)] 
 
-# range = [0, 5)
+# 2. Reframe as a Yes/No Question
 
-# m = (0 + 5) // 2 = 2, since nums[2] = 3 == 3, search left, i.e., 
-# range = [0, 2)
+# "Find the first index where some condition flips from False to True"
+# "Find the first value greater or equal to target"
 
-# m = (0 + 2) // 2 = 1, since nums[1] = 3 == 3, search left, i.e., 
-# range = [0, 1)
+# nums[m] >= target
 
-# m = (0 + 1) // 2 = 0, since nums[0] = 1 < 3, search right, i.e., 
-# range = [1, 1) 
-# Exit while loop since l == r and return l = 1        
+#     r = m     # m could be the answer 
+
+# else 
+
+#     l = m + 1 #
+
+# 3. Choose the exit condition 
+
+# Why not <=? Because r is the exclusive boundary half-open interval [l, r), 
+# i.e., the space is empty (nothing else to search aka converge) when l == r. 
+
+# 4. Return the correct value 
+
+# At exit, l == r. They've converged on the first index where nums[i] >= target.
