@@ -76,19 +76,14 @@ class Solution:
 # "Find the first index where some condition flips from False to True"
 # "Find the first value greater or equal to target"
 
-# nums[m] >= target
-
-#     r = m     # m could be the answer 
-
-# else 
-
-#     l = m + 1 #
+# nums[m] >= target → keep m in the search space → r = m
+# nums[m] < target  → m is definitely too small  → l = m + 1
 
 # 3. Choose the exit condition 
 
-# Why not <=? Because r is the exclusive boundary half-open interval [l, r), 
-# i.e., the space is empty (nothing else to search aka converge) when l == r. 
+# Why not <=? With a half-open interval [l, r), the space is empty (nothing else 
+# to search aka converge) when l == r. 
 
 # 4. Return the correct value 
 
-# At exit, l == r. They've converged on the first index where nums[i] >= target.
+# At exit, l == r. They've converged on the first index where nums[i] >= target. 

@@ -40,3 +40,31 @@ class Solution:
 
 # @lc code=end
 
+
+# Input: nums = [-1,0,3,5,9,12], target = 9
+# Output: 4
+
+# Input: nums = [-1,0,3,5,9,12], target = 2
+# Output: -1
+
+
+# method 2
+
+# 1. Define the Search Space
+
+# answer in [0, len(nums) - 1] 
+
+# 2. Reframe as a Yes/No Question
+
+# nums[m] == target  → found it, return m immediately
+# nums[m] < target   → answer is to the right  → l = m + 1
+# nums[m] > target   → answer is to the left   → r = m - 1
+
+# 3. Choose the exit condition 
+
+# Why <=? With a closed interval [l, r], the space is empty when l > r. 
+
+# 4. Return the correct value 
+
+# return m if possible
+# return -1 if not possible
