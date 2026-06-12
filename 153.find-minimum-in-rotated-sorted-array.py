@@ -90,10 +90,11 @@ class Solution:
 
 
 # Idea: 
-
+#             m              
 # nums = [1,2,3,4,5] output = 1
 # nums[2] = 3 < 5 -> Search left
 
+#             m         
 # nums = [3,4,5,1,2] output = 1
 # nums[2] = 5 >= 2 -> Search right
 
