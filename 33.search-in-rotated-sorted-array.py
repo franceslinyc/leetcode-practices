@@ -8,7 +8,7 @@
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
 
-        # method binary search (one pass): O(log n) time; O(1) space 
+        # method 1 binary search (one pass): O(log n) time; O(1) space 
 
         l, r = 0, len(nums) - 1
 
@@ -20,8 +20,9 @@ class Solution:
 
                 return m
 
-            # ASK “Which side is sorted, and does the target live there?”
+            # ASK “Which half is sorted? Does target live there?”
 
+            #                                            m
             # If left portion is sorted, e.g., [4, 5, 6, 7, 0, 1, 2] because [4, 5, 6, 7] is sorted. 
             # If the target falls in this range, search the left subarrary. Else, go to the right side.
 
@@ -34,11 +35,12 @@ class Solution:
                 else:              # target > nums[m] or target < nums[l]
 
                     l = m + 1      # Else, go right
-
+            
+            #                                          m
             # If right portion sorted, e.g., [5, 6, 7, 0, 1, 2, 4] because [0, 1, 2, 4] is sorted.
             # If the target falls in this range, search the right subarrary. Else, go to the left side.
 
-            else:                  
+            else: # nums[l] > nums[m]                  
 
                 if nums[m] <= target <= nums[r]:
 
