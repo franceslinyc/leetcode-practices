@@ -69,3 +69,22 @@ class Solution:
 # 3. How does it update? Asymmetric: Going left tightens ceiling to node.val, going right tightens floor to node.val
 # 4. What do I return? A bool return True at null, combine with and
 # 5. dfs(node, min_val, max_val)
+
+
+#   5
+#  / \
+# 1   7
+#    / \
+#   3   8   ← 3 < 5, violates BST even though 3 > parent 7's... wait, no
+
+# dfs(5, -inf, inf)   ✓
+#   dfs(1, -inf, 5)   ✓
+#   dfs(7, 5, inf)    ✓
+#     dfs(3, 5, inf)  ✗  ← 3 is not within (5, inf)
+#     return False
+
+#   5
+#  / \
+# 1   7
+#    / \
+#   6   8   ← yes
