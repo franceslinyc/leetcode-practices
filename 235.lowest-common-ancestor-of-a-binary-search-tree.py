@@ -40,11 +40,11 @@ class Solution:
 
         while current: 
 
-            if p.val < current.val and q.val < current.val:   # Search the left subtree
+            if current.val > p.val and current.val > q.val:   # Search the left subtree
 
                 current = current.left
 
-            elif p.val > current.val and q.val > current.val: # Search the right subtree
+            elif current.val < p.val and current.val < q.val: # Search the right subtree
 
                 current = current.right
 
