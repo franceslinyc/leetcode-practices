@@ -19,7 +19,7 @@ class Solution:
 
         # if not root or not p or not q: # if not root: 
 
-        #     return None
+        #     return None 
         
         # if p.val < root.val and q.val < root.val: 
 
@@ -32,26 +32,49 @@ class Solution:
         # else: 
 
         #     return root
+
+
+        # method 1 recrusive: time O(h), space O(h), where h: height of tree
+     
+        def dfs(node):
+
+            if not node:
+                
+                return None
+
+            if node.val > p.val and node.val > q.val:
+
+                return dfs(node.left)
+            
+            elif node.val < p.val and node.val < q.val:
+
+                return dfs(node.right)
+            
+            else:
+
+                return node
+        
+        return dfs(root)
         
     
-        # method 2 iterative: time O(h), space O(1), where h: height of tree; space O(1) because no need of backtrack
+        # # method 2 iterative: time O(h), space O(1), where h: height of tree; space O(1) because no need of backtrack
 
-        current = root
+        # current = root
 
-        while current: 
+        # while current: 
 
-            if current.val > p.val and current.val > q.val:   # Search the left subtree
+        #     if current.val > p.val and current.val > q.val:   # current too big -> search the left subtree
 
-                current = current.left
+        #         current = current.left
 
-            elif current.val < p.val and current.val < q.val: # Search the right subtree
+        #     elif current.val < p.val and current.val < q.val: # current too small -> search the right subtree
 
-                current = current.right
+        #         current = current.right
 
-            else: # cover all cases when 
-                  # p & q split across left & right 
-                  # p or q equal to current 
-                return current
+        #     else: # cover all cases when 
+        #           # p & q split across left & right 
+        #           # p or q equal to current 
+        #         return current
 
 
 # @lc code=end
