@@ -65,7 +65,7 @@ class Solution:
 
 
 # 1. What counts as "valid"? Node value must be strictly inside a range (min, max)
-# 2. What do I need from ancestors? Both a floor and a ceiling, i.e., carry left, right down
+# 2. What do I need from ancestors? Both a floor and a ceiling, i.e., carry min_val/max_val or left/right down
 # 3. How does it update? Asymmetric: Going left tightens ceiling to node.val, going right tightens floor to node.val
 # 4. What do I return? A bool return True at null, combine with and
 # 5. dfs(node, min_val, max_val)
