@@ -36,8 +36,9 @@ class Solution:
         # return res[k-1]
     
 
-        # method 3 recursive dfs, optimized: O(k + h) time, O(n) worst case; O(h) space
-
+        # method 3 recursive dfs, optimized: O(h + k) time, O(n) worst case; O(h) space, O(n) worst case; 
+        # O(log n) = h for balanced tree, O(n) for skewed tree, k is # of parameters
+        
         res = root.val 
 
         count = k
