@@ -24,7 +24,7 @@ class Solution:
                 return 0 
 
             # Check if current node is good, i.e., a node is good when its value >= max value seen so far 
-            # Need to return one thing to its parent but track a different thing as the answer? No, don't need nonlocal. 
+            # Don't need nonlocal. Does not need to return one thing to its parent but track a different thing as the answer.
             res = 1 if node.val >= max_val else 0 
 
             # Update max_val before recursing 
