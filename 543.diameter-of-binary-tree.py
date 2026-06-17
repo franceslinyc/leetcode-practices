@@ -49,6 +49,15 @@ class Solution:
 # @lc code=end
 
 
-# 1. "What's the best path through me?" -> update global
+# Every "best path in a tree" problem has this split:
+# 1. Best path through node — use both branches, bend here, update global answer
+# 2. Best single branch — picks one side, return to parent so it can do its calculation
 
-# 2. "What can I offer my parent?" -> return value
+
+# 1. What counts as "good"? The longest path between any two nodes, measured in edges. 
+# Path can bend at any node.
+# 2. What do I need from ancestors? Nothing. 
+# 3. How does it update? diameter = max(diameter, left + right), the best path bending 
+# at this node uses both branches.
+# 4. What do I return? 1 + max(left, right), one branch only to parent. 
+# 5. dfs(node)
