@@ -37,7 +37,7 @@ class Solution:
     
 
         # method 3 recursive dfs, optimized: O(h + k) time, O(n) worst case; O(h) space, O(n) worst case; 
-        # O(log n) = h for balanced tree, O(n) for skewed tree, k is # of parameters
+        # O(log n) = O(h) for balanced tree, O(n) for skewed tree, h is height of the tree, k is # of parameters
         
         res = root.val 
 
