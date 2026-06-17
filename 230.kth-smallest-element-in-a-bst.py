@@ -52,15 +52,15 @@ class Solution:
             
             dfs(node.left)
 
-            if count == 0: # If k-th smallest already found in left subtree
+            # if count == 0: # Early exit; Help with small k
 
-                return     # Exit, no need to keep going 
-                        
-            # vs method 2: Instead of res.append(node.val), discount and store res 
+            #     return     
+            
+            # Process current node 
             
             count -= 1
 
-            if count == 0: # If this is the k-th smallest
+            if count == 0: 
 
                 res = node.val
 
