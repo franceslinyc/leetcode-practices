@@ -34,47 +34,47 @@ class Solution:
         #     return root
 
 
-        # method 1 recrusive: time O(h), space O(h), where h: height of tree
+        # # method 1 recrusive: time O(h), space O(h), where h: height of tree
      
-        def dfs(node):
+        # def dfs(node):
 
-            if not node:
+        #     if not node:
                 
-                return None
+        #         return None
 
-            if node.val > p.val and node.val > q.val:
+        #     if node.val > p.val and node.val > q.val:
 
-                return dfs(node.left)
+        #         return dfs(node.left)
             
-            elif node.val < p.val and node.val < q.val:
+        #     elif node.val < p.val and node.val < q.val:
 
-                return dfs(node.right)
+        #         return dfs(node.right)
             
-            else:
+        #     else:
 
-                return node
+        #         return node
         
-        return dfs(root)
+        # return dfs(root)
         
     
-        # # method 2 iterative: time O(h), space O(1), where h: height of tree; space O(1) because no need of backtrack
+        # method 2 iterative: time O(h), space O(1), where h: height of tree; space O(1) because no need of backtrack
 
-        # current = root
+        current = root
 
-        # while current: 
+        while current: 
 
-        #     if current.val > p.val and current.val > q.val:   # current too big -> search the left subtree
+            if current.val > p.val and current.val > q.val:   # current too big -> search the left subtree
 
-        #         current = current.left
+                current = current.left
 
-        #     elif current.val < p.val and current.val < q.val: # current too small -> search the right subtree
+            elif current.val < p.val and current.val < q.val: # current too small -> search the right subtree
 
-        #         current = current.right
+                current = current.right
 
-        #     else: # cover all cases when 
-        #           # p & q split across left & right 
-        #           # p or q equal to current 
-        #         return current
+            else: # cover all cases when 
+                  # p & q split across left & right 
+                  # p or q equal to current 
+                return current # Return node, not value
 
 
 # @lc code=end
@@ -94,6 +94,6 @@ class Solution:
 
 # BST: 
 # 
-# 1. Left subtree's value < current's 
-# 2. Right subtree's value > current's
+# 1. current's > left subtree's value
+# 2. current's < right subtree's value
 # 3. Both left and right substree are also BSTs.
