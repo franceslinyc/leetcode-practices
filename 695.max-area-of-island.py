@@ -64,6 +64,8 @@ class Solution:
 
             q.append((r, c))
 
+            # Use both deque() + .append OR deque([(r, c)]) 
+
             area = 1   
 
             while q: 
