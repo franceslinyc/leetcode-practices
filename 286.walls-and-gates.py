@@ -13,6 +13,7 @@ class Solution:
         
         # method 1: BFS: time O((M*N)^2); space O(M*N)
 
+
         # # method 2: Multi Source BFS, Distance Propagation: time O(M*N); space O(M*N)
 
         # ROWS, COLS = len(rooms), len(rooms[0])
@@ -21,7 +22,7 @@ class Solution:
 
         # INF = 2147483647
 
-        # # Put all gates in the queue
+        # # 1. Put all gates in the queue
 
         # q = deque()
 
@@ -33,7 +34,7 @@ class Solution:
 
         #             q.append((r, c))
 
-        # # Run BFS from all gates
+        # # 2. Run BFS from all gates
 
         # while q:
 
@@ -76,7 +77,7 @@ class Solution:
 
                 if rooms[r][c] == 0:
 
-                    q.append([r, c])
+                    q.append((r, c))
 
         # 2. Run BFS from all gates
 
@@ -106,6 +107,7 @@ class Solution:
                         q.append((nr, nc))
 
         # Do not return since rooms is updated in-place 
+
 
         # method 3: DFS or Backtracking but is slow because this approach reexplores the same areas again and again
 
