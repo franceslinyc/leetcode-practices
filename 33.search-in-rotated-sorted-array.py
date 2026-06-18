@@ -23,7 +23,7 @@ class Solution:
             # ASK “Which half is sorted? Does target live there?”
 
             #                                            m
-            # If left portion is sorted, e.g., [4, 5, 6, 7, 0, 1, 2] because [4, 5, 6, 7] is sorted. 
+            # If left portion [l:m] is sorted, e.g., [4, 5, 6, 7, 0, 1, 2] because [4, 5, 6, 7] is sorted. 
             # If the target falls in this range, search the left subarrary. Else, go to the right side.
 
             if nums[l] <= nums[m]: 
@@ -37,7 +37,7 @@ class Solution:
                     l = m + 1      # Else, go right
             
             #                                          m
-            # If right portion sorted, e.g., [5, 6, 7, 0, 1, 2, 4] because [0, 1, 2, 4] is sorted.
+            # If right portion [m:r] sorted, e.g., [5, 6, 7, 0, 1, 2, 4] because [0, 1, 2, 4] is sorted.
             # If the target falls in this range, search the right subarrary. Else, go to the left side.
 
             else: # nums[l] > nums[m]                  
@@ -60,6 +60,28 @@ class Solution:
 # narrowing the search space based on whether the target lies within that sorted portion. 
 # This runs in O(log n) time since we halve the search space each iteration, and O(1) space 
 # as we only use pointers.
+
+
+# 1. Define the Search Space
+
+# answer in [0, len(nums) - 1]
+
+# 2. Reframe as a Yes/No Question
+
+# A rotated array has two halves. At any midpoint, one half is always sorted.
+# "Is the left half sorted? Does target live there?"
+
+# nums[l] <= nums[m] → left half sorted  → if nums[l] <= target <= nums[m]: r = m - 1, else l = m + 1
+# nums[l] >  nums[m] → right half sorted → if nums[m] <= target <= nums[r]: l = m + 1, else r = m - 1
+# Return m immediately if nums[m] == target
+
+# 3. Choose the exit condition
+
+# Why <=? With a closed interval [l, r], the space is empty when l > r.
+
+# 4. Return the correct value
+
+# Return -1 if target never found.
 
 
 # Idea: 
