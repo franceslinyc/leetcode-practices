@@ -98,3 +98,9 @@ class Solution:
 # nums = [3,4,5,1,2] output = 1
 # nums[2] = 5 >= 2 -> Search right
 
+# Note also that min is always to the left of nums[r]; right side is always clean → use nums[r] to decide
+# nums = [1,2,3,4,5]
+# nums = [2,3,4,5,1]
+# nums = [3,4,5,1,2]
+# nums = [4,5,1,2,3]
+# nums = [5,1,2,3,4]
