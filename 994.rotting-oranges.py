@@ -41,7 +41,7 @@ class Solution:
 
         while q and fresh > 0: # while q: 
 
-            time += 1
+            time += 1                # One minute passes per BFS layer 
 
             for i in range(len(q)):  # Process all nodes in the current level; Level means something, e.g., tree depth, distance steps (LC 286), time steps (here)
 
@@ -63,13 +63,12 @@ class Solution:
 
                         q.append((nr, nc))
 
-                        fresh -= 1
+                        fresh -= 1          # Decrement once per orange
 
         return time if fresh == 0 else -1 
 
 
-# Refer to LC 286's notes        
-
-
 # @lc code=end
 
+
+# Refer to LC 286's notes        
