@@ -61,7 +61,9 @@ class Solution:
 
             q = deque()
 
-            q.append((r, c))  # Starting cell 
+            q.append((r, c))  
+
+            # Use both deque() + .append OR deque([(r, c)]) 
    
             while q: 
 
