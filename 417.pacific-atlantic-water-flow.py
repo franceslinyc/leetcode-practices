@@ -8,57 +8,149 @@
 class Solution:
     def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
 
-        # method 1: DFS: time O(M*N); space O(M*N)
+        # # method 1: DFS: time O(M*N); space O(M*N)
+
+        # ROWS, COLS = len(heights), len(heights[0])
+
+        # direction = [[1,0],[-1,0],[0,1],[0,-1]] 
+
+        # pacific, atlantic = set(), set()
+
+        # def dfs(r, c, visit, prev_height):
+
+        #     if (r < 0 or c < 0 or r == ROWS or c == COLS or
+
+        #         (r, c) in visit or
+
+        #         heights[r][c] < prev_height # May go to neighor only if heights[nr][nc] >= heights[r][c]
+        #     ):
+
+        #         return
+
+        #     visit.add((r, c))
+
+        #     for dr, dc in direction: 
+
+        #         dfs(r + dr, c + dc, visit, heights[r][c])
+
+        #     # dfs(r + 1, c, visit, heights[r][c])
+
+        #     # dfs(r - 1, c, visit, heights[r][c])
+
+        #     # dfs(r, c + 1, visit, heights[r][c])
+
+        #     # dfs(r, c - 1, visit, heights[r][c])
+
+        
+        # # Run DFS from every border cell
+
+        # for c in range(COLS):
+
+        #     dfs(0, c, pacific, heights[0][c])                # Top; Go through cell in first row left to right
+        #                                                      # Start at own height or 0 
+
+        #     dfs(ROWS - 1, c, atlantic, heights[ROWS - 1][c]) # Bottom: Go through cell in last row left to right
+
+        # for r in range(ROWS):
+
+        #     dfs(r, 0, pacific, heights[r][0])                # Left; Go through cell in the first col top to bottom
+
+        #     dfs(r, COLS - 1, atlantic, heights[r][COLS - 1]) # Right; Go thourgh cell in the last col top to bottom 
+
+
+        # # If the cell exists in both sets, add to res
+        
+        # res = []
+
+        # for r in range(ROWS):
+
+        #     for c in range(COLS):
+
+        #         if (r, c) in pacific and (r, c) in atlantic:
+
+        #             res.append([r, c])
+
+        # return res
+
+
+        # method 2: (Multi-source) BFS: time O(M*N); space O(M*N)
 
         ROWS, COLS = len(heights), len(heights[0])
 
         direction = [[1,0],[-1,0],[0,1],[0,-1]] 
 
-        pacific, atlantic = set(), set()
 
-        def dfs(r, c, visit, prev_height):
+        # 1. Create two boolean grids 
 
-            if (r < 0 or c < 0 or r == ROWS or c == COLS or
+        pac = [[False] * COLS for _ in range(ROWS)]
 
-                (r, c) in visit or
+        atl = [[False] * COLS for _ in range(ROWS)]  
 
-                heights[r][c] < prev_height
-            ):
 
-                return
-
-            visit.add((r, c))
-
-            for dr, dc in direction: 
-
-                dfs(r + dr, c + dc, visit, heights[r][c])
-
-            # dfs(r + 1, c, visit, heights[r][c])
-
-            # dfs(r - 1, c, visit, heights[r][c])
-
-            # dfs(r, c + 1, visit, heights[r][c])
-
-            # dfs(r, c - 1, visit, heights[r][c])
-
+        # 2. Build two source lists
+        # q_pac: all cells on top row + left column 
+        # q_atl: all cells on bottom row + right column 
         
-        # Run DFS from every border cell
+        q_pac = [] 
+
+        q_atl = []
 
         for c in range(COLS):
 
-            dfs(0, c, pacific, heights[0][c])                # Top; Go through cell in first row left to right
-                                                             # Start at own height or 0 
+            q_pac.append((0, c))        # top row
 
-            dfs(ROWS - 1, c, atlantic, heights[ROWS - 1][c]) # Bottom: Go through cell in last row left to right
+            q_atl.append((ROWS - 1, c)) # bottom row
 
         for r in range(ROWS):
 
-            dfs(r, 0, pacific, heights[r][0])                # Left; Go through cell in the first col top to bottom
+            q_pac.append((r, 0))        # left col
 
-            dfs(r, COLS - 1, atlantic, heights[r][COLS - 1]) # Right; Go thourgh cell in the last col top to bottom 
+            q_atl.append((r, COLS - 1)) # right col
 
 
-        # If the cell exists in both sets, add to res
+        # 3. Write BFS
+
+        def bfs(source, ocean):  # source, instead of r, c, because we'd need to call list of cells, instead of one cell
+
+            q = deque(source)
+
+            for r, c in source:               # source marking
+
+                ocean[r][c] = True
+
+            while q:
+
+                row, col = q.popleft()
+
+                #ocean[row][col] = True
+
+                for dr, dc in direction:
+
+                    nr, nc = row + dr, col + dc
+
+                    if (0 <= nr < ROWS and 
+                        
+                        0 <= nc < COLS and
+                        
+                        not ocean[nr][nc] and # Hasn't been visited 
+
+                        heights[nr][nc] >= heights[row][col] 
+                    ):
+                        
+                        ocean[nr][nc] = True  # neighbor marking 
+
+                        q.append((nr, nc))
+
+
+        # 3. Run BFS for pacific source list (q_pac) and atlantic source list (q_atl)
+        # all of those cells go into the queue at once, and BFS expands outward (uphill) from all of them simultaneously, marking everything reachable as True in the pac grid.
+
+        bfs(q_pac, pac)
+
+        bfs(q_atl, atl)
+
+        
+        # 4. Collect res
         
         res = []
 
@@ -66,14 +158,11 @@ class Solution:
 
             for c in range(COLS):
 
-                if (r, c) in pacific and (r, c) in atlantic:
+                if pac[r][c] and atl[r][c]:
 
                     res.append([r, c])
 
         return res
-
-
-        # method 2: (Multi-source) BFS: time O(M*N); space O(M*N)
 
         
 # @lc code=end
