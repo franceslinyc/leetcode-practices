@@ -20,6 +20,10 @@ class Solution:
 
                 return
 
+            # This is where "is (r,c) actually the start of a NEW island" gets decided.
+            # r0, c0 were just set unconditionally in the loop below; they only become 
+            # a real "anchor" if we get PAST this check.
+
             if grid[r][c] == 0 or (r, c) in seen:
 
                 return
@@ -58,10 +62,14 @@ class Solution:
 
             for c in range(COLS):
 
+                # Run for all cells
+
                 r0, c0 = r, c          # Use the first discovered land cell of this island as the reference point for normalization. 
                                        # Every other land cell in the island will be stored relative to this starting point. 
 
                 current_island = set() # Store normalized coordinates of every land cells in this island
+
+                # Where the actual checking happens 
 
                 dfs(r, c)              # Get "signature" of the current island 
 
@@ -73,6 +81,17 @@ class Solution:
 
 
 # @lc code=end
+
+
+# We'd scan every cell with a nested loop, and before calling DFS, set r0, c0 = r, c. This 
+# records the current cell as a candidate anchor, but it only matters if DFS actually starts 
+# a new island here. Inside DFS, once a cell passes the land-and-unvisited check, append 
+# (r - r0, c - c0) instead of the raw coordinates. This is what normalizes the island's shape 
+# relative to wherever it started, so two islands with the same shape but different positions 
+# produce identical coordinate sets. We'd frozenset each island's normalized coordinates and 
+# add it to a set, so duplicates collapse, and the answer is the set's size. Time is O(M·N) 
+# since every cell is visited once via DFS. Space is O(M·N) for the seen, the stored shapes,
+# and recursion stack. 
 
 
 # current_island
