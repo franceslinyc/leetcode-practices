@@ -8,6 +8,8 @@
 class Solution:
     def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
 
+        # BFS preferred
+
         # # method 1: DFS: time O(M*N); space O(M*N)
 
         # ROWS, COLS = len(heights), len(heights[0])
@@ -32,14 +34,6 @@ class Solution:
         #     for dr, dc in direction: 
 
         #         dfs(r + dr, c + dc, visit, heights[r][c])
-
-        #     # dfs(r + 1, c, visit, heights[r][c])
-
-        #     # dfs(r - 1, c, visit, heights[r][c])
-
-        #     # dfs(r, c + 1, visit, heights[r][c])
-
-        #     # dfs(r, c - 1, visit, heights[r][c])
 
         
         # # Run DFS from every border cell
@@ -81,7 +75,7 @@ class Solution:
 
 
         # 1. Create two boolean grids
-        # Use two to track these two conditions independently 
+        # Need two grids to track these two conditions independently 
 
         pac = [[False] * COLS for _ in range(ROWS)]
 
@@ -144,7 +138,7 @@ class Solution:
                         q.append((nr, nc))
 
 
-        # 3. Run BFS for pacific source list (q_pac) and atlantic source list (q_atl)
+        # 4. Run BFS for pacific source list (q_pac) and atlantic source list (q_atl)
         # all of those cells go into the queue at once, and BFS expands outward (uphill) from all of them simultaneously, marking everything reachable as True in the pac grid.
 
         bfs(q_pac, pac)
@@ -152,7 +146,7 @@ class Solution:
         bfs(q_atl, atl)
 
         
-        # 4. Collect res
+        # 5. Collect res
         
         res = []
 
