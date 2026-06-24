@@ -80,7 +80,8 @@ class Solution:
         direction = [[1,0],[-1,0],[0,1],[0,-1]] 
 
 
-        # 1. Create two boolean grids 
+        # 1. Create two boolean grids
+        # Use two to track these two conditions independently 
 
         pac = [[False] * COLS for _ in range(ROWS)]
 
@@ -112,11 +113,12 @@ class Solution:
 
         def bfs(source, ocean):  # source, instead of r, c, because we'd need to call list of cells, instead of one cell
 
-            q = deque(source)
-
             for r, c in source:               # source marking
 
-                ocean[r][c] = True
+                ocean[r][c] = True            # Same role as grid[r][c] = "0" in LC 200 but apply to 
+                                              # every source cell instead of one cell
+
+            q = deque(source)
 
             while q:
 
