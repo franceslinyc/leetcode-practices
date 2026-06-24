@@ -7,12 +7,16 @@
 # @lc code=start
 class Solution:
     def numDistinctIslands(self, grid: List[List[int]]) -> int:
+
+        # No advantage using BFS 
         
         # method DFS + normalized coordinates: O(MN) time; O(MN) space, where M is # of rows, N is # of columns.
 
         ROWS, COLS = len(grid), len(grid[0])
 
         direction = [[1,0], [-1,0], [0,1], [0,-1]]
+
+        seen = set()
 
         def dfs(r, c):
 
@@ -54,15 +58,13 @@ class Solution:
 
             #     dfs(nr, nc)     
 
-        seen = set()
-
         unique_islands = set()
 
         for r in range(ROWS):
 
             for c in range(COLS):
 
-                # Run for all cells
+                # Set for all cells
 
                 r0, c0 = r, c          # Use the first discovered land cell of this island as the reference point for normalization. 
                                        # Every other land cell in the island will be stored relative to this starting point. 
@@ -127,5 +129,5 @@ class Solution:
 
 # unique_islands.add(frozenset({(0,0), (0,1), (1,0)}))  <- Island A added
 # unique_islands.add(frozenset({(0,0), (0,1), (1,0)}))  <- Island B silently ignored, duplicate
-# unique_islands = {frozenset({(0,0), (0,1), (1,0)}) =}
+# unique_islands = {frozenset({(0,0), (0,1), (1,0)})}
 # len(unique_islands) = 1
