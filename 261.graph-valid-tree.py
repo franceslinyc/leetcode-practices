@@ -8,24 +8,25 @@
 class Solution:
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
 
+        # method 1 DFS + Cycle Detection: O(V + E) time; O(V + E) space
+        
         if len(edges) != n - 1: 
 
             return False
         
-
         adj = defaultdict(list)
 
         for u, v in edges: 
 
-            adj[u].append(v)         # Undirected edge; record the connection from BOTH ends
+            adj[u].append(v)          # Undirected edge; Record the connection from BOTH ends
 
             adj[v].append(u)
 
         visit = set()
 
-        def dfs(node, parent):       # parent (or prev)
+        def dfs(node, prev):          # parent (or prev)
 
-            if node in visit:        # Detect a loop
+            if node in visit:         # Detect a loop, return False
 
                 return False
 
@@ -33,11 +34,11 @@ class Solution:
 
             for nei in adj[node]:
                 
-                if nei == parent:      # Skip if neighbor is parent (or prev)
+                if nei == prev:        # Skip if neighbor is parent (or prev)
                     
                     continue
                 
-                if not dfs(nei, node): # Detect a loop
+                if not dfs(nei, node): # Propagate cycle found deeper in recursion; Recursively visit this neighbor's neighbor's neighbor's... till base cases.
                     
                     return False
 
