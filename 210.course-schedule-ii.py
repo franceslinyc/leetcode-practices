@@ -24,21 +24,25 @@ class Solution:
 
         def dfs(crs):
 
+            # base case #1
+
             if crs in path:         # Cycle detected -> False 
 
                 return False
 
+            # base case #2
+
             if crs in visit:        # Already processed -> True
 
                 return True
-
+            
             # Go deeper
 
             path.add(crs)
 
             for pre in prereq_map[crs]:
-
-                if not dfs(pre):     # Recursively run dfs on course's prerequisite's prerequisite's prerequisite's... till prerequisite is in visit (base case).
+                
+                if not dfs(pre):    # Recursively run dfs on course's prerequisite's prerequisite's prerequisite's... till base cases.
 
                     return False
 
