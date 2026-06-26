@@ -8,8 +8,6 @@
 class Solution:
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
 
-        # A tree with n nodes has exactly n-1 edges
-
         if len(edges) != n - 1: 
 
             return False
@@ -25,9 +23,9 @@ class Solution:
 
         visit = set()
 
-        def dfs(node, parent):
+        def dfs(node, parent):       # parent (or prev)
 
-            if node in visit:
+            if node in visit:        # Detect a loop
 
                 return False
 
@@ -35,11 +33,11 @@ class Solution:
 
             for nei in adj[node]:
                 
-                if nei == parent:  # TODO
+                if nei == parent:      # Skip if neighbor is parent (or prev)
                     
                     continue
                 
-                if not dfs(nei, node):
+                if not dfs(nei, node): # Detect a loop
                     
                     return False
 
