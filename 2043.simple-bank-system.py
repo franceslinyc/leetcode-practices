@@ -9,7 +9,7 @@ class Bank:
 
     def __init__(self, balance: List[int]):
 
-        self.balance = balance[:]
+        self.balance = balance[:] # [:] Make a copy of that list
 
         self.n = len(balance)
 
