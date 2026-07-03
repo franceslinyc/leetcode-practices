@@ -47,7 +47,7 @@ class Solution:
 
         freq = [[] for i in range(len(nums) + 1)] # i.e., [[],[],[], ...]
 
-        for num, cnt in count.items():            # .items return key:value pair
+        for num, cnt in count.items():            # .items return key:value pair; other dict methods: .keys() vs. .values()
 
             freq[cnt].append(num)                 # cnt (freq value)
 
@@ -79,6 +79,8 @@ class Solution:
 # freq
 # cnt 0  1  2  3  4  5  6
 # num   [3][2][1]
+# i.e., 
+#    [[], [3], [2], [1], [], [], []]
 
 # [1, 2, 1, 2, 1, 2, 3, 1, 3, 2]
 # count
@@ -87,7 +89,7 @@ class Solution:
 # cnt 0  1  2  3  4      5  6  7  8  9  10
 # num      [3]   [1,2]
 # i.e.,  
-#   [[],[],[3],[],[1, 2],[],[],[],[], ...]
+#    [[],[],[3],[],[1, 2],[],[],[],[], ...]
 
 
 # @lc code=end
