@@ -10,8 +10,7 @@ class Solution:
 
         # method 1 hash map: O(M*N) time, M: length of a string, N: #s of strings in strs; O(M*N) space for output list 
         
-        res = defaultdict(list) # Instead of {}, handle edge case where a dictionary key is accessed before it exists. 
-                                # Automatically default an empty list for missing keys
+        res = defaultdict(list) # Automatically default an empty list for missing keys
 
         for s in strs: 
 
@@ -32,6 +31,9 @@ class Solution:
             res[key].append(s)
 
         return list(res.values())       # Otherwise, res.values() return a dict, not list
+                                        # Use list(), not []
+
+# @lc code=end
 
 
 # We use a hash map where the key is a tuple (of the 26-character count) and the value is 
@@ -46,7 +48,3 @@ class Solution:
 # count [1 1 1 ...... ] for "abc"   
 # count [1 1 1 ...... ] for "bca"   
 # count [1 1 0 1..... ] for "abd"  
-
-
-# @lc code=end
-
