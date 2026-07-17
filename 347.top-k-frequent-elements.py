@@ -53,7 +53,7 @@ class Solution:
 
         res = []
 
-        for i in range(len(freq) - 1, 0, -1):     # Careful that start is inclusive; stop is not 
+        for i in range(len(freq) - 1, 0, -1):     # start is inclusive; stop is not
 
             for num in freq[i]:   # Careful! Loop through each num in freq[i]
 
@@ -63,6 +63,9 @@ class Solution:
 
                     return res
     
+
+# @lc code=end
+
 
 # We use a hash map to count frequencies, then apply bucket sort (array of lists indexed by 
 # frequency) to group numbers by how often they appear, and scan the buckets from highest 
@@ -91,6 +94,4 @@ class Solution:
 # i.e.,  
 #    [[],[],[3],[],[1, 2],[],[],[],[], ...]
 
-
-# @lc code=end
 
