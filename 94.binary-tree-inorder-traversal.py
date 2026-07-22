@@ -26,7 +26,7 @@ class Solution:
             
             dfs(node.left)
 
-            res.append(node.val)
+            res.append(node.val)  # Between left, right DO something
 
             dfs(node.right)
 
@@ -35,6 +35,21 @@ class Solution:
         dfs(root)
 
         return res
+
+
+        # method 1 without dfs(node)
+
+        # if not root:
+            
+        #     return []
+
+        # return (
+        #     self.inorderTraversal(root.left)
+
+        #     + [root.val]
+
+        #     + self.inorderTraversal(root.right)
+        # )
 
 
 # @lc code=end

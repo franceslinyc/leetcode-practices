@@ -24,7 +24,7 @@ class Solution:
 
                 return
 
-            res.append(node.val)
+            res.append(node.val)  # Before left DO something
 
             dfs(node.left)
 
