@@ -27,7 +27,7 @@ class Solution:
         
         root.right = tmp
 
-        # Now fix subtrees; Use self to call the method, but on this specific object
+        # Fix subtrees; Use self to call the method, but on this specific object
         self.invertTree(root.left)     # After this call, the left subtree is fully inverted
 
         self.invertTree(root.right)    # After this call, the right subtree is fully inverted
@@ -118,11 +118,10 @@ class Solution:
         # return root
 
 
+# @lc code=end
+
+
 # We’d solve this with a recursive DFS: at each node, swap its left and right children, 
 # then recursively invert both subtrees, returning the root at the end. This runs in O(n) 
 # time since we visit every node once, and O(n) space for the recursion stack, where the
 # larget height of a tree is n.
-
-
-# @lc code=end
-
