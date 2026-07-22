@@ -25,15 +25,17 @@ class Solution:
 
         # # method 1 variation recursive DFS
 
-        # self.max_depth = 0
+        # max_depth = 0
 
         # def dfs(node, depth): 
+
+        #         nonlocal max_depth
 
         #         if not node: 
 
         #                 return 
 
-        #         self.max_depth = max(self.max_depth, depth) 
+        #         max_depth = max(max_depth, depth) 
 
         #         dfs(node.left, depth + 1)
 
@@ -41,7 +43,7 @@ class Solution:
 
         # dfs(root, 1)
 
-        # return self.max_depth
+        # return max_depth
 
 
         # # method 2 BFS via queue: O(n) time; O(n) space
@@ -109,6 +111,9 @@ class Solution:
 # 3  1
 
 
+# @lc code=end
+
+
 # Preorder (node first) vs Inorder (node middle) vs Postorder (node last)
 # https://www.geeksforgeeks.org/dsa/preorder-vs-inorder-vs-postorder/
 
@@ -119,5 +124,3 @@ class Solution:
 # O(log n) for best case balanced tree, and O(n) for worst case.
     
     
-# @lc code=end
-
