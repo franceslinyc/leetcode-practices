@@ -37,19 +37,15 @@ class Solution:
         return res
 
 
-        # method 1 without dfs(node)
+        # # method 1 without dfs(node)
 
         # if not root:
             
         #     return []
 
-        # return (
-        #     self.inorderTraversal(root.left)
-
-        #     + [root.val]
-
-        #     + self.inorderTraversal(root.right)
-        # )
+        # return self.inorderTraversal(root.left) + [root.val] + self.inorderTraversal(root.right)
+        
+        #        # + list concatenation, not addition
 
 
 # @lc code=end
