@@ -13,30 +13,30 @@
 #         self.right = right
 class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
-
-        if not root and subRoot: 
-
-            return False
         
+        # method 1 dfs: O(m * n) time; O(m + n) space, where m is # of nodes in subRoot, n is # of nodes in root
+
         if not subRoot: 
 
             return True
 
-        def isSameTree(node, subNode):
+        if not root: 
 
-            if not node and not subNode:
+            return False
+
+        def isSameTree(p, q):
+
+            if not p and not q:
 
                 return True
 
-            if not node or not subNode or node.val != subNode.val:
+            if not p or not q or p.val != q.val:
 
                 return False
 
-            # Recursively check left AND right subtrees match
+            # Recursively check if left AND right subtrees are identical 
 
-            return (isSameTree(node.left, subNode.left) and # Don't need self. here!
-
-                    isSameTree(node.right, subNode.right))
+            return isSameTree(p.left, q.left) and isSameTree(p.right, q.right)
 
         if isSameTree(root, subRoot):
 

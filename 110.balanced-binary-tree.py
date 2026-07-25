@@ -71,3 +71,27 @@ class Solution:
 
 # @lc code=end
 
+
+# 1. What is the answer?
+#    Whether every node in the tree is height-balanced.
+
+# 2. Does the child need information from the parent?
+#    No.
+#    No extra parameter.
+
+# 3. How does it update?
+#    balanced = (
+#        left_balanced
+#        and right_balanced
+#        and abs(left_height - right_height) <= 1
+#    )
+#    because both subtrees must be balanced and their heights
+#    can differ by at most 1. 
+
+# 4. Does the parent need information from the child?
+#    Yes.
+#    Return whether the subtree is balanced and its height:
+#    [balanced, max(left_height, right_height) + 1]
+
+# 5. dfs(node)
+#    Returns [balanced, height] of the subtree rooted at node.

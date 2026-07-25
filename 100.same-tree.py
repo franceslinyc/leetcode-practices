@@ -18,7 +18,7 @@ class Solution:
 
         # # Base case 1: If both nodes are None, they are same.
 
-        # if not q and not p: 
+        # if not p and not q: 
 
         #     return True
 
@@ -48,37 +48,30 @@ class Solution:
             # Process all nodes at the current level
             for _ in range(len(q1)):
                 
-                node_p = q1.popleft()
+                node_1 = q1.popleft()
                 
-                node_q = q2.popleft()
+                node_2 = q2.popleft()
 
                 # Case 1: both nodes are None -> structurally same at this position
-                #if node_p is None and node_q is None:
-                if not node_p and not node_q: 
+                if not node_1 and not node_2: 
 
                     continue
 
-                # Case 2: Either one is None or value differs -> different 
-                #if node_p is None or node_q is None:
-                if not node_p or not node_q or node_p.val != node_q.val: 
+                # Case 2, 3: Either one is None or value differs -> different 
+                if not node_1 or not node_2 or node_1.val != node_2.val: 
 
                     return False
 
-                # # Case 3: Value differ -> different 
-                # if node_p.val != node_q.val: 
-
-                #     return False
-
                 # Add children for further comparison
-                # Careful! None is meaningful, do not use if node_p.left to check. ALWAYS append. 
+                # Careful! None is meaningful, do not use if node_1.left to check. ALWAYS append. 
 
-                q1.append(node_p.left)
+                q1.append(node_1.left)
 
-                q1.append(node_p.right)
+                q1.append(node_1.right)
 
-                q2.append(node_q.left)
+                q2.append(node_2.left)
 
-                q2.append(node_q.right)
+                q2.append(node_2.right)
 
         return True
 

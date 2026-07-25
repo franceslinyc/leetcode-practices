@@ -35,8 +35,8 @@ class Solution:
             # Update diameter
             diameter = max(diameter, left + right) 
 
-            # Return height of current node to parent, i.e., 1 (edge to parent) + max height of children
-            return 1 + max(left, right) 
+            # Return height of current node to parent, i.e., max height of children + 1 (edge to parent) 
+            return max(left, right) + 1
         
         dfs(root)
 
@@ -54,10 +54,21 @@ class Solution:
 # 2. Best single branch — picks one side, return to parent so it can do its calculation
 
 
-# 1. What counts as "good"? The longest path between any two nodes, measured in edges. 
-# Path can bend at any node.
-# 2. What do I need from ancestors? Nothing. 
-# 3. How does it update? diameter = max(diameter, left + right), the best path bending 
-# at this node uses both branches.
-# 4. What do I return? 1 + max(left, right), one branch only to parent. 
+# 1. What is the answer?
+#    The longest path (in edges) between any two nodes.
+
+# 2. Does the child need information from the parent?
+#    No.
+#    No extra parameter.
+
+# 3. How does it update?
+#    diameter = max(diameter, left_height + right_height)
+#    because the longest path through this node uses both branches.
+
+# 4. Does the parent need information from the child?
+#    Yes.
+#    Return the subtree height:
+#    max(left_height, right_height) + 1
+
 # 5. dfs(node)
+#    Returns the height of the subtree rooted at node.
