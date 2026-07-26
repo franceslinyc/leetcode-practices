@@ -14,7 +14,7 @@
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
 
-        # method 1: dfs: O(n) time; O(n) space
+        # method 1 dfs: O(n) time; O(n) space
         
         def dfs(node, max_val):
 
@@ -37,7 +37,7 @@ class Solution:
 
             return res 
 
-        return dfs(root, root.val) 
+        return dfs(root, root.val)  # dfs(root, float('-inf')) work too
         
 
         # # method 2: bfs: O(n) time; O(n) space
@@ -46,7 +46,7 @@ class Solution:
         
         # q = deque()
 
-        # q.append((root,-float('inf')))
+        # q.append((root,float('-inf')))
 
         # while q:
 
@@ -70,8 +70,23 @@ class Solution:
 # @lc code=end
 
 
-# 1. What counts as "good"? Node value >= max value seen on path from root to it
-# 2. What do I need from ancestors? The running maximum, i.e., carry max_val down
-# 3. How does it update? max(max_val, node.val)
-# 4. What do I return? A count return 0 at null, accumulate with + 
-# 5. dfs(node, max_val)
+# 1. What is the answer?
+#    The number of good nodes in the subtree rooted at node.
+
+# 2. Does the child need information from the parent?
+#    Yes.
+#    The child needs to know what is the maximum value seen from the root to my parent.
+
+# 3. How does it update?
+#    max_val = max(max_val, node.val)
+#    Each node updates the maximum value seen so far.
+
+# 4. Does the parent need information from the child?
+#    Yes.
+#    res += dfs(node.left, max_val)
+#    res += dfs(node.right, max_val)
+#    The parent wants to know how many good nodes are in my left subtree and how many are 
+#    in my right subtree.
+
+# 5. dfs(root, root.val) or 
+#    dfs(root, float('inf'))
