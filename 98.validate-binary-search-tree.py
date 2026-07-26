@@ -64,11 +64,27 @@ class Solution:
 # @lc code=end
 
 
-# 1. What counts as "valid"? Node value must be strictly inside a range (min, max)
-# 2. What do I need from ancestors? Both a floor and a ceiling, i.e., carry min_val/max_val or left/right down
-# 3. How does it update? Asymmetric: Going left tightens ceiling to node.val, going right tightens floor to node.val
-# 4. What do I return? A bool return True at null, combine with and
-# 5. dfs(node, min_val, max_val)
+# 1. What is the answer?
+#    Whether the subtree rooted at node is a valid BST, i.e., whether
+#    node value inside a valid range value (min, max). 
+
+# 2. Does the child need information from the parent?
+#    Yes. The child needs the valid range value (min_val, max_val)
+#    determined by all its parents.
+
+# 3. How does the current node update that information?
+#    Left child:  (min_val, node.val)
+#    Right child: (node.val, max_val)
+
+# 4. Does the parent need information from the child?
+#    Yes.
+#    A boolean: Is the left subtree valid?
+#               Is the right subtree valid?
+#    Parent combines them with: left_valid and right_valid
+
+# 5. What does dfs(node, min_val, max_val) mean?
+#    Returns whether the subtree rooted at node is a valid BST,
+#    assuming every node must satisfy: min_val < node.val < max_val
 
 
 #   5
