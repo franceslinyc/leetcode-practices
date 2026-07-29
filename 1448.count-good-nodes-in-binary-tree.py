@@ -89,4 +89,4 @@ class Solution:
 #    in my right subtree.
 
 # 5. dfs(root, root.val) or 
-#    dfs(root, float('inf'))
+#    dfs(root, float('-inf'))
