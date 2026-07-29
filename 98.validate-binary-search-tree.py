@@ -14,7 +14,7 @@
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
 
-        # method 1: dfs: O(n) time; O(n) space
+        # method 1 dfs: O(n) time; O(n) space
 
         def dfs(node, min_val, max_val): 
 
