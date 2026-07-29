@@ -45,17 +45,17 @@ class Solution:
 
         def dfs(node): 
 
-            nonlocal res, count
+            nonlocal res, count # Since we use nonlocal variable,return is just used to stop execution early
 
             if not node: 
 
-                return 
+                return     # Same as return None
             
             dfs(node.left)
 
-            # if count == 0: # Early exit; Help with small k
+            if count == 0: # Early exit, help with small k
 
-            #     return     
+                return     
             
             # Process current node 
             
