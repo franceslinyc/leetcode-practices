@@ -44,11 +44,11 @@ class Solution:
 
         #     if node.val > p.val and node.val > q.val:
 
-        #         return dfs(node.left)
+        #         return dfs(node.left)                       # Don't forget to return
             
         #     elif node.val < p.val and node.val < q.val:
 
-        #         return dfs(node.right)
+        #         return dfs(node.right)                      # Don't forget to return
             
         #     else:
 
@@ -84,16 +84,3 @@ class Solution:
 # root, if both nodes are smaller, we go to the left subtree. If both nodes are greater, 
 # we'd go to the right subtree. If they split, the current node is the LCA. This gives us 
 # O(h) time complexity and O(h) space for recrusive method. O(1) space for iterative method.
-
-
-# Ques: 
-# 
-# 1. Are p and q guaranteed to exist in the tree?
-# 2. Can a node be an ancestor of itself?
-
-
-# BST: 
-# 
-# 1. current's > left subtree's value
-# 2. current's < right subtree's value
-# 3. Both left and right substree are also BSTs.
