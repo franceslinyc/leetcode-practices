@@ -88,17 +88,12 @@ class Solution:
         return res
 
 
+# @lc code=end
+
 # This problem can be solved using Breadth-First Search with a queue. We process nodes level by 
 # level, from left to right. At each iteration, we use the queue size to determine how many 
 # nodes belong to the current level. We collect their values, add their children, and repeat 
 # until the queue is empty. Time complexity is O(n), and space complexity is O(n).
-
-
-# BFS: 
-# 
-# 1. Build tree level by level
-# 2. Use queue to find the path
-# 3. Work on the concept of FIFO
 
 
 # Details: 
@@ -128,7 +123,3 @@ class Solution:
 # res = [[3], [9,20]]
 #
 # ...
-
-
-# @lc code=end
-
