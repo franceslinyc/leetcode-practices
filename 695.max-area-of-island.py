@@ -58,7 +58,7 @@ class Solution:
 
         def bfs(r, c): 
 
-            grid[r][c] = 0                  # int, not str, so not "0"
+            grid[r][c] = 0 
 
             q = deque()
 
@@ -80,7 +80,7 @@ class Solution:
 
                         0 <= nc < COLS and
 
-                        grid[nr][nc] == 1   # int, not str, so not "1"
+                        grid[nr][nc] == 1
                     ):
 
                         grid[nr][nc] = 0
@@ -99,7 +99,7 @@ class Solution:
 
             for c in range(COLS): 
 
-                if grid[r][c] == 1:         # int, not str, so not "0"
+                if grid[r][c] == 1:
                     
                     area = bfs(r, c)        # Return "local" area
                     
