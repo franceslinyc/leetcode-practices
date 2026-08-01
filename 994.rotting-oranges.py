@@ -65,7 +65,7 @@ class Solution:
 
                         fresh -= 1          # Decrement once per orange
 
-        return time if fresh == 0 else -1 
+        return time if fresh == 0 else -1   # -1 happens when q is empty but fresh is still > 0
 
 
 # @lc code=end
