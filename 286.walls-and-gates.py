@@ -79,15 +79,16 @@ class Solution:
 
                     q.append((r, c))
 
-        # 2. Run BFS from all gates
+        # 2. Run BFS from all gates *sequentially* via for loop
 
         distance = 0                 # Starting distance at a gate 
 
-        while q:                     # Process all levels 
+        while q:                     # Process all levels; q = [gate1, gate2, gate3, ...] 
 
-            distance += 1            # Move to next level; Neighbors will have this distance
+            distance += 1            # Increment distance per BFS layer; Neighbors will have this distance
 
-            for i in range(len(q)):  # Process all nodes in the current level; Level means something, e.g., tree depth, distance steps (here), time steps (LC 994)
+            for i in range(len(q)):  # Process all nodes in the current level; Level means something, e.g., tree depth, distance steps (here), time steps (LC 994) 
+                                     # len(q) = however many gates there are
 
                 row, col = q.popleft()
 
@@ -99,7 +100,7 @@ class Solution:
                     
                         0 <= nc < COLS and 
 
-                        rooms[nr][nc] == INF      # rooms[nr][nc] == INF already mean unvisited! 
+                        rooms[nr][nc] == INF 
                     ): 
                         
                         rooms[nr][nc] = distance  # Mark visited cell with distance 
