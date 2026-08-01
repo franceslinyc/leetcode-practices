@@ -55,6 +55,9 @@ class Solution:
 
         def bfs(r, c): 
 
+            # Better let BFS do one thing: flood-fill and mark visited, nothing else. Else, 
+            # need to return OUTSIDE of while loop like LC 695 does. 
+
             # Mark the starting land cell as visited 
 
             grid[r][c] = "0"  
@@ -139,15 +142,8 @@ class Solution:
 #     add neighbors' neighbors to q
 # BFS neighbors' neighbors but it's 0 
 
-
-# Ques: 
-# 1. Grid is non-empty?
-# 2. Cells are only "0" or "1"? 
-# 3. We only search/connect left/right/up/down?
-# 4. Can we modify the grid? 
-
-
 # We treat each land cell as a node in a graph. We iterate through the grid, and whenever we find 
 # an unvisited land cell, we increment the island count and perform a DFS or BFS to mark the 
 # entire connected component as visited. Since each cell is processed once, the time complexity is 
 # O(m x n), and space complexity is O(m x n).
+
