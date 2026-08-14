@@ -107,12 +107,12 @@ class Solution:
 
         def bfs(source, ocean):  # source, instead of r, c, because we'd need to call list of cells, instead of one cell
 
-            for r, c in source:               # source marking
+            for r, c in source:               # Mark source (boundary) as reachable
 
                 ocean[r][c] = True            # Same role as grid[r][c] = "0" in LC 200 but apply to 
                                               # every source cell instead of one cell
 
-            q = deque(source)
+            q = deque(source)                 # Place source in queue
 
             while q:
 
@@ -128,12 +128,14 @@ class Solution:
                         
                         0 <= nc < COLS and
                         
-                        not ocean[nr][nc] and # Hasn't been visited 
+                        not ocean[nr][nc] and # Has neighbor cell been confirmed reachable?
 
-                        heights[nr][nc] >= heights[row][col] 
+                        heights[nr][nc] >= heights[row][col] # Can water flow from neighbor cell down into current cell? 
+                                                             # Real water flow: current cell  -> neighbor cell -> ocean   (downhill, <=)
+                                                             # BFS here walks backward: ocean -> neighbor cell -> current (uphill, >=)
                     ):
                         
-                        ocean[nr][nc] = True  # neighbor marking 
+                        ocean[nr][nc] = True  # Mark neighbor as reachable
 
                         q.append((nr, nc))
 
