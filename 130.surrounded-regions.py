@@ -17,7 +17,7 @@ class Solution:
 
         direction = [[-1,0],[1,0],[0,1],[0,-1]]
 
-        # 1. Put 'O' cells that sit on the border in the queue
+        # 1. Put border 'O' cells in the queue; Similar to LC 994
         
         q = deque()
 
@@ -28,6 +28,7 @@ class Solution:
                 if (r == 0 or r == ROWS - 1 or c == 0 or c == COLS - 1) and board[r][c] == "O":
 
                     q.append((r, c))
+
         
         # 2. Run BFS from 'O' cells that sit on the border, marking everything reachable as "T" (safe)
         
@@ -35,24 +36,29 @@ class Solution:
 
             r, c = q.popleft()
 
-            if board[r][c] == "O":
+            if board[r][c] == "O":   # Mark border 'O' as reachable 
 
                 board[r][c] = "T"
 
-                for dr, dc in direction:
+            for dr, dc in direction:
 
-                    nr, nc = r + dr, c + dc
+                nr, nc = r + dr, c + dc
 
-                    if (0 <= nr < ROWS and 
+                if (0 <= nr < ROWS and 
+                    
+                    0 <= nc < COLS and
+
+                    board[nr][nc] == "O"
+
+                ):
+
+                    board[nr][nc] = "T" # Mark as reachable 
+
+                    q.append((nr, nc))
+
                         
-                        0 <= nc < COLS
-
-                    ):
-
-                        q.append((nr, nc))
-                        
-        # 3. Change every 'O' cell that was never reachable from an 'O' cell on the border to 'X',
-        # and every 'T' (safe) cell back to 'O'
+        # 3. Change every 'O' cell that was never reachable from an border 'O' cell to 'X',
+        # and every 'T' (reachable) cell back to 'O'
 
         for r in range(ROWS):
 
