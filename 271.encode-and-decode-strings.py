@@ -14,7 +14,7 @@ class Codec:
 
         for s in strs: 
 
-            res += str(len(s)) + "#" + s
+            res += str(len(s)) + "#" + s 
 
         return res
 
@@ -31,7 +31,7 @@ class Codec:
 
             j = i                # Use j to search for the '#' separator
 
-            while s[j] != "#": 
+            while s[j] != "#":   # Can handle multi-digit length, i.e., 12#Hello...
 
                 j += 1
 
@@ -39,7 +39,7 @@ class Codec:
             
             i = j + 1            # Move i to point at start of the actual string s 
 
-            j = i + length
+            j = i + length       # Move j to the start of the next block 
 
             res.append(s[i:j])   # Extract characters
 
