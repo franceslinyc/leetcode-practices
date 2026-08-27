@@ -34,6 +34,9 @@ class Solution:
         return res 
 
 
+# @lc code=end
+
+
 # We iterate through each character index of the first string and, for each index, 
 # checks all other strings to ensure the characters match. If a mismatch is found 
 # or any string ends, it returns the prefix built so far. Otherwise, it appends 
@@ -52,7 +55,3 @@ class Solution:
 
 # for i in range(len(strs[0])):        # Go character by character (Fix col)
 #     for j in range(len(strs)):       # Check all strings (Check for all rows)
-
-
-# @lc code=end
-
