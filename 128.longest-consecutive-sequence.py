@@ -12,6 +12,12 @@ class Solution:
         
         this_set = set(nums) # Don't forget to convert! 
 
+        # this_set = set()
+
+        # for num in nums: 
+
+        #     this_set.add(num)
+
         max_length = 0
 
         for num in this_set: # Careful! Loop through unique values only to prevent O(n^2) 
@@ -33,6 +39,9 @@ class Solution:
         # method 2: hash map: time O(n), space O(n) 
 
 
+# @lc code=end
+
+
 # We use a hash set to allow O(1) lookups and only begins expanding a sequence when the 
 # number is a start (i.e., (num - 1) is not in the set). From each starting point, 
 # it counts forward to measure the length of the consecutive sequence, ensuring each number 
@@ -49,7 +58,4 @@ class Solution:
 # 1   -> opening -> 2 -> 3 -> 4
 # 3
 # 2
-
-
-# @lc code=end
 
