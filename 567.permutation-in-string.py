@@ -28,15 +28,25 @@ class Solution:
 
             s2_count[ord(s2[r]) - ord("a")] += 1
 
-            if (r - l + 1) > len(s1): # While works but don't need to since the window size is fixed
+            # if (r - l + 1) > len(s1): # While works but don't need to since the window size is fixed
+
+            #     s2_count[ord(s2[l]) - ord("a")] -= 1
+
+            #     l += 1
+
+            # if s1_count == s2_count:  # Compare the full array every step; See method 3 for improvement
+
+            #     return True
+
+            if (r - l + 1) == len(s1): 
+
+                if s1_count == s2_count: 
+
+                    return True
 
                 s2_count[ord(s2[l]) - ord("a")] -= 1
 
                 l += 1
-
-            if s1_count == s2_count:  # Compare the full array every step; See method 3 for improvement
-
-                return True
         
         return False
 
