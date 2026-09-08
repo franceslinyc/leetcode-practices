@@ -26,7 +26,8 @@ class Solution:
         have, need = 0, len(t_count)  # Store how many characters that match required freq and **unique** characters we need to match
                                       # Careful! Not need = len(t)
 
-        # Similar to LC 3
+        # have = number of DISTINCT characters currently satisfied at their required frequency 
+        # need = number of DISTINCT characters in t we must satisfy 
 
         l = 0 
 
@@ -34,7 +35,7 @@ class Solution:
 
             w_count[s[r]] = w_count.get(s[r], 0) + 1
             
-            if s[r] in t_count and w_count[s[r]] == t_count[s[r]]:    # Check validity, i.e., If s[r] is in t_count and its count in w_count matches t_count, increment have.
+            if s[r] in t_count and w_count[s[r]] == t_count[s[r]]:      # One more distinct char satisfied
 
                 have += 1
 
@@ -50,11 +51,11 @@ class Solution:
 
                 # Shrink the window via l to find the smallest valid window: Remove from window, update validity, and move left pointer 
 
-                # Like LC 209 except we add a if() here
+                # Like LC 209 except we have an extra if: here
 
-                w_count[s[l]] -= 1            # Careful! Don't forget 
+                w_count[s[l]] -= 1
                 
-                if s[l] in t_count and w_count[s[l]] < t_count[s[l]]:  # Update validity if we break it
+                if s[l] in t_count and w_count[s[l]] < t_count[s[l]]:  # One fewer distinct char satisfied
 
                     have -= 1
 
