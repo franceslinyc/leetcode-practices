@@ -8,7 +8,7 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
 
-        # method 1 two pointers: time O(n^2), where n is length of the given array; space O(1) excluding output list. If including 
+        # method 1: two pointers; time O(n^2), where n is length of the given array; space O(1) excluding output list. If including 
         # output list, space O(m) and O(n^2) worst case, where m is the number of unique triplet.
 
         nums.sort() # O(n log n) time but O(n log n) < O(n^2)
@@ -66,7 +66,7 @@ class Solution:
         return res 
 
 
-        # method 2 hash map: time O(n^2); space O(n)
+        # method 2: hash map; time O(n^2); space O(n)
 
 
 # @lc code=end
