@@ -20,13 +20,15 @@ class Solution:
         
         for r in range(len(s)): 
 
+            # Careful! Do not add here. Else, the next line is immediately true. 
+
             while s[r] in this_set:    # Careful! Keep shrinking window until all duplicates are removed
 
                 this_set.remove(s[l])  # Remove lefmost character
 
                 l += 1
             
-            this_set.add(s[r])         # Then Add
+            this_set.add(s[r])         # Now safe to Add
 
             res = max(res, r - l + 1)  # Update result 
 
@@ -48,9 +50,9 @@ class Solution:
 
 # a b c a b c b b
 #  
-# a b c   res = 3
-# b c a   res = 3
+# a b c   res = 3 -> Next a is in this set, keep shrinking from the left until previous a is gone.
+# b c a   res = 3 -> Then add. 
 # c a b   res = 3
-# a b c   res = 3
+# a b c   res = 3 
 # c b     res = 2
 # b       res = 1
