@@ -45,11 +45,11 @@ class Solution:
 
         this_map = {}
 
-        highest_freq = 0 
+        highest_freq = 0
 
         l = 0 
 
-        for r in range(len(s)): # Or while r < len(s) for r = 0
+        for r in range(len(s)): 
 
             this_map[s[r]] = this_map.get(s[r], 0) + 1
 
@@ -59,7 +59,7 @@ class Solution:
             # (i.e., window size - frequency of the most common character) is <= k.
             # <=> When condition is broken, shrink the window.  
             
-            while (r - l + 1) - highest_freq > k: 
+            while (r - l + 1) - highest_freq > k: # Optimize with highest_freq after realizing max(this_map.values()) recompute max() on every shrink 
 
                 this_map[s[l]] -= 1
 
