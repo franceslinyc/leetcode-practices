@@ -12,7 +12,7 @@ class Solution:
 
         l, r = 0, len(numbers) - 1
 
-        while l < r: 
+        while l < r:       # O(n)
 
             current_sum = numbers[l] + numbers[r]
 
