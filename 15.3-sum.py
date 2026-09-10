@@ -8,9 +8,8 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
 
-        # method 1: two pointers; time O(n^2), where n is length of the given array; 
-        # space O(1) excluding sort() and output list. If including utput list, 
-        # ospace O(m) and O(n^2) worst case, where m is the number of unique triplet.
+        # method 1: two pointers; time O(n^2), where n is length of the given array; space O(1) + O(n) for sort() excluding output list. 
+        # If including output list, space O(m) and O(n^2) worst case, where m is the number of unique triplet.
 
         nums.sort() # O(n log n) time but O(n log n) < O(n^2); O(n) space
 
