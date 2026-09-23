@@ -20,35 +20,27 @@ class Solution:
 
                 return m
 
-            # ASK “Which half is sorted? Does target live there?”
+            # ASK "Which side of m is sorted? Does target live there?"
 
-            #                                            m
-            # If left portion [l:m] is sorted, e.g., [4, 5, 6, 7, 0, 1, 2] because [4, 5, 6, 7] is sorted. 
-            # If the target falls in this range, search the left subarrary. Else, go to the right side.
+            if nums[m] < nums[r]: 
 
-            if nums[l] <= nums[m]: 
+                if nums[m] <= target <= nums[r]: 
 
-                if nums[l] <= target <= nums[m]: 
+                    l = m + 1
+                
+                else: 
 
                     r = m - 1
-                
-                else:              # target > nums[m] or target < nums[l]
-
-                    l = m + 1      # Else, go right
             
-            #                                          m
-            # If right portion [m:r] sorted, e.g., [5, 6, 7, 0, 1, 2, 4] because [0, 1, 2, 4] is sorted.
-            # If the target falls in this range, search the right subarrary. Else, go to the left side.
+            else: # nums[m] >= nums[r]                  
 
-            else: # nums[l] > nums[m]                  
+                if nums[l] <= target <= nums[m]:
 
-                if nums[m] <= target <= nums[r]:
-
-                    l = m + 1 
+                    r = m - 1
 
                 else: 
 
-                    r = m - 1      # Else, go left 
+                    l = m + 1
 
         return -1
 
@@ -68,12 +60,12 @@ class Solution:
 
 # 2. Reframe as a Yes/No Question
 
-# A rotated array has two halves. At any midpoint, one half is always sorted.
-# "Is the left half sorted? Does target live there?"
+# A rotated array has two halves. The right half is clean (fully sorted). The left half is rotated (starts high).
+# "Is m in the right (clean) half or left (rotated) half? Does target live there?"
 
-# nums[l] <= nums[m] → left half sorted  → if nums[l] <= target <= nums[m]: r = m - 1, else l = m + 1
-# nums[l] >  nums[m] → right half sorted → if nums[m] <= target <= nums[r]: l = m + 1, else r = m - 1
 # Return m immediately if nums[m] == target
+# nums[m] <  nums[r] → right half sorted → if nums[m] <= target <= nums[r]: l = m + 1, else r = m - 1
+# nums[m] >= nums[r] → left half sorted  → if nums[l] <= target <= nums[m]: r = m - 1, else l = m + 1
 
 # 3. Choose the exit condition
 
@@ -82,32 +74,3 @@ class Solution:
 # 4. Return the correct value
 
 # Return -1 if target never found.
-
-
-# Idea: 
-
-# Example #1
-# nums = [4,5,6,7,0,1,2], target = 0 
-#         l           r
-# l = 0, r = 6, m = 3 -> nums[3] = 7 -> left [4, 5, 6, 7] is sorted -> Is 4 <= 0 <= 7? No. -> l = m + 1 = 4
-
-# nums = [4,5,6,7,0,1,2]
-#                 l   r
-# l = 4, r = 6, m = 5 -> nums[5] = 1 -> left [0, 1] is sorted -> Is 0 <=0<=1? Yes. -> r = m - 1 = 4
-
-# nums = [4,5,6,7,0,1,2]
-#                 l
-#                 r
-# l = 4, r = 4, m = 4 -> nums[4] == 0. Find it!
-
-
-# Example #2
-# nums = [0,1,2,4,5,6,7], target = 6
-#         l           r
-# l = 0, r = 6, m = 3 -> nums[3] = 4 -> left [0,1,2,4] is sorted 
-
-
-# Example #3 
-# nums = [6,7,0,1,2,4,5] 
-#         l           r
-# l = 0, r = 6, m = 3 -> nums[3] = 1 -> right [1,2,4,5] is sorted
