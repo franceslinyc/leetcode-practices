@@ -90,17 +90,19 @@ class Solution:
 
 
 # Idea: 
-#             m              
-# nums = [1,2,3,4,5] output = 1
-# nums[2] = 3 < 5 -> Search left
-
-#             m         
-# nums = [3,4,5,1,2] output = 1
-# nums[2] = 5 >= 2 -> Search right
-
-# Note also that min is always to the left of nums[r]; right side is always clean → use nums[r] to decide
-# nums = [1,2,3,4,5]
-# nums = [2,3,4,5,1]
+# Min is always to the left of nums[r]; right side is always clean → use nums[r] to decide
+#         l   m   r
+# nums = [1,2,3,4,5] middle in the right half so search left, i.e., r = m
+#         l   r
+#         l   m   r
+# nums = [2,3,4,5,1] middle in the left half so search right but also m is definitely not the min, i.e., l = m + 1
+#               l r
+#         l   m   r
 # nums = [3,4,5,1,2]
+#               l r
+#         l   m   r
 # nums = [4,5,1,2,3]
+#         l   r
+#         l   m   r
 # nums = [5,1,2,3,4]
+#         l   r  
