@@ -45,7 +45,7 @@ class Solution:
 
             m = l + (r - l) // 2
 
-            # ASK "Which half is m in: right (clean) or left (rotated)?"
+            # ASK "Which side of m is sorted?"
             
             if nums[m] < nums[r]:       # m is in the right (clean) half
                                         # minimum is at m or to the left of m
