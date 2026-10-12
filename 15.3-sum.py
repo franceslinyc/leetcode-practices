@@ -41,7 +41,7 @@ class Solution:
 
                     l += 1 
 
-                    r -= 1
+                    #r -= 1 # Okay to not include this
 
                     # Skip duplicates for the left pointer
                     
