@@ -28,7 +28,7 @@ class Solution:
 
                 r -= 1
 
-        return [-1, -1]    # Okay to not include this
+        #return [-1, -1]    # Okay to not include this
 
 
         # method 2: hash map; time O(n) space O(n); Not recommended since the arrary is sorted.
