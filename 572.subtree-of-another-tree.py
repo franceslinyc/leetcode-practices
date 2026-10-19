@@ -24,19 +24,24 @@ class Solution:
 
             return False
 
-        def isSameTree(p, q):
+
+        ##################### LC 100 #####################
+        
+        def isSameTree(p, q):           
 
             if not p and not q:
 
                 return True
 
-            if not p or not q or p.val != q.val:
+            if p and q and p.val == q.val: 
 
-                return False
+                # Recursively check if left AND right subtrees are identical 
 
-            # Recursively check if left AND right subtrees are identical 
+                return isSameTree(p.left, q.left) and isSameTree(p.right, q.right)
 
-            return isSameTree(p.left, q.left) and isSameTree(p.right, q.right)
+            return False
+
+        ##################################################
 
         if isSameTree(root, subRoot):
 
