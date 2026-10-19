@@ -59,28 +59,28 @@ class Solution:
     
         # method 2 iterative: time O(h), space O(1), where h: height of tree; space O(1) because no need of backtrack
 
-        current = root
+        node = root
 
-        while current: 
+        while node: 
 
-            if current.val > p.val and current.val > q.val:   # current too big -> search the left subtree
+            if node.val > p.val and node.val > q.val:   # node too big -> search the left subtree
 
-                current = current.left
+                node = node.left
 
-            elif current.val < p.val and current.val < q.val: # current too small -> search the right subtree
+            elif node.val < p.val and node.val < q.val: # node too small -> search the right subtree
 
-                current = current.right
+                node = node.right
 
             else: # cover all cases when 
                   # p & q split across left & right 
-                  # p or q equal to current 
-                return current # Return node, not value
+                  # p or q equal to node 
+                return node # Return node, not value
 
 
 # @lc code=end
 
 
-# Since it’s a BST, we can use current as a pointer to traverse the tree. Starting from the
+# Since it’s a BST, we can use the current node as a pointer to traverse the tree. Starting from the
 # root, if both nodes are smaller, we go to the left subtree. If both nodes are greater, 
 # we'd go to the right subtree. If they split, the current node is the LCA. This gives us 
 # O(h) time complexity and O(h) space for recrusive method. O(1) space for iterative method.
