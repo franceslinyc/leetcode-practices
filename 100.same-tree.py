@@ -14,66 +14,85 @@
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
 
-        # # method 1 dfs: O(n) time worst case, O(log n) time best case for balanced tree; O(n) space
+        # method 1 dfs: O(n) time worst case, O(log n) time best case for balanced tree; O(n) space
 
-        # # Base case 1: If both nodes are None, they are same.
+        # Base case 1: If both nodes are None, they are same.
 
-        # if not p and not q: 
+        if not p and not q: 
 
-        #     return True
+            return True
 
-        # # Base case 2: If both nodes exist AND their values are equal, we still need to check their subtrees.
+        # Base case 2: If both nodes exist AND their values are equal, we still need to check their subtrees.
 
-        # if p and q and p.val == q.val: 
+        if p and q and p.val == q.val: 
 
-        #     # Recrusively check left and right subtree of both trees
-        #     return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+            # Recrusively check left and right subtree of both trees
+            return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
 
-        # # Base case 3: If one is None while the other is not, or both exist but their values differ, they are not the same.
+        # Base case 3: If one is None while the other is not, or both exist but their values differ, they are not the same.
 
-        # else: 
+        return False
 
-        #     return False
-
-
-        # method 2 bfs: O(n) time; O(n) space
-
-        q1 = deque([p])
         
-        q2 = deque([q])
+        # # method 1 dfs variation
 
-        # Traverse both trees in parallel
-        while q1 and q2:
+        # def dfs(node1, node2): 
 
-            # Process all nodes at the current level
-            for _ in range(len(q1)):
+        #     if not node1 and not node2: 
+
+        #         return True
+
+        #     if not node1 or not node2: 
+
+        #         return False
+
+        #     if node1.val != node2.val: 
+
+        #         return False
+
+        #     return dfs(node1.left, node2.left) and dfs(node1.right, node2.right)
+
+        # return dfs(p, q)
+
+
+        # # method 2 bfs: O(n) time; O(n) space
+
+        # q1 = deque([p])
+        
+        # q2 = deque([q])
+
+        # # Traverse both trees in parallel
+        # while q1 and q2:
+
+        #     # Process all nodes at the current level
+        #     for _ in range(len(q1)):
                 
-                node_1 = q1.popleft()
+        #         node_1 = q1.popleft()
                 
-                node_2 = q2.popleft()
+        #         node_2 = q2.popleft()
 
-                # Case 1: both nodes are None -> structurally same at this position
-                if not node_1 and not node_2: 
+        #         # Case 1: both nodes are None -> structurally same at this position
+        #         if not node_1 and not node_2: 
 
-                    continue
+        #             continue
 
-                # Case 2, 3: Either one is None or value differs -> different 
-                if not node_1 or not node_2 or node_1.val != node_2.val: 
+        #         # Case 2, 3: Either one is None or value differs -> different 
+        #         if not node_1 or not node_2 or node_1.val != node_2.val: 
 
-                    return False
+        #             return False
 
-                # Add children for further comparison
-                # Careful! None is meaningful, do not use if node_1.left to check. ALWAYS append. 
+        #         # Add children for further comparison
+        #         # Careful! None is meaningful, do not use if node_1.left to check. ALWAYS append. 
 
-                q1.append(node_1.left)
+        #         q1.append(node_1.left)
 
-                q1.append(node_1.right)
+        #         q1.append(node_1.right)
 
-                q2.append(node_2.left)
+        #         q2.append(node_2.left)
 
-                q2.append(node_2.right)
+        #         q2.append(node_2.right)
 
-        return True
+        # return True
 
 
 # @lc code=end
