@@ -40,6 +40,33 @@ class Solution:
         return dfs(root, root.val)  # dfs(root, float('-inf')) work too
         
 
+        # # method 1 dfs variation: O(n) time; O(n) space
+
+        # res = 0
+
+        # def dfs(node, max_val): 
+
+        #     nonlocal res
+
+        #     if not node: 
+
+        #         return
+
+        #     if node.val >= max_val: 
+
+        #         res += 1
+
+        #     max_val = max(max_val, node.val)
+
+        #     dfs(node.left, max_val)
+
+        #     dfs(node.right, max_val)
+
+        # dfs(root, root.val)
+
+        # return res
+
+
         # # method 2: bfs: O(n) time; O(n) space
         
         # res = 0
