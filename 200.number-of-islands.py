@@ -115,6 +115,12 @@ class Solution:
 # @lc code=end
 
 
+# We treat each land cell as a node in a graph. We iterate through the grid, and whenever we find 
+# an unvisited land cell, we increment the island count and perform a DFS or BFS to mark the 
+# entire connected component as visited. Since each cell is processed once, the time complexity is 
+# O(m x n), and space complexity is O(m x n).
+
+
 # e.g., 
 # Input: grid = [
 #   ["1","1","0","0","0"], 
@@ -141,9 +147,3 @@ class Solution:
 # BFS all neighbors
 #     add neighbors' neighbors to q
 # BFS neighbors' neighbors but it's 0 
-
-# We treat each land cell as a node in a graph. We iterate through the grid, and whenever we find 
-# an unvisited land cell, we increment the island count and perform a DFS or BFS to mark the 
-# entire connected component as visited. Since each cell is processed once, the time complexity is 
-# O(m x n), and space complexity is O(m x n).
-
