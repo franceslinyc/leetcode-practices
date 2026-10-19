@@ -111,4 +111,7 @@ class Solution:
 # @lc code=end
 
 
-# Refer to LC 200's notes
+# Refer to LC 200's notes; Essentially LC 200, but instead of just counting 
+# how many times you launch a search, the BFS has to count the cells it fills 
+# and return that size. 
+
