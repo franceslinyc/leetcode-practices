@@ -38,33 +38,7 @@ class Solution:
             # Return height of parent (current) node = max height of children + 1 
             return [balanced, max(left[1], right[1]) + 1]
 
-        return dfs(root)[0]
-
-
-        # # method 1 variation recursive DFS via coding inverview pattern
-
-        # def dfs(node): 
-
-        #     if not node: 
-
-        #         return 0
-
-        #     left = dfs(node.left)
-
-        #     right = dfs(node.right)
-
-        #     if left == -1 or right == -1: 
-
-        #         return -1
-
-        #     if abs(left - right) > 1: 
-
-        #         return -1
-
-        #     return max(left, right) + 1   # Return height if balanced. Else, return -1. 
-
-        # return dfs(root) != -1
-        
+        return dfs(root)[0]        
 
         # method 2 iterative DFS: O(n) time; O(n) space
 
