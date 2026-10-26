@@ -14,41 +14,62 @@ class Solution:
         # # method 1 brute force
         # nums.sort()
 
-        # method 2 three pointers - I (optimized quick sort): O(n) time; O(1) space
+        # # method 2 three pointers - I (optimized quick sort): O(n) time; O(1) space
         
-        l, r = 0, len(nums) - 1
+        # l, r = 0, len(nums) - 1
 
-        i = 0
+        # i = 0
 
-        def swap(i, j):
+        # def swap(i, j):
 
-            temp = nums[i]
+        #     temp = nums[i]
 
-            nums[i] = nums[j]
+        #     nums[i] = nums[j]
 
-            nums[j] = temp
+        #     nums[j] = temp
 
-        while i <= r:
+        # while i <= r:
 
-            if nums[i] == 0:   # Move 0 to the left side
+        #     if nums[i] == 0:   # Move 0 to the left side
 
-                swap(l, i)
+        #         swap(l, i)
 
-                l += 1
+        #         l += 1
 
-            elif nums[i] == 2: # Move 2 to the right side
+        #     elif nums[i] == 2: # Move 2 to the right side
 
-                swap(i, r)
+        #         swap(i, r)
 
-                r -= 1
+        #         r -= 1
 
-                i -= 1         # Do not increment i since the swapped element needs to be checked 
-                               # Swapping with the right brings in unknown data
+        #         i -= 1         # Do not increment i since the swapped element needs to be checked 
+        #                        # Swapping with the right brings in unknown data
 
-            # Increment i for values that are already correctly placed, i.e., 0, 1
-            # 0 is already moved to correct position
-            # Leave 1 it in the middle region and just move forward
-            i += 1        
+        #     # Increment i for values that are already correctly placed, i.e., 0, 1
+        #     # 0 is already moved to correct position
+        #     # Leave 1 it in the middle region and just move forward
+        #     i += 1        
+
+
+        # method 3 counting sort: O(n) time; O(1) space
+
+        count = [0] * 3
+
+        for num in nums:
+
+            count[num] += 1
+
+        index = 0
+
+        for num in range(3):
+
+            while count[num] > 0:
+
+                nums[index] = num
+
+                index += 1
+
+                count[num] -= 1        
         
 
 # @lc code=end
