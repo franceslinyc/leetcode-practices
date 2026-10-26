@@ -44,85 +44,122 @@ class Solution:
 
         # return nums
 
-        # method 2 merge sort: O(n log n) time; O(n) space
+        # # method 2 merge sort: O(n log n) time; O(n) space
 
-        # Merge two sorted halves 
-        def merge(arr, L, M, R):
+        # # Merge two sorted halves 
+        # def merge(arr, L, M, R):
 
-            left, right = arr[L:M+1], arr[M+1:R+1]   # O(n) space worst case
-                                                     # string[start:end]; start is inclusive, end is not
+        #     left, right = arr[L:M+1], arr[M+1:R+1]   # O(n) space worst case
+        #                                              # string[start:end]; start is inclusive, end is not
               
-            # i = pointer for main array
-            # j = pointer for left half
-            # k = pointer for right half
-            i, j, k = L, 0, 0
+        #     # i = pointer for main array
+        #     # j = pointer for left half
+        #     # k = pointer for right half
+        #     i, j, k = L, 0, 0
 
-            # Merge both arrays
-            while j < len(left) and k < len(right):
+        #     # Merge both arrays
+        #     while j < len(left) and k < len(right):
 
-                if left[j] <= right[k]:
+        #         if left[j] <= right[k]:
 
-                    arr[i] = left[j]
+        #             arr[i] = left[j]
 
-                    j += 1
+        #             j += 1
 
-                else:
+        #         else:
 
-                    arr[i] = right[k]
+        #             arr[i] = right[k]
 
-                    k += 1
+        #             k += 1
 
-                i += 1
+        #         i += 1
 
-            # Copy remaining elements from left
-            while j < len(left):
+        #     # Copy remaining elements from left
+        #     while j < len(left):
 
-                arr[i] = left[j]
+        #         arr[i] = left[j]
 
-                j += 1
+        #         j += 1
 
-                i += 1
+        #         i += 1
 
-            # Copy remaining elements from right
-            while k < len(right):
+        #     # Copy remaining elements from right
+        #     while k < len(right):
 
-                arr[i] = right[k]
+        #         arr[i] = right[k]
 
-                k += 1
+        #         k += 1
 
-                i += 1
+        #         i += 1
 
-        def merge_sort(arr, l, r):
+        # def merge_sort(arr, l, r):
 
-            # Base case: one element
-            if l >= r:   # l>= r is safer; if l == r handle only valid single-element case
+        #     # Base case: one element
+        #     if l >= r:   # l>= r is safer; if l == r handle only valid single-element case
 
-                return
+        #         return
 
-            m = (l + r) // 2
+        #     m = (l + r) // 2
 
-            # Now sort subarrays; log n levels of recursion
-            merge_sort(arr, l, m)         # After this call, the left half, i.e., arr[l:m+1], is sorted
+        #     # Now sort subarrays; log n levels of recursion
+        #     merge_sort(arr, l, m)         # After this call, the left half, i.e., arr[l:m+1], is sorted
 
-            merge_sort(arr, m + 1, r)     # After this call, the right half, i.e., arr[m+1:r+1], is sorted
+        #     merge_sort(arr, m + 1, r)     # After this call, the right half, i.e., arr[m+1:r+1], is sorted
 
-            # Merge sorted halves; O(n) time
-            merge(arr, l, m, r)
+        #     # Merge sorted halves; O(n) time
+        #     merge(arr, l, m, r)
 
-        merge_sort(nums, 0, len(nums) - 1) # n time
+        # merge_sort(nums, 0, len(nums) - 1) # n time
         
-        return nums
+        # return nums
 
 
         # method 3 heap sort: O(n log n) time; O(log n) recursive stack
 
 
-# Idea: 
+        # method 4 counting sort: O(n + k) time; O(n) space
+
+        def counting_sort():
+
+            count = defaultdict(int)
+
+            min_num, max_num = min(nums), max(nums)
+
+            for num in nums:
+
+                count[num] += 1
+
+            index = 0
+
+            for num in range(min_num, max_num + 1):
+
+                while count[num] > 0:
+
+                    nums[index] = num
+
+                    index += 1
+
+                    count[num] -= 1
+
+        counting_sort()
+
+        return nums        
+
+
+        # method 4 counting sort variation: O(n + k) time; O(n) space
+
+
+
+# @lc code=end
+
+# Merge sort idea: 
 
 # 1. Recursively SORT left half
 # 2. Recursively SORT right half
 # 3. MERGE the two sorted halves
 # i.e., go down (split) -> reach bottom -> come back up (merge)
+
+# Example: [5, 2, 3, 1]
 
 # Step 1: First split
 # nums = [5, 2, 3, 1]
@@ -160,5 +197,23 @@ class Solution:
 # [1, 2, 3, 5]
 
 
-# @lc code=end
+# Counting sort idea:  
 
+# Example: [5, 1, 1, 2, 0, 0]
+
+# Step 1: find the range
+#   min_num, max_num = 0, 5
+#   output: range to walk is 0, 1, 2, 3, 4, 5
+
+# Step 2: count occurrences
+#   for num in nums: count[num] += 1
+#   output: count = {5: 1, 1: 2, 2: 1, 0: 2}   (first-seen order, not sorted)
+
+# Step 3: walk min..max, write each value back count[num] times
+#   num = 0 -> count 2 -> write 0, 0   nums = [0, 0, _, _, _, _]
+#   num = 1 -> count 2 -> write 1, 1   nums = [0, 0, 1, 1, _, _]
+#   num = 2 -> count 1 -> write 2      nums = [0, 0, 1, 1, 2, _]
+#   num = 3 -> count 0 -> skip
+#   num = 4 -> count 0 -> skip
+#   num = 5 -> count 1 -> write 5      nums = [0, 0, 1, 1, 2, 5]
+#   output: [0, 0, 1, 1, 2, 5]
