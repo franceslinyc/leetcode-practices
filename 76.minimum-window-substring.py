@@ -112,3 +112,22 @@ class Solution:
 # E not in t_count                                  -> have=2
 # 'C':  w_count = {'A':1, 'D':1, 'O':1, 'B':1, 'E':1, 'C':1} 
 # C in t_count AND w_count['C'] == t_count['C'] = 1 -> have=3 
+
+# ADOBEC     -> Enter while loop, valid, NEW BEST (6)
+# DOBEC      -> Exit (removed A)
+# DOBECO
+# DOBECOD
+# DOBECODE
+# DOBECODEB
+# DOBECODEBA -> Enter while loop, valid (10, not better)
+# OBECODEBA     (9, not better)
+# BECODEBA      (8, not better)
+# ECODEBA       (7, not better)
+# CODEBA        (6, tie, not better since the check is strict <)
+# ODEBA      -> Exit (removed C)
+# ODEBAN
+# ODEBANC    -> Enter while loop, valid (7, not better)
+# DEBANC        (6, tie, not better)
+# EBANC         (5, NEW BEST)
+# BANC          (4, NEW BEST)
+# ANC        -> Exit (removed B)
