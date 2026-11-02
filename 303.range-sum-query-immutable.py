@@ -7,33 +7,70 @@
 # @lc code=start
 class NumArray:
 
-    def __init__(self, nums: List[int]): # Constructor; Set up the object
+    # def __init__(self, nums: List[int]): # Constructor; Set up the object
 
-        self.prefix = []                 # Initialize attribute or property
+    #     self.prefix = []
 
-        current = 0 
+    #     cur = 0
 
-        for num in nums: 
+    #     for num in nums:
 
-            current += num 
+    #         cur += num
 
-            self.prefix.append(current)
+    #         self.prefix.append(cur)
         
-    def sumRange(self, left: int, right: int) -> int: # Method 
+    # def sumRange(self, left: int, right: int) -> int: # Method 
 
-        right_sum = self.prefix[right]   # Sum up to right
+    #     right_sum = self.prefix[right]
 
-        left_sum = self.prefix[left - 1] if left > 0 else 0 # Sum up to left (or more like left - 1)
+    #     left_sum = self.prefix[left - 1] if left > 0 else 0 # Guard against left - 1 = 0 - 1 = - 1 
 
-        return right_sum - left_sum
+    #     return right_sum - left_sum
 
+    def __init__(self, nums: List[int]): 
 
-# e.g., [-2, 0, 3, -5, 2, -1]
-#     ->[-2,-2, 1, -4,-2, -3]
+        self.prefix = [nums[0]]
 
+        for i in range(1, len(nums)): 
+
+            self.prefix.append(self.prefix[-1] + nums[i]) # Prev prefix sum + current
+        
+    def sumRange(self, left: int, right: int) -> int: 
+
+        if left == 0: 
+
+            return self.prefix[right]
+
+        return self.prefix[right] - self.prefix[left - 1]
+    
 
 # Your NumArray object will be instantiated and called as such:
 # obj = NumArray(nums)                  # Call __init__ to create object/instance
 # param_1 = obj.sumRange(left,right)    # Call method on object 
 # @lc code=end
+
+#            l       r
+# nums   = [-2,  0,  3, -5,  2, -1]
+# prefix = [-2, -2,  1, -4, -2, -3]
+
+#                l   r = 3
+# nums   = [-2,  0,  3, -5,  2, -1]
+# prefix = [-2, -2,  1, -4, -2, -3]
+# 1 - (-2) = 3
+
+#                l       r = -2
+# nums   = [-2,  0,  3, -5,  2, -1]
+# prefix = [-2, -2,  1, -4, -2, -3]
+# -4 - (-2) = -2
+
+#                    l   r = -2
+# nums   = [-2,  0,  3, -5,  2, -1]
+# prefix = [-2, -2,  1, -4, -2, -3]
+# -4 -(-2) = -2
+
+#                    l       r = 0
+# nums   = [-2,  0,  3, -5,  2, -1]
+# prefix = [-2, -2,  1, -4, -2, -3]
+# -2 -(-2) = 0
+
 
