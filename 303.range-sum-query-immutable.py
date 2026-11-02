@@ -49,6 +49,7 @@ class NumArray:
 # param_1 = obj.sumRange(left,right)    # Call method on object 
 # @lc code=end
 
+
 #            l       r
 # nums   = [-2,  0,  3, -5,  2, -1]
 # prefix = [-2, -2,  1, -4, -2, -3]
