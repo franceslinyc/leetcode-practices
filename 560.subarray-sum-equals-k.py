@@ -33,27 +33,38 @@ class Solution:
 
         # method 2: Hash Map; O(N) time; O(N) space
 
+        # Maps: prefix sum -> count (how many times we've seen it so far)
+        
+        prefix_sum_map = {0:1} #{} # Without this initialization, subarrays where prefix sum == k from the beginning will not be counted 
+
         res = 0 
 
-        prefix_sum_map = {0:1} #{}
-
-        current = 0   # current_prefix_sum
+        current = 0                       # current: current_prefix_sum
 
         for num in nums: 
 
             current += num
 
-            # Increment res if a subarray with sum k exists
+            # Key idea: 
+            # current - (sum of elements BEFORE that subarray) = k
+            # <=> sum of elements BEFORE that subarray = current - k
 
-            prev = current - k
+            prev = current - k            # prev: prev_prefix_sum
+
+            # Increment res if a subarray with sum k exists
 
             if prev in prefix_sum_map: 
 
                 res += prefix_sum_map[prev]
 
+            # Record the current running total after the lookup
+
             prefix_sum_map[current] = prefix_sum_map.get(current, 0) + 1
 
         return res
+
+
+# @lc code=end
 
 
 # We use a running prefix sum and a hashmap to store the frequency of each prefix sum. 
@@ -62,33 +73,23 @@ class Solution:
 # gives us O(N) time since we traverse the array once, and O(N) space since we store prefix
 # sums in the hashmap. 
 
+
 # e.g., 
-# [1, -1, 1, 1, 1, 1]   k = 2
+# [1, -1, 1, 1, 1, 1]   k = 3
 
-# current_prefix_sum = 0
-# prefix_sum_map = {0:1} Without this, index = 3 won't work.
-# res = 0
+# prefix sum count
+#        0  1
 
-# index = 0, num = 1
-# current_prefix_sum = 1
-# need = 1 - k = 1 - 2 = -1 Not seen in map-> Do not update res
-# prefix_sum_map = {0:1, 1:1} Always add current_prefix_sum:count to map
+# sum = 1 -> 1 - k = 1 - 3 = -2 but -2 not in prefix_sum_map
+# res =
 
-# index = 1, num = -1
-# current_prefix_sum = 0
-# need = 0 - k = 0 - 2 = -2 Not seen in map-> Do not update res
-# prefix_sum_map = {0:2, 1:1} Always add current_prefix_sum:count to map
+# prefix sum count
+#         0  1
+#         1  1
 
-# index = 2, num = 1
-# current_prefix_sum = 1
-# need = 1 - k = 1 - 2 = -1 Not seen in map-> Do not update res
-# prefix_sum_map = {0:2, 1:2} Always add current_prefix_sum:count to map
+# sum = 1 + (-1) = 0 -> 0 - k = 0 - 3 = -3 but -3 not in prefix_sum_map
+# res =
 
-# index = 3, num = 1
-# current_prefix_sum = 2
-# need = 2 - k = 2 - 2 = 0 Seen 2 times in map -> Update res += 2 -> res = 2
-# prefix_sum_map = {0:2, 1:2, 2:1} Always add current_prefix_sum:count to map
-
-
-# @lc code=end
-
+# prefix sum count
+#         0  2
+#         1  1
