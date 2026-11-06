@@ -31,9 +31,13 @@ class NumArray:
 
         self.prefix = [nums[0]]
 
-        for i in range(1, len(nums)): 
+        # for i in range(1, len(nums)): 
 
-            self.prefix.append(self.prefix[-1] + nums[i]) # Prev prefix sum + current
+        #     self.prefix.append(self.prefix[-1] + nums[i]) # Prev prefix sum + current
+
+        for num in nums: 
+
+            self.prefix.append(self.prefix[-1] + num)
         
     def sumRange(self, left: int, right: int) -> int: 
 
@@ -54,24 +58,14 @@ class NumArray:
 # nums   = [-2,  0,  3, -5,  2, -1]
 # prefix = [-2, -2,  1, -4, -2, -3]
 
-#                l   r = 3
+# #1 case
+#           l = 0    r = 2
 # nums   = [-2,  0,  3, -5,  2, -1]
 # prefix = [-2, -2,  1, -4, -2, -3]
-# 1 - (-2) = 3
+# res = 1 = prefix[r] = 1
 
-#                l       r = -2
+# #2 case
+#                    l = 2       r = 5
 # nums   = [-2,  0,  3, -5,  2, -1]
 # prefix = [-2, -2,  1, -4, -2, -3]
-# -4 - (-2) = -2
-
-#                    l   r = -2
-# nums   = [-2,  0,  3, -5,  2, -1]
-# prefix = [-2, -2,  1, -4, -2, -3]
-# -4 -(-2) = -2
-
-#                    l       r = 0
-# nums   = [-2,  0,  3, -5,  2, -1]
-# prefix = [-2, -2,  1, -4, -2, -3]
-# -2 -(-2) = 0
-
-
+# res = -1 = prefix[r] - prefix[l-1] = (-3) - (-2)
