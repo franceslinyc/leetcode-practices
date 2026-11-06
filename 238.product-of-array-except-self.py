@@ -60,47 +60,28 @@ class Solution:
 # then multiply by postfix products in reverse (right products). This runs in O(n) time and 
 # O(n) with output (res) array and O(1) extra space. 
 
-# Original:
+# First attempt:
 # e.g., 
 # nums =   [1, 2, 3, 4]
 # prefix = [1, 2, 6, 24]
-# postfix= [24,24,12, 4]
-# res    = [24,12,8, 6]
-
-#           v
-# nums =   [1, 2, 3, 4]
-#        1 [1, 2, 6, 24]
-#          [24,24,12, 4]
-#               ^
-
-#              v
-# nums =   [1, 2, 3, 4]
-#           v
-#          [1, 2, 6, 24]
-#          [24,24,12, 4]
-#                 ^
-
-#                 v
-# nums =   [1, 2, 3, 4]
-#              v
-#          [1, 2, 6, 24]
-#          [24,24,12, 4]
-#                     ^
-
-#                    v
-# nums =   [1, 2, 3, 4]
-#                 v
-#          [1, 2, 6, 24]
-#          [24,24,12, 4] 1
-#                        ^
+# postfix= [24,24,12,4]
+#           x or //
+# res    = []
 
 
 # Some parts get computed many times. ASK: Can we precompute reusable partial products?
 # nums =   [1, 2, 3, 4]
-# 1: 2 * 3 * 4
-# 2: 1 * 3 * 4
-# 3: 1 * 2 * 4
-# 4: 1 * 2 * 3
+# 1:           2 * 3 * 4
+# 2:        1    * 3 * 4
+# 3:        1 * 2    * 4
+# 4:        1 * 2 * 3
+
+# More like: 
+# 1:   (nothing)   [2 * 3 * 4]
+# 2:   [1]         [3 * 4]
+# 3:   [1 * 2]     [4]
+# 4:   [1 * 2 * 3] (nothing)
+# Every row is left part × right part. 
 
 
 # Updated:
@@ -108,4 +89,5 @@ class Solution:
 # nums =   [1, 2, 3, 4]
 # prefix = [1, 1, 2, 6]
 # postfix= [24,12,4, 1]
+#           x
 # res    = [24,12,8, 6]
