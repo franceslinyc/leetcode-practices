@@ -80,16 +80,59 @@ class Solution:
 # prefix sum count
 #        0  1
 
-# sum = 1 -> 1 - k = 1 - 3 = -2 but -2 not in prefix_sum_map
-# res =
+# sum = 1 -> 1 - k = 1 - 3 = -2 but -2 not in prefix_sum_map so add to map
+#            (add the current sum 1, not -2)
+# res = 0
 
 # prefix sum count
 #         0  1
 #         1  1
 
-# sum = 1 + (-1) = 0 -> 0 - k = 0 - 3 = -3 but -3 not in prefix_sum_map
-# res =
+# sum = 1 + (-1) = 0 -> 0 - k = 0 - 3 = -3 but -3 not in prefix_sum_map so add to map
+#            (add the current sum 0, so its count goes from 1 to 2)
+# res = 0
 
 # prefix sum count
 #         0  2
 #         1  1
+
+# sum = 1 + (-1) + 1 = 1 -> 1 - k = 1 - 3 = -2 but -2 not in prefix_sum_map so add to map
+#            (add the current sum 1, so its count goes from 1 to 2)
+# res = 0
+
+# prefix sum count
+#         0  2
+#         1  2 
+
+# sum = 1 + (-1) + 1 + 1 = 2 -> 2 - k = 2 - 3 = -1 but -1 not in prefix_sum_map so add to map
+#            (add the current sum 2)
+# res = 0
+
+# prefix sum count
+#         0  2
+#         1  2  
+#         2  1  
+
+# sum = 3 -> 3 - k = 3 - 3 = 0, yes, 
+# res += 2 = 2
+# (the two earlier 0s are the empty prefix and the prefix after index 1)
+# then add the current sum 3 to the map
+
+# prefix sum count
+#         0  2
+#         1  2
+#         2  1
+#         3  1
+
+# sum = 4 -> 4 - k = 4 - 3 = 1, yes, 
+# res += 2 = 4 
+# then add the current sum 4 to the map
+
+# prefix sum count
+#         0  2
+#         1  2
+#         2  1
+#         3  1
+#         4  1
+
+# return res = 4
