@@ -31,13 +31,10 @@ class NumArray:
 
         self.prefix = [nums[0]]
 
-        # for i in range(1, len(nums)): 
+        for i in range(1, len(nums)): 
 
-        #     self.prefix.append(self.prefix[-1] + nums[i]) # Prev prefix sum + current
+            self.prefix.append(self.prefix[-1] + nums[i]) # Prev prefix sum + current
 
-        for num in nums: 
-
-            self.prefix.append(self.prefix[-1] + num)
         
     def sumRange(self, left: int, right: int) -> int: 
 
