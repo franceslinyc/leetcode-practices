@@ -8,49 +8,66 @@
 class Solution:
     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
 
-        # method 4: binary search + two pointers: O(log n + k) time; O(k) space, where k is the # of closest elements to find 
-        
-        # binary search + greedy expansion around a pivot
+        # method 3: two pointers: O(n - k) time; O(k) space
 
-        # Find the leftmost position
-        
         l, r = 0, len(arr) - 1
 
-        while l < r:
+        while r - l >= k:
 
-            mid = (l + r) // 2
+            if abs(x - arr[l]) <= abs(x - arr[r]):
+
+                r -= 1
+
+            else:
+
+                l += 1
+
+        return arr[l: r + 1]
+
+
+        # # method 4: binary search + two pointers: O(log n + k) time; O(k) space, where k is the # of closest elements to find 
+        
+        # # binary search + greedy expansion around a pivot
+
+        # # Find the leftmost position
+        
+        # l, r = 0, len(arr) - 1
+
+        # while l < r:
+
+        #     mid = (l + r) // 2
             
-            if arr[mid] < x:
+        #     if arr[mid] < x:
 
-                l = mid + 1
+        #         l = mid + 1
 
-            else:
+        #     else:
 
-                r = mid
+        #         r = mid
 
-        l, r = l - 1, l    # Let l point to the left of this leftmost position and r point to the leftmost position
+        # l, r = l - 1, l    # Let l point to the left of this leftmost position and r point to the leftmost position
 
-        # While have fewer elements than k, expand outward to collect k closest elements
+        # # While have fewer elements than k, expand outward to collect k closest elements
 
-        while r - l - 1 < k:
+        # while r - l - 1 < k:
 
-            if l < 0:
+        #     if l < 0:
 
-                r += 1
+        #         r += 1
 
-            elif r >= len(arr):
+        #     elif r >= len(arr):
 
-                l -= 1
+        #         l -= 1
 
-            elif abs(arr[l] - x) <= abs(arr[r] - x):
+        #     elif abs(arr[l] - x) <= abs(arr[r] - x):
 
-                l -= 1
+        #         l -= 1
 
-            else:
+        #     else:
 
-                r += 1
+        #         r += 1
 
-        return arr[l + 1: r]        
+        # return arr[l + 1: r]        
         
 
         # # method 5: binary search: O(log (n - k) + k) time; O(k) space, where k is the # of closest elements to find 
