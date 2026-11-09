@@ -12,7 +12,10 @@ class Solution:
 
         l, r = 0, len(arr) - 1
 
-        while r - l >= k:
+        
+        # while window too big: (r - l + 1) > k
+        # <=> r - l >= k 
+        while r - l >= k: 
 
             if abs(x - arr[l]) <= abs(x - arr[r]):
 
